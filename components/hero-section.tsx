@@ -6,14 +6,14 @@ import { FadeInSection } from "@/components/fade-in-section"
 
 export function HeroSection() {
   return (
-    <section className="relative bg-gradient-to-br from-background to-card py-24 lg:py-32">
+    <section className="relative bg-gradient-to-br from-background to-card py-10 lg:py-15">
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Content */}
           <FadeInSection>
             <div className="space-y-8">
               <div className="space-y-6">
-                <h1 className="text-4xl lg:text-6xl font-bold text-balance leading-tight text-foreground">
+                <h1 className="text-4xl lg:text-6xl font-bold text-balance leading-18 text-foreground">
                   Empowering Boys to
                   <span className="text-accent"> Transform Communities</span>
                 </h1>
@@ -71,7 +71,7 @@ export function HeroSection() {
             <div className="relative">
               <div className="aspect-square rounded-2xl overflow-hidden bg-card hover:scale-105 transition-transform duration-500">
                 <img
-                  src="/placeholder.svg?height=600&width=600&text=Boys+in+mentorship+program"
+                  src="https://i.ibb.co/4RV4hNsc/hero-children.png?height=600&width=600&text=Boys+in+mentorship+program"
                   alt="Boys participating in mentorship program"
                   className="w-full h-full object-cover"
                 />

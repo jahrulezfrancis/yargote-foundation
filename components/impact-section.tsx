@@ -54,12 +54,12 @@ export function ImpactSection() {
           {/* Image */}
           <FadeInSection delay={200}>
             <div className="relative">
-              <Card className="overflow-hidden hover:scale-105 transition-transform duration-500">
+              <Card className="overflow-hidden hover:scale-105 transition-transform duration-500 p-2">
                 <CardContent className="p-0">
                   <img
-                    src="/placeholder.svg?height=400&width=600&text=Boys+in+life+skills+workshop"
+                    src="https://i.ibb.co/zhSM4X3F/happy-boys.jpg?height=400&width=600&text=Boys+in+life+skills+workshop"
                     alt="Boys participating in life skills workshop"
-                    className="w-full h-80 object-cover"
+                    className="w-full h-80 object-cover rounded-md"
                   />
                 </CardContent>
               </Card>
