@@ -56,15 +56,18 @@ export function Navigation() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 relative ${
+                  className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 relative group ${
                     isActive
-                      ? "text-secondary bg-primary/10 font-semibold"
-                      : "text-foreground hover:text-secondary hover:bg-primary/5"
+                      ? "text-white bg-primary shadow-md font-semibold scale-105"
+                      : "text-foreground hover:text-primary hover:bg-primary/8 hover:scale-105"
                   }`}
                 >
                   {item.label}
                   {isActive && (
-                    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 bg-secondary rounded-full" />
+                    <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-secondary rounded-full shadow-sm" />
+                  )}
+                  {!isActive && (
+                    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-primary rounded-full transition-all duration-200 group-hover:w-4" />
                   )}
                 </Link>
               )
@@ -97,14 +100,17 @@ export function Navigation() {
                   <Link
                     key={item.href}
                     href={item.href}
-                    className={`block px-4 py-3 rounded-lg font-medium transition-colors duration-200 ${
+                    className={`block px-4 py-3 rounded-lg font-medium transition-all duration-200 relative ${
                       isActive
-                        ? "text-secondary bg-primary/10 font-semibold"
-                        : "text-foreground hover:text-secondary hover:bg-primary/5"
+                        ? "text-white bg-primary shadow-md font-semibold"
+                        : "text-foreground hover:text-primary hover:bg-primary/8"
                     }`}
                     onClick={() => setIsOpen(false)}
                   >
                     {item.label}
+                    {isActive && (
+                      <div className="absolute right-3 top-1/2 -translate-y-1/2 w-2 h-2 bg-secondary rounded-full" />
+                    )}
                   </Link>
                 )
               })}
