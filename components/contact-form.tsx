@@ -34,43 +34,7 @@ export function ContactForm() {
   }
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-      <div className="lg:col-span-1">
-        <Card className="premium-shadow-lg border-0 bg-gradient-to-br from-primary to-primary/90 text-primary-foreground">
-          <CardHeader>
-            <CardTitle className="text-xl font-semibold">Get in Touch</CardTitle>
-            <p className="text-primary-foreground/90">We're here to help and answer any questions you might have.</p>
-          </CardHeader>
-          <CardContent className="space-y-6">
-            <div className="flex items-start space-x-3">
-              <Mail className="w-5 h-5 mt-1 text-primary-foreground/80" />
-              <div>
-                <p className="font-medium">Email</p>
-                <p className="text-sm text-primary-foreground/80">info@yargotefoundation.org</p>
-              </div>
-            </div>
-            <div className="flex items-start space-x-3">
-              <Phone className="w-5 h-5 mt-1 text-primary-foreground/80" />
-              <div>
-                <p className="font-medium">Phone</p>
-                <p className="text-sm text-primary-foreground/80">+234 (0) 123 456 7890</p>
-              </div>
-            </div>
-            <div className="flex items-start space-x-3">
-              <MapPin className="w-5 h-5 mt-1 text-primary-foreground/80" />
-              <div>
-                <p className="font-medium">Address</p>
-                <p className="text-sm text-primary-foreground/80">
-                  123 Foundation Street
-                  <br />
-                  Lagos, Nigeria
-                </p>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-      </div>
-
+    <div className="gap-8">
       <div className="lg:col-span-2">
         <Card className="premium-shadow-lg border-0">
           <CardHeader>
