@@ -1,3 +1,4 @@
+import { BookOpen, Building, Heart, Users } from "lucide-react"
 import { BlogCategory } from "./types"
 
 
@@ -351,7 +352,7 @@ export const galleryImages = [
     alt: "Fine moments with the boy child",
     caption: "Investing in the well being of the boy child.",
     category: "Happy Moments",
-    tags:  ["Inspirationa;", "livelihood"],
+    tags: ["Inspirationa;", "livelihood"],
     featured: true,
     date: "2024-03-08"
   },
@@ -386,3 +387,105 @@ This is why we do what we do. Every scholarship awarded, every mentorship hour l
   views: 2847,
   likes: 156
 }
+
+export const programs = [
+  {
+    id: "mentorship-circles",
+    title: "Mentorship Circles",
+    description:
+      "Pairing boys with positive male role models who guide them in academics, career choices, and personal development.",
+    image: "/placeholder.svg?height=400&width=600&text=Mentorship+Circles",
+    status: "Active",
+    participants: 800,
+    duration: "Ongoing",
+    outcomes: [
+      "Improved academic performance through personalized guidance",
+      "Enhanced career awareness and goal setting",
+      "Strengthened personal development and confidence",
+      "Positive male role model relationships established",
+    ],
+    components: [
+      {
+        icon: Users,
+        title: "Role Models",
+        description: "Positive male mentors from the community",
+      },
+      {
+        icon: BookOpen,
+        title: "Academic Guidance",
+        description: "Support for educational achievement",
+      },
+      {
+        icon: Building,
+        title: "Career Mentoring",
+        description: "Professional guidance and career planning",
+      },
+      {
+        icon: Heart,
+        title: "Personal Development",
+        description: "Character building and life coaching",
+      },
+    ],
+  },
+  {
+    id: "safe-spaces",
+    title: "Safe Spaces for Boys",
+    description: "Community hubs where boys can express themselves, receive counseling, and access life skills training.",
+    image: "/placeholder.svg?height=400&width=600&text=Safe+Spaces+for+Boys",
+    status: "Active",
+    participants: 600,
+    duration: "Ongoing",
+    outcomes: [
+      "Secure environment for self-expression",
+      "Access to professional counseling services",
+      "Life skills development and training",
+      "Community support network established",
+    ],
+  },
+  {
+    id: "life-skills-curriculum",
+    title: "Life Skills & Values Curriculum",
+    description: "Structured lessons on discipline, leadership, patriotism, financial literacy, and personal hygiene.",
+    image: "/placeholder.svg?height=400&width=600&text=Life+Skills+Curriculum",
+    status: "Active",
+    participants: 1200,
+    duration: "12 weeks per cycle",
+    outcomes: [
+      "Enhanced leadership capabilities",
+      "Improved financial literacy and management",
+      "Strengthened discipline and self-control",
+      "Better personal hygiene and health awareness",
+    ],
+  },
+  {
+    id: "parent-boy-bonding",
+    title: "Parent–Boy Bonding Camps",
+    description: "Outdoor and experiential activities designed to heal strained relationships and strengthen family bonds.",
+    image: "/placeholder.svg?height=400&width=600&text=Parent+Boy+Bonding+Camps",
+    status: "Active",
+    participants: 400,
+    duration: "3 days per camp",
+    outcomes: [
+      "Healed strained parent-child relationships",
+      "Strengthened family bonds and communication",
+      "Improved understanding between generations",
+      "Enhanced family unity and support",
+    ],
+  },
+  {
+    id: "community-advocacy",
+    title: "Community Advocacy Events",
+    description: "Road walks, summits, and dialogues that bring visibility to the struggles and potential of the boychild.",
+    image: "/placeholder.svg?height=400&width=600&text=Community+Advocacy+Events",
+    status: "Active",
+    participants: 2000,
+    duration: "Monthly events",
+    outcomes: [
+      "Increased community awareness of boy child issues",
+      "Enhanced visibility of challenges and potential",
+      "Strengthened community dialogue and engagement",
+      "Advocacy for policy and social change",
+    ],
+  },
+]
+
