@@ -1,0 +1,240 @@
+/* carousel-animations.css */
+
+/* Keyframe Definitions */
+@keyframes slideInLeft {
+  from { 
+    opacity: 0; 
+    transform: translateX(-50px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateX(0); 
+  }
+}
+
+@keyframes slideOutRight {
+  from { 
+    opacity: 1; 
+    transform: translateX(0); 
+  }
+  to { 
+    opacity: 0; 
+    transform: translateX(50px); 
+  }
+}
+
+@keyframes scaleIn {
+  from { 
+    opacity: 0.8; 
+    transform: scale(1.1); 
+    filter: blur(4px);
+  }
+  to { 
+    opacity: 1; 
+    transform: scale(1); 
+    filter: blur(0px);
+  }
+}
+
+@keyframes scaleOut {
+  from { 
+    opacity: 1; 
+    transform: scale(1); 
+    filter: blur(0px);
+  }
+  to { 
+    opacity: 0.8; 
+    transform: scale(1.1); 
+    filter: blur(4px);
+  }
+}
+
+@keyframes fadeInUp {
+  from { 
+    opacity: 0; 
+    transform: translateY(30px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+@keyframes fadeInDown {
+  from { 
+    opacity: 0; 
+    transform: translateY(-30px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+@keyframes slideInFromBottom {
+  from { 
+    opacity: 0; 
+    transform: translateY(50px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+@keyframes slideOutToBottom {
+  from { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+  to { 
+    opacity: 0; 
+    transform: translateY(50px); 
+  }
+}
+
+/* Animation Classes */
+.animate-slideInLeft {
+  animation: slideInLeft 0.6s ease-out forwards;
+}
+
+.animate-slideOutRight {
+  animation: slideOutRight 0.3s ease-in forwards;
+}
+
+.animate-scaleIn {
+  animation: scaleIn 0.8s ease-out forwards;
+}
+
+.animate-scaleOut {
+  animation: scaleOut 0.3s ease-in forwards;
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.animate-fadeInDown {
+  animation: fadeInDown 0.6s ease-out forwards;
+}
+
+.animate-slideInFromBottom {
+  animation: slideInFromBottom 0.6s ease-out forwards;
+}
+
+.animate-slideOutToBottom {
+  animation: slideOutToBottom 0.3s ease-in forwards;
+}
+
+/* Animation Delay Classes for Staggered Effects */
+.animation-delay-0 {
+  animation-delay: 0ms;
+}
+
+.animation-delay-100 {
+  animation-delay: 100ms;
+}
+
+.animation-delay-200 {
+  animation-delay: 200ms;
+}
+
+.animation-delay-300 {
+  animation-delay: 300ms;
+}
+
+.animation-delay-400 {
+  animation-delay: 400ms;
+}
+
+.animation-delay-500 {
+  animation-delay: 500ms;
+}
+
+.animation-delay-600 {
+  animation-delay: 600ms;
+}
+
+.animation-delay-700 {
+  animation-delay: 700ms;
+}
+
+.animation-delay-800 {
+  animation-delay: 800ms;
+}
+
+/* Carousel-specific Classes */
+.carousel-content-enter {
+  opacity: 0;
+}
+
+.carousel-content-exit {
+  opacity: 1;
+}
+
+/* Responsive Animation Adjustments */
+@media (max-width: 768px) {
+  .animate-slideInLeft {
+    animation: slideInLeft 0.4s ease-out forwards;
+  }
+  
+  .animate-slideOutRight {
+    animation: slideOutRight 0.2s ease-in forwards;
+  }
+  
+  .animate-scaleIn {
+    animation: scaleIn 0.6s ease-out forwards;
+  }
+  
+  .animate-scaleOut {
+    animation: scaleOut 0.2s ease-in forwards;
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .animate-slideInLeft,
+  .animate-slideOutRight,
+  .animate-scaleIn,
+  .animate-scaleOut,
+  .animate-fadeInUp,
+  .animate-fadeInDown,
+  .animate-slideInFromBottom,
+  .animate-slideOutToBottom {
+    animation-duration: 0.1s;
+  }
+}
+
+/* Hover Effects for Interactive Elements */
+.carousel-nav-button {
+  transition: all 0.3s ease;
+}
+
+.carousel-nav-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.carousel-dot {
+  transition: all 0.3s ease;
+}
+
+.carousel-dot:hover {
+  transform: scale(1.2);
+}
+
+/* Progress Bar Animation */
+.carousel-progress {
+  transition: width 0.3s ease;
+  transform-origin: left;
+}
+
+.carousel-progress-exit {
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.carousel-progress-enter {
+  transform: scaleX(1);
+  transition: transform 0.3s ease 0.3s;
+}
