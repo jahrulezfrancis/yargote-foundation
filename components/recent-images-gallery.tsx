@@ -45,12 +45,12 @@ const SimpleLightbox = ({ images, currentIndex, onClose }: SimpleLightboxProps) 
   };
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/90 backdrop-blur-sm">
-      <div className="relative h-full flex items-center justify-center p-4">
+    <div className="fixed inset-0 z-50 bg-black/90 backdrop-blur-sm flex flex-col">
+      <div className="relative flex-1 flex items-center justify-center p-4 sm:p-6">
         {/* Close button */}
         <button
           onClick={onClose}
-          className="absolute top-6 right-6 w-10 h-10 bg-white/20 rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-all"
+          className="absolute top-4 right-4 sm:top-6 sm:right-6 w-12 h-12 bg-white/20 rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-all z-50"
         >
           <X className="w-5 h-5" />
         </button>
@@ -58,34 +58,34 @@ const SimpleLightbox = ({ images, currentIndex, onClose }: SimpleLightboxProps) 
         {/* Navigation */}
         <button
           onClick={prevImage}
-          className="absolute left-6 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/20 rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-all"
+          className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/30 rounded-full flex items-center justify-center text-white hover:bg-white/40 transition-all z-50 sm:w-14 sm:h-14"
         >
-          <ChevronLeft className="w-6 h-6" />
+          <ChevronLeft className="w-6 h-6 sm:w-7 sm:h-7" />
         </button>
 
         <button
           onClick={nextImage}
-          className="absolute right-6 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/20 rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-all"
+          className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/30 rounded-full flex items-center justify-center text-white hover:bg-white/40 transition-all z-50 sm:w-14 sm:h-14"
         >
-          <ChevronRight className="w-6 h-6" />
+          <ChevronRight className="w-6 h-6 sm:w-7 sm:h-7" />
         </button>
 
         {/* Image */}
-        <div className="max-w-4xl max-h-[80vh] relative">
+        <div className="max-w-[90vw] sm:max-w-4xl max-h-[70vh] sm:max-h-[80vh] relative">
           <img
             src={images[index].src}
             alt={images[index].alt}
-            className="max-w-full max-h-full object-contain rounded-lg"
+            className="w-full h-full object-contain rounded-lg"
           />
         </div>
 
         {/* Image info */}
-        <div className="absolute bottom-6 left-6 right-6">
+        <div className="absolute bottom-4 sm:bottom-6 left-0 right-0 px-4 sm:px-6">
           <div className="bg-black/60 backdrop-blur-sm rounded-xl p-4 text-white max-w-2xl mx-auto">
-            <div className="flex items-center justify-between">
-              <div>
-                <h3 className="font-semibold mb-1">{images[index].caption}</h3>
-                <div className="flex items-center gap-3 text-sm text-gray-300">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div className="text-center sm:text-left">
+                <h3 className="font-semibold mb-1 text-sm sm:text-base">{images[index].caption}</h3>
+                <div className="flex items-center justify-center sm:justify-start gap-3 text-xs sm:text-sm text-gray-300">
                   <span className="bg-white/20 px-2 py-1 rounded text-xs">
                     {images[index].category}
                   </span>
@@ -96,10 +96,11 @@ const SimpleLightbox = ({ images, currentIndex, onClose }: SimpleLightboxProps) 
               <div className="flex gap-2">
                 <button
                   onClick={toggleLike}
-                  className={`p-2 rounded-full transition-all ${liked.has(images[index].id)
-                    ? 'bg-red-500 text-white'
-                    : 'bg-white/20 text-white hover:bg-white/30'
-                    }`}
+                  className={`p-2 rounded-full transition-all ${
+                    liked.has(images[index].id)
+                      ? 'bg-red-500 text-white'
+                      : 'bg-white/20 text-white hover:bg-white/30'
+                  }`}
                 >
                   <Heart className={`w-4 h-4 ${liked.has(images[index].id) ? 'fill-current' : ''}`} />
                 </button>
@@ -117,7 +118,6 @@ const SimpleLightbox = ({ images, currentIndex, onClose }: SimpleLightboxProps) 
     </div>
   );
 };
-
 export function RecentImagesGallery() {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
   const [loadingImages, setLoadingImages] = useState(new Set());
