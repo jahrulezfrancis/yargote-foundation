@@ -103,22 +103,22 @@ export function HeroSection() {
   const SecondaryIcon = slide.secondaryCta.icon
 
   return (
-    <section className="relative bg-gradient-to-br from-purple-50 via-white to-purple-50/30 py-8 lg:py-20 overflow-hidden">
-      {/* Enhanced Background decoration with purple theme */}
+    <section className="relative bg-gradient-to-br from-emerald-50 via-white to-emerald-50/30 py-8 lg:py-20 overflow-hidden">
+      {/* Enhanced Background decoration with emerald theme */}
       <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
       
       {/* Animated background elements */}
-      <div className={`absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-purple-200/30 to-transparent rounded-full transition-all duration-[3000ms] ease-out ${isVisible ? '-translate-y-1/4 translate-x-1/4' : 'translate-y-full translate-x-full'
+      <div className={`absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-emerald-200/30 to-transparent rounded-full transition-all duration-[3000ms] ease-out ${isVisible ? '-translate-y-1/4 translate-x-1/4' : 'translate-y-full translate-x-full'
         }`} />
-      <div className={`absolute bottom-0 left-0 w-72 h-72 bg-gradient-to-tr from-purple-100/40 to-transparent rounded-full transition-all duration-[3000ms] ease-out delay-500 ${isVisible ? 'translate-y-1/4 -translate-x-1/4' : 'translate-y-full -translate-x-full'
+      <div className={`absolute bottom-0 left-0 w-72 h-72 bg-gradient-to-tr from-emerald-100/40 to-transparent rounded-full transition-all duration-[3000ms] ease-out delay-500 ${isVisible ? 'translate-y-1/4 -translate-x-1/4' : 'translate-y-full -translate-x-full'
         }`} />
       
       {/* Floating accent elements */}
-      <div className={`absolute top-1/3 right-1/3 w-4 h-4 bg-purple-400 rounded-full animate-pulse transition-all duration-1000 ease-out delay-1000 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-0'
+      <div className={`absolute top-1/3 right-1/3 w-4 h-4 bg-emerald-400 rounded-full animate-pulse transition-all duration-1000 ease-out delay-1000 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-0'
         }`} />
-      <div className={`absolute bottom-1/4 left-1/4 w-3 h-3 bg-purple-300 rounded-full animate-pulse delay-1000 transition-all duration-1000 ease-out delay-1200 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-0'
+      <div className={`absolute bottom-1/4 left-1/4 w-3 h-3 bg-emerald-300 rounded-full animate-pulse delay-1000 transition-all duration-1000 ease-out delay-1200 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-0'
         }`} />
-      <div className={`absolute top-1/2 left-1/5 w-2 h-2 bg-purple-500 rounded-full animate-ping transition-all duration-1000 ease-out delay-1400 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-0'
+      <div className={`absolute top-1/2 left-1/5 w-2 h-2 bg-emerald-500 rounded-full animate-ping transition-all duration-1000 ease-out delay-1400 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-0'
         }`} />
       
       <div className="container mx-auto px-4 relative z-10">
@@ -129,7 +129,7 @@ export function HeroSection() {
               <h1 className={`text-4xl lg:text-6xl font-bold text-balance leading-tight text-gray-900 transition-all duration-1000 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                 } ${isSlideChanging ? 'opacity-50 translate-y-2' : ''}`}>
                 {slide.title}
-                <span className={`text-purple-600 block mt-2 transition-all duration-1000 ease-out delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                <span className={`text-emerald-600 block mt-2 transition-all duration-1000 ease-out delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                   } ${isSlideChanging ? 'opacity-50 translate-y-2' : ''}`}>
                   {slide.highlight}
                 </span>
@@ -141,25 +141,25 @@ export function HeroSection() {
               </p>
             </div>
 
-            {/* Enhanced Stats with purple accents */}
+            {/* Enhanced Stats with emerald accents */}
             <div className={`grid grid-cols-3 gap-8 py-4 min-h-[80px] transition-all duration-1000 ease-out delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
               } ${isSlideChanging ? 'opacity-75' : ''}`}>
               {currentSlide === 0 ? (
                 <>
                   <div className="text-center group">
-                    <div className="text-2xl lg:text-3xl font-bold text-purple-600 group-hover:scale-110 transition-transform duration-300">
+                    <div className="text-2xl lg:text-3xl font-bold text-emerald-600 group-hover:scale-110 transition-transform duration-300">
                       <AnimatedCounter end={500} suffix="+" />
                     </div>
                     <div className="text-sm text-gray-500 group-hover:text-gray-700 transition-colors duration-300">Boys Reached</div>
                   </div>
                   <div className="text-center group">
-                    <div className="text-2xl lg:text-3xl font-bold text-purple-600 group-hover:scale-110 transition-transform duration-300">
+                    <div className="text-2xl lg:text-3xl font-bold text-emerald-600 group-hover:scale-110 transition-transform duration-300">
                       <AnimatedCounter end={200} suffix="+" />
                     </div>
                     <div className="text-sm text-gray-500 group-hover:text-gray-700 transition-colors duration-300">Mentors</div>
                   </div>
                   <div className="text-center group">
-                    <div className="text-2xl lg:text-3xl font-bold text-purple-600 group-hover:scale-110 transition-transform duration-300">
+                    <div className="text-2xl lg:text-3xl font-bold text-emerald-600 group-hover:scale-110 transition-transform duration-300">
                       <AnimatedCounter end={10} suffix="+" />
                     </div>
                     <div className="text-sm text-gray-500 group-hover:text-gray-700 transition-colors duration-300">Communities</div>
@@ -168,43 +168,43 @@ export function HeroSection() {
               ) : currentSlide === 1 ? (
                 <>
                   <div className="text-center group">
-                    <div className="text-2xl lg:text-3xl font-bold text-purple-600 group-hover:scale-110 transition-transform duration-300">15+</div>
+                    <div className="text-2xl lg:text-3xl font-bold text-emerald-600 group-hover:scale-110 transition-transform duration-300">15+</div>
                     <div className="text-sm text-gray-500 group-hover:text-gray-700 transition-colors duration-300">Programs</div>
                   </div>
                   <div className="text-center group">
-                    <div className="text-2xl lg:text-3xl font-bold text-purple-600 group-hover:scale-110 transition-transform duration-300">95%</div>
+                    <div className="text-2xl lg:text-3xl font-bold text-emerald-600 group-hover:scale-110 transition-transform duration-300">95%</div>
                     <div className="text-sm text-gray-500 group-hover:text-gray-700 transition-colors duration-300">Success Rate</div>
                   </div>
                   <div className="text-center group">
-                    <div className="text-2xl lg:text-3xl font-bold text-purple-600 group-hover:scale-110 transition-transform duration-300">5</div>
+                    <div className="text-2xl lg:text-3xl font-bold text-emerald-600 group-hover:scale-110 transition-transform duration-300">5</div>
                     <div className="text-sm text-gray-500 group-hover:text-gray-700 transition-colors duration-300">Years Impact</div>
                   </div>
                 </>
               ) : (
                 <>
                   <div className="text-center group">
-                    <div className="text-2xl lg:text-3xl font-bold text-purple-600 group-hover:scale-110 transition-transform duration-300">150+</div>
+                    <div className="text-2xl lg:text-3xl font-bold text-emerald-600 group-hover:scale-110 transition-transform duration-300">150+</div>
                     <div className="text-sm text-gray-500 group-hover:text-gray-700 transition-colors duration-300">Success Stories</div>
                   </div>
                   <div className="text-center group">
-                    <div className="text-2xl lg:text-3xl font-bold text-purple-600 group-hover:scale-110 transition-transform duration-300">80%</div>
+                    <div className="text-2xl lg:text-3xl font-bold text-emerald-600 group-hover:scale-110 transition-transform duration-300">80%</div>
                     <div className="text-sm text-gray-500 group-hover:text-gray-700 transition-colors duration-300">College Bound</div>
                   </div>
                   <div className="text-center group">
-                    <div className="text-2xl lg:text-3xl font-bold text-purple-600 group-hover:scale-110 transition-transform duration-300">100%</div>
+                    <div className="text-2xl lg:text-3xl font-bold text-emerald-600 group-hover:scale-110 transition-transform duration-300">100%</div>
                     <div className="text-sm text-gray-500 group-hover:text-gray-700 transition-colors duration-300">Satisfaction</div>
                   </div>
                 </>
               )}
             </div>
 
-            {/* Enhanced CTA Buttons with purple theme */}
+            {/* Enhanced CTA Buttons with emerald theme */}
             <div className={`flex flex-col sm:flex-row gap-4 pt-2 min-h-[60px] transition-all duration-1000 ease-out delay-800 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
               } ${isSlideChanging ? 'opacity-75' : ''}`}>
               <Button
                 asChild
                 size="lg"
-                className="bg-purple-600 hover:bg-purple-700 text-white hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl transform active:scale-95 group"
+                className="bg-emerald-600 hover:bg-emerald-700 text-white hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl transform active:scale-95 group"
               >
                 <Link href={slide.primaryCta.href} className="flex items-center gap-2">
                   {slide.primaryCta.text}
@@ -215,7 +215,7 @@ export function HeroSection() {
                 asChild
                 variant="outline"
                 size="lg"
-                className="hover:scale-105 transition-all duration-300 bg-transparent border-2 border-purple-200 hover:bg-purple-50 hover:border-purple-300 text-purple-700 hover:text-purple-800 transform active:scale-95 group"
+                className="hover:scale-105 transition-all duration-300 bg-transparent border-2 border-emerald-200 hover:bg-emerald-50 hover:border-emerald-300 text-emerald-700 hover:text-emerald-800 transform active:scale-95 group"
               >
                 <Link href={slide.secondaryCta.href} className="flex items-center gap-2">
                   {slide.secondaryCta.text}
@@ -237,23 +237,23 @@ export function HeroSection() {
                   className={`w-full h-full object-cover transition-all duration-700 ease-in-out group-hover:scale-110 ${isSlideChanging ? 'scale-105 opacity-80' : ''
                     }`}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-purple-900/20 via-transparent to-transparent group-hover:from-purple-900/30 transition-all duration-500"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-emerald-900/20 via-transparent to-transparent group-hover:from-emerald-900/30 transition-all duration-500"></div>
               </div>
               
-              {/* Enhanced floating elements with purple theme */}
-              <div className={`absolute -top-6 -right-6 bg-purple-500 text-white p-4 rounded-full shadow-xl transition-all duration-700 hover:scale-110 hover:rotate-12 transform ${!isSlideChanging ? 'animate-bounce' : ''
+              {/* Enhanced floating elements with emerald theme */}
+              <div className={`absolute -top-6 -right-6 bg-emerald-500 text-white p-4 rounded-full shadow-xl transition-all duration-700 hover:scale-110 hover:rotate-12 transform ${!isSlideChanging ? 'animate-bounce' : ''
                 }`}>
                 <FloatingIcon1 className="w-6 h-6" />
               </div>
-              <div className={`absolute -bottom-6 -left-6 bg-purple-700 text-white p-4 rounded-full shadow-xl transition-all duration-700 hover:scale-110 hover:rotate-12 transform ${!isSlideChanging ? 'animate-pulse' : ''
+              <div className={`absolute -bottom-6 -left-6 bg-emerald-700 text-white p-4 rounded-full shadow-xl transition-all duration-700 hover:scale-110 hover:rotate-12 transform ${!isSlideChanging ? 'animate-pulse' : ''
                 }`}>
                 <FloatingIcon2 className="w-6 h-6" />
               </div>
 
               {/* Decorative rings */}
-              <div className={`absolute -top-2 -right-2 w-16 h-16 border-2 border-purple-300 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 ${!isSlideChanging ? 'animate-ping' : ''
+              <div className={`absolute -top-2 -right-2 w-16 h-16 border-2 border-emerald-300 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 ${!isSlideChanging ? 'animate-ping' : ''
                 }`}></div>
-              <div className={`absolute -bottom-2 -left-2 w-16 h-16 border-2 border-purple-400 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 delay-200 ${!isSlideChanging ? 'animate-ping' : ''
+              <div className={`absolute -bottom-2 -left-2 w-16 h-16 border-2 border-emerald-400 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 delay-200 ${!isSlideChanging ? 'animate-ping' : ''
                 }`}></div>
             </div>
 
@@ -264,9 +264,9 @@ export function HeroSection() {
                 variant="outline"
                 size="icon"
                 disabled={isSlideChanging}
-                className="rounded-full bg-white/95 backdrop-blur-sm hover:bg-purple-50 border-purple-200 hover:border-purple-300 transition-all duration-300 shadow-lg hover:shadow-xl group disabled:opacity-50"
+                className="rounded-full bg-white/95 backdrop-blur-sm hover:bg-emerald-50 border-emerald-200 hover:border-emerald-300 transition-all duration-300 shadow-lg hover:shadow-xl group disabled:opacity-50"
               >
-                <ChevronLeft className="w-5 h-5 text-purple-600 group-hover:text-purple-700 group-hover:-translate-x-0.5 transition-all duration-300" />
+                <ChevronLeft className="w-5 h-5 text-emerald-600 group-hover:text-emerald-700 group-hover:-translate-x-0.5 transition-all duration-300" />
               </Button>
             </div>
             
@@ -276,9 +276,9 @@ export function HeroSection() {
                 variant="outline"
                 size="icon"
                 disabled={isSlideChanging}
-                className="rounded-full bg-white/95 backdrop-blur-sm hover:bg-purple-50 border-purple-200 hover:border-purple-300 transition-all duration-300 shadow-lg hover:shadow-xl group disabled:opacity-50"
+                className="rounded-full bg-white/95 backdrop-blur-sm hover:bg-emerald-50 border-emerald-200 hover:border-emerald-300 transition-all duration-300 shadow-lg hover:shadow-xl group disabled:opacity-50"
               >
-                <ChevronRight className="w-5 h-5 text-purple-600 group-hover:text-purple-700 group-hover:translate-x-0.5 transition-all duration-300" />
+                <ChevronRight className="w-5 h-5 text-emerald-600 group-hover:text-emerald-700 group-hover:translate-x-0.5 transition-all duration-300" />
               </Button>
             </div>
           </div>
@@ -294,8 +294,8 @@ export function HeroSection() {
               disabled={isSlideChanging}
               className={`h-3 rounded-full transition-all duration-300 hover:scale-110 transform ${
                 index === currentSlide 
-                  ? 'w-8 bg-purple-600 shadow-lg shadow-purple-600/30' 
-                  : 'w-3 bg-purple-200 hover:bg-purple-300'
+                  ? 'w-8 bg-emerald-600 shadow-lg shadow-emerald-600/30' 
+                  : 'w-3 bg-emerald-200 hover:bg-emerald-300'
               } disabled:opacity-50`}
             />
           ))}
@@ -304,9 +304,9 @@ export function HeroSection() {
        
 
         {/* Additional animated elements */}
-        <div className={`absolute top-10 left-10 w-2 h-2 bg-purple-400 rounded-full transition-all duration-1000 ease-out delay-1600 ${isVisible ? 'opacity-100 scale-100 animate-pulse' : 'opacity-0 scale-0'
+        <div className={`absolute top-10 left-10 w-2 h-2 bg-emerald-400 rounded-full transition-all duration-1000 ease-out delay-1600 ${isVisible ? 'opacity-100 scale-100 animate-pulse' : 'opacity-0 scale-0'
           }`} />
-        <div className={`absolute bottom-10 right-10 w-3 h-3 bg-purple-300 rounded-full transition-all duration-1000 ease-out delay-1800 ${isVisible ? 'opacity-100 scale-100 animate-bounce' : 'opacity-0 scale-0'
+        <div className={`absolute bottom-10 right-10 w-3 h-3 bg-emerald-300 rounded-full transition-all duration-1000 ease-out delay-1800 ${isVisible ? 'opacity-100 scale-100 animate-bounce' : 'opacity-0 scale-0'
           }`} />
       </div>
     </section>
