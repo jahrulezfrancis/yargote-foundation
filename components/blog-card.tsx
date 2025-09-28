@@ -5,7 +5,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Calendar, Clock, User, ArrowRight } from "lucide-react"
-import type { BlogPost } from "@/lib/mock-data"
+import type { BlogPost } from "@/lib/types"
 import { ImageLightbox } from "@/components/image-lightbox"
 import Link from "next/link"
 
