@@ -11,38 +11,37 @@ import Link from "next/link"
 const mockEvents = [
   {
     id: "1",
-    title: "Annual Community Fundraising Gala",
-    description: "Join us for an elegant evening of dinner, entertainment, and fundraising to support our programs.",
-    image: "https://images.unsplash.com/photo-1511632765486-a01980e01a18?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+    title: "From Bags to Brighter Futures: Yargote Foundation’s Boy Child Initiative",
+    description: "Join us for an inspiring evening of dinner, entertainment, and fundraising to support the Yargote Foundation’s mission to empower young boys. Our 'Empower the Boy-Child Project' provides essential resources like school bags, fostering confidence and opportunity for a brighter future.",
+    image: "https://i.ibb.co/zV0Vb2nm/children-with-bags.jpg?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
     date: "2024-04-15",
-    attendees: 200,
+    attendees: 57,
   },
   {
     id: "2",
-    title: "Mentorship Training Workshop",
-    description: "Comprehensive training session for new mentors covering communication skills and effective strategies.",
-    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80",
+    title: "Reaching Out, Raising Up: A Foundation’s Work with Boys",
+    description: "Join our outreach program dedicated to uplifting young boys through mentorship, education, and life skills training. The Yargote Foundation equips boys with tools like school bags and knowledge to build resilience and achieve their potential.",
+    image: "https://i.ibb.co/JwjHTBsc/boy-child-in-class.jpg?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80",
     date: "2024-04-22",
-    attendees: 45,
+    attendees: 43,
   }
 ]
-
 const mockBlogPosts = [
   {
     id: "1",
-    title: "Transforming Lives Through Education: Maria's Journey",
-    excerpt: "When Maria first walked through our doors, she carried the weight of uncertainty and dreams.",
-    image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80",
+    title: "Celebrating The International Day of The Boy Child",
+    excerpt: "On International Day of the Boy Child, we spotlight the Yargote Foundation’s efforts to empower boys with resources like school bags and mentorship, helping them overcome challenges and pursue their dreams with confidence.",
+    image: "https://i.ibb.co/sJbLjgpR/Whats-App-Image-2025-09-24-at-11-45-53-PM.jpg?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80",
     date: "2024-03-15",
-    author: "Sarah Johnson",
+    author: "Victor",
   },
   {
     id: "2",
     title: "Building Stronger Communities Together",
-    excerpt: "Discover how our community partnerships are creating lasting impact across neighborhoods.",
-    image: "https://images.unsplash.com/photo-1559027615-cd4628902d4a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2073&q=80",
+    excerpt: "Learn how the Yargote Foundation’s partnerships are transforming communities by supporting boys with educational resources, including school bags, and fostering environments where young boys can thrive.",
+    image: "https://i.ibb.co/5ggrTg0y/house-keeping.jpg?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2073&q=80",
     date: "2024-03-10",
-    author: "Michael Chen",
+    author: "Victor",
   }
 ]
 
@@ -89,16 +88,16 @@ export function FeaturedCarousel() {
   const performTransition = (newIndex: number) => {
     if (isTransitioning) return
     setIsTransitioning(true)
-    
+
     // Start exit animation
     setAnimationPhase('exit')
-    
+
     setTimeout(() => {
       // Change content and start enter animation
       setCurrentIndex(newIndex)
       setAnimationPhase('enter')
     }, 300) // Exit animation duration
-    
+
     setTimeout(() => {
       // Complete transition
       setAnimationPhase('idle')
@@ -139,7 +138,7 @@ export function FeaturedCarousel() {
       enter: `delay-[${baseDelay + 300}ms]`,
       idle: `delay-[${baseDelay}ms]`
     }
-    
+
     switch (animationPhase) {
       case 'exit':
         return `opacity-0 translate-y-4 scale-95 ${delays.exit}`
@@ -159,7 +158,7 @@ export function FeaturedCarousel() {
       cta: 150,
       stats: 200
     }
-    
+
     switch (animationPhase) {
       case 'exit':
         return `opacity-0 translate-x-8 blur-sm transition-all duration-300 ease-in-out delay-[${delays[element]}ms]`
@@ -186,7 +185,7 @@ export function FeaturedCarousel() {
   return (
     <div className="relative group">
       {/* Main Carousel Card */}
-      <div 
+      <div
         className="relative overflow-hidden rounded-2xl md:rounded-3xl shadow-xl md:shadow-2xl bg-white"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
@@ -201,14 +200,13 @@ export function FeaturedCarousel() {
               className={`w-full h-full object-cover ${getImageAnimationClasses()}`}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-            
+
             {/* Mobile Badge */}
             <div className={`absolute top-4 left-4 transition-all duration-300 ${getAnimationClasses(0)}`}>
-              <Badge className={`${
-                currentItem.type === "event" 
-                  ? "bg-gray-900 text-white border-blue-400/50" 
-                  : "bg-gray-500/90 text-white border-purple-400/50"
-              } backdrop-blur-sm px-3 py-1.5 text-xs font-medium`}>
+              <Badge className={`${currentItem.type === "event"
+                ? "bg-gray-900 text-white border-blue-400/50"
+                : "bg-gray-500/90 text-white border-purple-400/50"
+                } backdrop-blur-sm px-3 py-1.5 text-xs font-medium`}>
                 {currentItem.type === "event" ? "🎉 Event" : "📖 Story"}
               </Badge>
             </div>
@@ -243,12 +241,12 @@ export function FeaturedCarousel() {
               >
                 {isAutoPlaying ? <Pause className="w-3 h-3" /> : <Play className="w-3 h-3" />}
               </Button>
-              
+
               {/* Mobile Progress */}
               <div className="flex-1 mx-4 h-1 bg-white/20 rounded-full overflow-hidden">
-                <div 
+                <div
                   className="h-full bg-gradient-to-r from-gray-400 to-gray-800 rounded-full transition-all duration-300"
-                  style={{ 
+                  style={{
                     width: `${((currentIndex + 1) / featuredItems.length) * 100}%`,
                     transform: animationPhase === 'exit' ? 'scaleX(0)' : 'scaleX(1)',
                     transformOrigin: 'left'
@@ -266,14 +264,14 @@ export function FeaturedCarousel() {
                 <Calendar className="w-3 h-3" />
                 <span className="text-xs font-medium">{formatDate(currentItem.date)}</span>
               </div>
-              
+
               {currentItem.type === "event" && currentItem.attendees && (
                 <div className="flex items-center gap-1.5 px-3 py-1.5 bg-green-50 text-green-700 rounded-full border border-green-100">
                   <Users className="w-3 h-3" />
                   <span className="text-xs font-medium">{currentItem.attendees}</span>
                 </div>
               )}
-              
+
               {currentItem.type === "story" && (
                 <div className="flex items-center gap-1.5 px-3 py-1.5 bg-purple-50 text-purple-700 rounded-full border border-purple-100">
                   <Heart className="w-3 h-3" />
@@ -344,11 +342,10 @@ export function FeaturedCarousel() {
             <div className="relative flex items-center justify-center lg:justify-start p-8">
               {/* Desktop Badge */}
               <div className={`absolute top-6 left-6 ${getAnimationClasses(0)}`}>
-                <Badge className={`${
-                  currentItem.type === "event" 
-                    ? "bg-gray-900 text-white border-blue-400/50" 
-                    : "bg-gray-500/90 text-white border-purple-400/50"
-                } backdrop-blur-sm px-4 py-2 text-sm font-medium`}>
+                <Badge className={`${currentItem.type === "event"
+                  ? "bg-gray-900 text-white border-blue-400/50"
+                  : "bg-gray-500/90 text-white border-purple-400/50"
+                  } backdrop-blur-sm px-4 py-2 text-sm font-medium`}>
                   {currentItem.type === "event" ? "🎉 Event" : "📖 Story"}
                 </Badge>
               </div>
@@ -385,9 +382,9 @@ export function FeaturedCarousel() {
 
               {/* Desktop Progress Indicator */}
               <div className="absolute bottom-4 left-16 right-4 h-1 bg-white/20 rounded-full overflow-hidden">
-                <div 
+                <div
                   className="h-full bg-gradient-to-r from-gray-400 to-gray-800 rounded-full transition-all duration-300"
-                  style={{ 
+                  style={{
                     width: `${((currentIndex + 1) / featuredItems.length) * 100}%`,
                     transform: animationPhase === 'exit' ? 'scaleX(0)' : 'scaleX(1)',
                     transformOrigin: 'left'
@@ -404,14 +401,14 @@ export function FeaturedCarousel() {
                   <Calendar className="w-4 h-4" />
                   <span className="text-sm font-medium">{formatDate(currentItem.date)}</span>
                 </div>
-                
+
                 {currentItem.type === "event" && currentItem.attendees && (
                   <div className="flex items-center gap-2 px-4 py-2 bg-green-50 text-green-700 rounded-full border border-green-100">
                     <Users className="w-4 h-4" />
                     <span className="text-sm font-medium">{currentItem.attendees} attendees</span>
                   </div>
                 )}
-                
+
                 {currentItem.type === "story" && (
                   <div className="flex items-center gap-2 px-4 py-2 bg-purple-50 text-purple-700 rounded-full border border-purple-100">
                     <Heart className="w-4 h-4" />
@@ -470,19 +467,17 @@ export function FeaturedCarousel() {
         {featuredItems.map((item, index) => (
           <button
             key={index}
-            className={`group relative transition-all duration-300 hover:scale-125 ${
-              index === currentIndex
-                ? "w-8 md:w-12 h-2 md:h-3"
-                : "w-2 md:w-3 h-2 md:h-3"
-            }`}
+            className={`group relative transition-all duration-300 hover:scale-125 ${index === currentIndex
+              ? "w-8 md:w-12 h-2 md:h-3"
+              : "w-2 md:w-3 h-2 md:h-3"
+              }`}
             onClick={() => goToSlide(index)}
           >
-            <div className={`w-full h-full rounded-full transition-all duration-300 ${
-              index === currentIndex
-                ? "bg-gradient-to-r from-primary to-gray-600 shadow-lg"
-                : "bg-gray-300 group-hover:bg-gray-400"
-            }`} />
-            
+            <div className={`w-full h-full rounded-full transition-all duration-300 ${index === currentIndex
+              ? "bg-gradient-to-r from-primary to-gray-600 shadow-lg"
+              : "bg-gray-300 group-hover:bg-gray-400"
+              }`} />
+
             {/* Preview tooltip on hover - Hidden on mobile */}
             <div className="hidden md:block absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
               <div className="bg-black/80 text-white text-xs rounded-lg px-3 py-2 whitespace-nowrap backdrop-blur-sm">
