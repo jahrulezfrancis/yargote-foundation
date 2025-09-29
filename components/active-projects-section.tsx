@@ -43,7 +43,7 @@ export function FeaturedProjectSection() {
             Make a direct impact today by supporting our current initiative that's transforming young lives in our community
           </p>
         </div>
-        
+
         <Card className="overflow-hidden border-0 shadow-xl max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-5 xl:grid-cols-3 gap-0 min-h-[500px] md:min-h-[600px] lg:min-h-[500px]">
             {/* Image Section - More flexible sizing */}
@@ -80,9 +80,9 @@ export function FeaturedProjectSection() {
                       of {formatCurrency(featuredProject.targetAmount)}
                     </span>
                   </div>
-                  
+
                   <Progress value={progressPercentage} className="h-2 md:h-3 lg:h-4" />
-                  
+
                   <div className="flex justify-between items-center text-xs md:text-sm text-muted-foreground flex-wrap gap-2">
                     <span className="font-medium">{progressPercentage.toFixed(0)}% funded</span>
                     <span>{featuredProject.participantsServed} boys empowered</span>
@@ -91,17 +91,17 @@ export function FeaturedProjectSection() {
 
                 {/* Action Buttons - More responsive */}
                 <div className="flex flex-col sm:flex-row gap-3 md:gap-4 pt-2 md:pt-4 lg:pt-6">
-                  <Button asChild size="lg" className="flex-1 h-12 md:h-14 text-base md:text-lg">
-                    <Link href={`/donate?project=${featuredProject.id}`}>
+                  <Button size="lg" className="flex-1 sm:flex-initial h-12 md:h-14 text-base md:text-lg py-3.5">
+                    <Link className="flex items-center" href={`/donate?project=${featuredProject.id}`}>
                       <Heart className="w-4 h-4 md:w-5 md:h-5 mr-2" />
                       Support This Project
                     </Link>
                   </Button>
-                  <Button 
-                    variant="outline" 
-                    size="lg" 
-                    asChild 
-                    className="flex-1 sm:flex-initial sm:min-w-[160px] h-12 md:h-14 text-base md:text-lg"
+                  <Button
+                    variant="outline"
+                    size="lg"
+                    asChild
+                    className="flex-1 sm:flex-initial hover:bg-emerald-700 sm:min-w-[160px] h-12 md:h-14 text-base md:text-lg py-3"
                   >
                     <Link href={`/programs#${featuredProject.id}`}>
                       Learn More
