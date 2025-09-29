@@ -5,6 +5,31 @@ import { Badge } from "@/components/ui/badge"
 import { Heart, Target, Users, Mail, Linkedin, User, UserPlus, Calendar, MapPin } from "lucide-react"
 import { useState, useEffect, useRef } from "react"
 import TimelineComponent from "@/components/Program/timeline"
+import { mockTeamMembers } from "@/lib/mock-data"
+import scrollToSection from "@/utils/scrollTo"
+import Link from "next/link"
+
+
+const missionStatement = [
+  {
+    icon: Target,
+    title: "Our Mission",
+    content: "Our mission is to nurture and empower children, youth and women through advocacy, education, life skills, mentorship and community engagement thereby fostering resilience, responsible citizenship and sustainable growth",
+    color: "primary"
+  },
+  {
+    icon: Heart,
+    title: "Our Vision",
+    content: "We envision a world where every child, youth and woman has the opportunity to live with dignity, fulfil their potential and contribute meaningfully to nation development.",
+    color: "accent"
+  },
+  {
+    icon: Users,
+    title: "Our Impact",
+    content: "Over 200 boy children empowered, 40+ mentors engaged, and 10+ communities transformed through our dedicated programs focused on supporting and uplifting the boy child.",
+    color: "primary"
+  }
+]
 
 export default function AboutPage() {
   const [isVisible, setIsVisible] = useState(false)
@@ -69,17 +94,17 @@ export default function AboutPage() {
     <div className="min-h-screen overflow-hidden">
       <main>
         {/* Enhanced Hero Section */}
-        <section className="relative bg-gradient-to-br from-purple-50 to-white py-12 md:py-16 overflow-hidden">
+        <section className="relative bg-gradient-to-br from-emerald-50 to-white py-12 md:py-16 overflow-hidden">
           {/* Animated background elements */}
-          <div className={`absolute top-0 right-0 w-72 h-72 bg-gradient-to-bl from-purple-100/50 to-transparent rounded-full transition-all duration-[2000ms] ease-out ${isVisible ? '-translate-y-1/3 translate-x-1/3' : 'translate-y-full translate-x-full'
+          <div className={`absolute top-0 right-0 w-72 h-72 bg-gradient-to-bl from-emerald-100/50 to-transparent rounded-full transition-all duration-[2000ms] ease-out ${isVisible ? '-translate-y-1/3 translate-x-1/3' : 'translate-y-full translate-x-full'
             }`} />
-          <div className={`absolute bottom-0 left-0 w-56 h-56 bg-gradient-to-tr from-purple-50/40 to-transparent rounded-full transition-all duration-[2000ms] ease-out delay-300 ${isVisible ? 'translate-y-1/3 -translate-x-1/3' : 'translate-y-full -translate-x-full'
+          <div className={`absolute bottom-0 left-0 w-56 h-56 bg-gradient-to-tr from-emerald-50/40 to-transparent rounded-full transition-all duration-[2000ms] ease-out delay-300 ${isVisible ? 'translate-y-1/3 -translate-x-1/3' : 'translate-y-full -translate-x-full'
             }`} />
 
           {/* Floating accent elements with staggered animation */}
-          <div className={`absolute top-1/4 right-1/4 w-3 h-3 bg-purple-400 rounded-full animate-pulse transition-all duration-1000 ease-out delay-500 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-0'
+          <div className={`absolute top-1/4 right-1/4 w-3 h-3 bg-emerald-600 rounded-full animate-pulse transition-all duration-1000 ease-out delay-500 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-0'
             }`} />
-          <div className={`absolute bottom-1/3 left-1/5 w-2 h-2 bg-purple-300 rounded-full animate-pulse transition-all duration-1000 ease-out delay-700 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-0'
+          <div className={`absolute bottom-1/3 left-1/5 w-2 h-2 bg-emerald-300 rounded-full animate-pulse transition-all duration-1000 ease-out delay-700 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-0'
             }`} />
 
           <div className="container mx-auto px-6 md:px-8 relative z-10">
@@ -90,7 +115,7 @@ export default function AboutPage() {
                   {/* Category badge */}
                   <div className={`inline-flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-gray-200 shadow-sm transition-all duration-700 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
                     }`}>
-                    <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse" />
+                    <div className="w-2 h-2 bg-emerald-600 rounded-full animate-pulse" />
                     <span className="text-sm font-medium text-gray-700">About us</span>
                   </div>
 
@@ -100,7 +125,7 @@ export default function AboutPage() {
                       }`}>
                       Building Brighter
                     </h1>
-                    <span className={`block text-3xl md:text-4xl lg:text-5xl font-bold text-purple-600 leading-tight tracking-tight transition-all duration-700 ease-out delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+                    <span className={`block text-3xl md:text-4xl lg:text-5xl font-bold text-emerald-600 leading-tight tracking-tight transition-all duration-700 ease-out delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
                       }`}>
                       Futures for Boys
                     </span>
@@ -129,10 +154,13 @@ export default function AboutPage() {
                   {/* Action buttons */}
                   <div className={`flex flex-wrap items-center gap-4 pt-4 transition-all duration-700 ease-out delay-800 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
                     }`}>
-                    <button className="px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white font-semibold rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-xl transform active:scale-95">
+                    <button onClick={() => scrollToSection("our-mission-section")} className="px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-xl transform active:scale-95">
                       Our Mission
                     </button>
-                    <button className="px-6 py-3 text-gray-600 hover:text-gray-900 font-medium transition-all duration-300 border border-gray-200 rounded-lg hover:border-gray-300 hover:bg-white hover:shadow-md transform hover:scale-105 active:scale-95">
+                    <button
+                      className="px-6 py-3 text-gray-600 hover:text-gray-900 font-medium transition-all duration-300 border border-gray-200 rounded-lg hover:border-gray-300 hover:bg-white hover:shadow-md transform hover:scale-105 active:scale-95"
+                      onClick={() => scrollToSection("team-section")}
+                    >
                       Meet Our Team
                     </button>
                   </div>
@@ -148,7 +176,7 @@ export default function AboutPage() {
                     <div className="space-y-6">
                       <div className="flex items-center justify-between group">
                         <div className="flex items-center gap-3">
-                          <div className="w-3 h-3 bg-purple-500 rounded-full group-hover:scale-125 transition-transform duration-300"></div>
+                          <div className="w-3 h-3 bg-emerald-600 rounded-full group-hover:scale-125 transition-transform duration-300"></div>
                           <span className="text-gray-600 group-hover:text-gray-900 transition-colors duration-300">Boys Empowered</span>
                         </div>
                         <div className="text-2xl font-bold text-gray-900 tabular-nums">{counters.boys}+</div>
@@ -156,7 +184,7 @@ export default function AboutPage() {
 
                       <div className="flex items-center justify-between group">
                         <div className="flex items-center gap-3">
-                          <div className="w-3 h-3 bg-purple-700 rounded-full group-hover:scale-125 transition-transform duration-300"></div>
+                          <div className="w-3 h-3 bg-emerald-700 rounded-full group-hover:scale-125 transition-transform duration-300"></div>
                           <span className="text-gray-600 group-hover:text-gray-900 transition-colors duration-300">Active Mentors</span>
                         </div>
                         <div className="text-2xl font-bold text-gray-900 tabular-nums">{counters.mentors}+</div>
@@ -164,7 +192,7 @@ export default function AboutPage() {
 
                       <div className="flex items-center justify-between group">
                         <div className="flex items-center gap-3">
-                          <div className="w-3 h-3 bg-purple-800 rounded-full group-hover:scale-125 transition-transform duration-300"></div>
+                          <div className="w-3 h-3 bg-emerald-800 rounded-full group-hover:scale-125 transition-transform duration-300"></div>
                           <span className="text-gray-600 group-hover:text-gray-900 transition-colors duration-300">Communities</span>
                         </div>
                         <div className="text-2xl font-bold text-gray-900 tabular-nums">{counters.communities}+</div>
@@ -174,7 +202,7 @@ export default function AboutPage() {
                         <div className="text-sm text-gray-500 mb-2">Years of Service</div>
                         <div className="flex items-center gap-3">
                           <div className="flex-1 h-2 bg-gray-100 rounded-full overflow-hidden">
-                            <div className={`h-full bg-gradient-to-r from-purple-600 to-purple-800 rounded-full transition-all duration-[1500ms] ease-out delay-1000 ${isVisible ? 'w-full' : 'w-0'
+                            <div className={`h-full bg-gradient-to-r from-emerald-600 to-emerald-800 rounded-full transition-all duration-[1500ms] ease-out delay-1000 ${isVisible ? 'w-full' : 'w-0'
                               }`}></div>
                           </div>
                           <span className="text-sm font-semibold text-gray-900">9 Years</span>
@@ -184,14 +212,14 @@ export default function AboutPage() {
                   </div>
 
                   {/* Quick mission card */}
-                  <div className={`bg-gradient-to-br from-purple-600 to-purple-800 text-white rounded-2xl p-6 shadow-lg transition-all duration-700 ease-out delay-700 hover:shadow-2xl hover:scale-105 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                  <div className={`bg-gradient-to-br from-emerald-600 to-emerald-800 text-white rounded-2xl p-6 shadow-lg transition-all duration-700 ease-out delay-700 hover:shadow-2xl hover:scale-105 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8 our-mission-section'
                     }`}>
                     <h4 className="text-lg font-semibold mb-3">Our Mission</h4>
-                    <p className="text-sm text-purple-100 leading-relaxed">
+                    <p className="text-sm text-emerald-100 leading-relaxed">
                       To nurture and empower children, youth and women through advocacy, education,
                       life skills, mentorship and community engagement.
                     </p>
-                    <button className="mt-4 text-sm text-purple-100 hover:text-white font-medium flex items-center gap-2 transition-all duration-300 group">
+                    <button className="mt-4 text-sm text-emerald-100 hover:text-white font-medium flex items-center gap-2 transition-all duration-300 group">
                       Learn More
                       <svg className="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -217,34 +245,15 @@ export default function AboutPage() {
             </div>
 
             <div className="grid lg:grid-cols-3 gap-12 mb-16">
-              {[
-                {
-                  icon: Target,
-                  title: "Our Mission",
-                  content: "Our mission is to nurture and empower children, youth and women through advocacy, education, life skills, mentorship and community engagement thereby fostering resilience, responsible citizenship and sustainable growth",
-                  color: "primary"
-                },
-                {
-                  icon: Heart,
-                  title: "Our Vision",
-                  content: "We envision a world where every child, youth and woman has the opportunity to live with dignity, fulfil their potential and contribute meaningfully to nation development.",
-                  color: "accent"
-                },
-                {
-                  icon: Users,
-                  title: "Our Impact",
-                  content: "Over 200 boy children empowered, 40+ mentors engaged, and 10+ communities transformed through our dedicated programs focused on supporting and uplifting the boy child.",
-                  color: "primary"
-                }
-              ].map((item, index) => (
+              {missionStatement.map((item, index) => (
                 <Card key={index} className={`text-center p-8 group hover:shadow-xl transition-all duration-700 hover:scale-105 transform border-0 bg-white/80 backdrop-blur-sm ${isSectonVisible('mission-section') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
                   }`}
                   style={{ transitionDelay: `${index * 200 + 300}ms` }}>
                   <CardContent className="space-y-4">
-                    <div className={`w-16 h-16 bg-purple-50 rounded-full flex items-center justify-center mx-auto group-hover:scale-110 group-hover:bg-purple-100 transition-all duration-500 group-hover:rotate-12 transform`}>
-                      <item.icon className={`w-8 h-8 text-purple-600 group-hover:scale-110 transition-all duration-500`} />
+                    <div className={`w-16 h-16 bg-emerald-50 rounded-full flex items-center justify-center mx-auto group-hover:scale-110 group-hover:bg-emerald-100 transition-all duration-500 group-hover:rotate-12 transform`}>
+                      <item.icon className={`w-8 h-8 text-emerald-600 group-hover:scale-110 transition-all duration-500`} />
                     </div>
-                    <h3 className="text-2xl font-bold group-hover:text-purple-600 transition-colors duration-300">{item.title}</h3>
+                    <h3 className="text-2xl font-bold group-hover:text-emerald-600 transition-colors duration-300">{item.title}</h3>
                     <p className="text-muted-foreground text-pretty leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
                       {item.content}
                     </p>
@@ -286,14 +295,14 @@ export default function AboutPage() {
                     description: "Instilling respect, values, and positive conduct.",
                   },
                 ].map((value, index) => (
-                  <Card key={index} className={`text-center p-6 group hover:shadow-xl transition-all duration-700 hover:scale-105 transform hover:bg-gradient-to-br hover:from-purple-50 hover:to-white border-0 bg-white/60 backdrop-blur-sm hover:-translate-y-2 ${isSectonVisible('mission-section') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
+                  <Card key={index} className={`text-center p-6 group hover:shadow-xl transition-all duration-700 hover:scale-105 transform hover:bg-gradient-to-br hover:from-emerald-50 hover:to-white border-0 bg-white/60 backdrop-blur-sm hover:-translate-y-2 ${isSectonVisible('mission-section') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
                     }`}
                     style={{ transitionDelay: `${index * 150 + 1000}ms` }}>
                     <CardContent className="space-y-4">
-                      <div className="w-12 h-12 bg-purple-50 rounded-full flex items-center justify-center mx-auto group-hover:scale-110 group-hover:bg-purple-100 transition-all duration-500 group-hover:rotate-12 transform">
-                        <value.icon className="w-6 h-6 text-purple-600 group-hover:text-purple-700 transition-colors duration-300" />
+                      <div className="w-12 h-12 bg-emerald-50 rounded-full flex items-center justify-center mx-auto group-hover:scale-110 group-hover:bg-emerald-100 transition-all duration-500 group-hover:rotate-12 transform">
+                        <value.icon className="w-6 h-6 text-emerald-600 group-hover:text-emerald-700 transition-colors duration-300" />
                       </div>
-                      <h3 className="text-xl font-semibold group-hover:text-purple-600 transition-colors duration-300">{value.title}</h3>
+                      <h3 className="text-xl font-semibold group-hover:text-emerald-600 transition-colors duration-300">{value.title}</h3>
                       <p className="text-muted-foreground text-pretty text-sm leading-relaxed group-hover:text-gray-700 transition-colors duration-300">{value.description}</p>
                     </CardContent>
                   </Card>
@@ -310,7 +319,7 @@ export default function AboutPage() {
               <div className={`space-y-6 transition-all duration-1000 ease-out ${isSectonVisible('story-section') ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-12'
                 }`}>
                 <div className="inline-block">
-                  <Badge variant="outline" className="mb-4 hover:bg-purple-50 hover:border-purple-200 transition-all duration-300 animate-pulse">
+                  <Badge variant="outline" className="mb-4 hover:bg-emerald-50 hover:border-emerald-200 transition-all duration-300 animate-pulse">
                     Our Journey
                   </Badge>
                 </div>
@@ -339,7 +348,7 @@ export default function AboutPage() {
                     { number: '10+', label: 'Communities' }
                   ].map((stat, index) => (
                     <div key={index} className="text-center group">
-                      <div className="text-2xl font-bold text-purple-600 group-hover:scale-110 transition-transform duration-300">{stat.number}</div>
+                      <div className="text-2xl font-bold text-emerald-600 group-hover:scale-110 transition-transform duration-300">{stat.number}</div>
                       <div className="text-sm text-muted-foreground group-hover:text-gray-700 transition-colors duration-300">{stat.label}</div>
                     </div>
                   ))}
@@ -347,17 +356,17 @@ export default function AboutPage() {
               </div>
               <div className={`relative group transition-all duration-1000 ease-out ${isSectonVisible('story-section') ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-12'
                 }`}>
-                <div className="absolute -inset-4 bg-gradient-to-r from-purple-400/20 to-purple-600/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="absolute -inset-4 bg-gradient-to-r from-emerald-400/20 to-emerald-600/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 <img
                   src="https://i.ibb.co/MyT9Fcvx/founder-kids-CBorbbrl.jpg?height=500&width=600&text=Foundation+History"
                   alt="Yargote Foundation history and growth"
                   className="w-full h-96 object-cover rounded-2xl transition-all duration-700 group-hover:scale-105 group-hover:shadow-2xl relative z-10"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-purple-600/20 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-20" />
+                <div className="absolute inset-0 bg-gradient-to-t from-emerald-600/20 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-20" />
 
                 {/* Floating elements */}
-                <div className="absolute -top-4 -right-4 w-8 h-8 bg-purple-400 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 delay-200 animate-bounce"></div>
-                <div className="absolute -bottom-4 -left-4 w-6 h-6 bg-purple-600 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 delay-400 animate-pulse"></div>
+                <div className="absolute -top-4 -right-4 w-8 h-8 bg-emerald-400 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 delay-200 animate-bounce"></div>
+                <div className="absolute -bottom-4 -left-4 w-6 h-6 bg-emerald-600 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 delay-400 animate-pulse"></div>
               </div>
             </div>
           </div>
@@ -368,7 +377,7 @@ export default function AboutPage() {
           <div className="container mx-auto px-4">
             <div className={`text-center space-y-4 mb-16 transition-all duration-1000 ease-out ${isSectonVisible('founder-section') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               }`}>
-              <Badge variant="outline" className="mb-2 hover:bg-purple-50 hover:border-purple-200 transition-all duration-300 animate-pulse">
+              <Badge variant="outline" className="mb-2 hover:bg-emerald-50 hover:border-emerald-200 transition-all duration-300 animate-pulse">
                 Leadership
               </Badge>
               <h2 className="text-3xl lg:text-4xl font-bold">Our Founder</h2>
@@ -383,7 +392,7 @@ export default function AboutPage() {
                 <CardContent className="p-0">
                   <div className="grid lg:grid-cols-2 gap-0">
                     <div className="relative overflow-hidden">
-                      <div className="absolute inset-0 bg-gradient-to-br from-purple-600/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"></div>
+                      <div className="absolute inset-0 bg-gradient-to-br from-emerald-600/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"></div>
                       <img
                         src="https://i.ibb.co/SDjtHmf2/yargote-founder.jpg?height=600&width=500&text=Anna+Hussaini+Pai"
                         alt="Anna Hussaini Pai - Founder & Executive Director"
@@ -392,15 +401,15 @@ export default function AboutPage() {
                       <div className="absolute inset-0 bg-gradient-to-t from-primary/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                       {/* Floating decorative elements */}
-                      <div className="absolute top-4 right-4 w-4 h-4 bg-purple-400 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 delay-200 animate-ping"></div>
-                      <div className="absolute bottom-4 left-4 w-3 h-3 bg-purple-600 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 delay-400 animate-bounce"></div>
+                      <div className="absolute top-4 right-4 w-4 h-4 bg-emerald-400 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 delay-200 animate-ping"></div>
+                      <div className="absolute bottom-4 left-4 w-3 h-3 bg-emerald-600 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 delay-400 animate-bounce"></div>
                     </div>
 
                     <div className="p-8 lg:p-12 flex flex-col justify-center space-y-6">
                       <div className={`space-y-2 transition-all duration-700 ease-out ${isSectonVisible('founder-section') ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'
                         }`} style={{ transitionDelay: '500ms' }}>
                         <h3 className="text-2xl lg:text-3xl font-bold group-hover:text-blue-600 transition-colors duration-300">Anna Hussaini Pai</h3>
-                        <p className="text-lg font-medium text-purple-600">Founder & Executive Director</p>
+                        <p className="text-lg font-medium text-emerald-600">Founder & Executive Director</p>
                       </div>
 
                       <div className="space-y-4 text-muted-foreground leading-relaxed">
@@ -422,7 +431,7 @@ export default function AboutPage() {
                         }`} style={{ transitionDelay: '1000ms' }}>
                         <h4 className="text-lg font-semibold flex items-center gap-2">
                           Education & Credentials
-                          <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse"></div>
+                          <div className="w-2 h-2 bg-emerald-600 rounded-full animate-pulse"></div>
                         </h4>
                         <div className="grid gap-2 text-sm text-muted-foreground max-h-48 overflow-y-auto">
                           {[
@@ -436,7 +445,7 @@ export default function AboutPage() {
                             "Registered Member of Teachers Registration Council of Nigeria"
                           ].map((credential, index) => (
                             <p key={index}
-                              className={`hover:text-gray-700 transition-all duration-300 hover:translate-x-2 transform hover:bg-purple-50/30 hover:px-2 hover:py-1 hover:rounded ${isSectonVisible('founder-section') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'
+                              className={`hover:text-gray-700 transition-all duration-300 hover:translate-x-2 transform hover:bg-emerald-50/30 hover:px-2 hover:py-1 hover:rounded ${isSectonVisible('founder-section') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'
                                 }`}
                               style={{ transitionDelay: `${index * 100 + 1200}ms` }}>
                               • {credential}
@@ -449,23 +458,70 @@ export default function AboutPage() {
                         }`} style={{ transitionDelay: '1400ms' }}>
                         <a
                           href="mailto:anna@yargotefoundation.org"
-                          className="flex items-center gap-2 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-all duration-300 hover:scale-105 hover:shadow-lg transform active:scale-95 group"
+                          className="flex items-center gap-2 px-4 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-all duration-300 hover:scale-105 hover:shadow-lg transform active:scale-95 group"
                         >
                           <Mail className="w-4 h-4 group-hover:rotate-12 transition-transform duration-300" />
                           Contact
                         </a>
-                        <a
-                          href="#"
-                          className="flex items-center gap-2 px-4 py-2 border border-gray-200 rounded-lg hover:bg-purple-50 hover:text-purple-700 hover:border-purple-200 transition-all duration-300 hover:scale-105 hover:shadow-lg transform active:scale-95 group"
+                        <Link
+                          href="https://www.linkedin.com/in/anna-hussaini-pai-30723388/" target="_blank" rel="noopener noreferrer"
+                          className="flex items-center gap-2 px-4 py-2 border border-gray-200 rounded-lg hover:bg-emerald-50 hover:text-emerald-700 hover:border-emerald-200 transition-all duration-300 hover:scale-105 hover:shadow-lg transform active:scale-95 group"
                         >
                           <Linkedin className="w-4 h-4 group-hover:rotate-12 transition-transform duration-300" />
                           LinkedIn
-                        </a>
+                        </Link>
                       </div>
                     </div>
                   </div>
                 </CardContent>
               </Card>
+            </div>
+          </div>
+        </section>
+
+        {/* Team Section */}
+        <section className="py-20 bg-card team-section">
+          <div className="container mx-auto px-4">
+            <div className="text-center space-y-4 mb-16">
+              <h2 className="text-3xl lg:text-4xl font-bold">Meet Our Team</h2>
+              <p className="text-xl text-muted-foreground text-pretty max-w-2xl mx-auto">
+                Dedicated professionals committed to empowering the next generation of leaders
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {mockTeamMembers.map((member, index) => (
+                <Card key={index} className="text-center overflow-hidden">
+                  <CardContent className="p-0">
+                    <img
+                      src={member.image || "/placeholder.svg"}
+                      alt={member.name}
+                      className="w-full h-64 object-cover"
+                    />
+                    <div className="p-6 space-y-4">
+                      <div>
+                        <h3 className="text-xl font-semibold">{member.name}</h3>
+                        <p className="text-accent font-medium">{member.role}</p>
+                      </div>
+                      <p className="text-muted-foreground text-sm text-pretty leading-relaxed">{member.bio}</p>
+                      <div className="flex justify-center gap-2">
+                        <a
+                          href={`mailto:${member.email}`}
+                          className="w-8 h-8 bg-muted rounded-full flex items-center justify-center hover:bg-accent hover:text-accent-foreground transition-colors"
+                        >
+                          <Mail className="w-4 h-4" />
+                        </a>
+                        <a
+                          href={member.linkedin}
+                          className="w-8 h-8 bg-muted rounded-full flex items-center justify-center hover:bg-accent hover:text-accent-foreground transition-colors"
+                        >
+                          <Linkedin className="w-4 h-4" />
+                        </a>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
             </div>
           </div>
         </section>
