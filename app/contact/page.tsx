@@ -1,115 +1,132 @@
-import { Badge } from "@/components/ui/badge"
+"use client"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Mail, Phone, MapPin, Clock, Facebook, Twitter, Instagram, Linkedin, Send, User, MessageSquare } from "lucide-react"
+import { Mail, Phone, MapPin, Clock, Facebook, Twitter, Instagram, Linkedin, Heart, BookOpen } from "lucide-react"
 import { ContactForm } from "@/components/contact-form"
 
 const contactInfo = [
   {
     icon: Mail,
     title: "Email Us",
-    details: ["info@yargotefoundation.org", "programs@yargotefoundation.org"],
-    description: "Send us an email and we'll respond within 24 hours",
-    color: "bg-blue-50 text-blue-600 border-blue-200",
-    iconBg: "bg-blue-100"
+    details: ["info@theyargotefoundation.org", "programs@theyargotefoundation.org"],
+    description: "Send us an email and we'll respond within 24 hours"
   },
   {
     icon: Phone,
     title: "Call Us",
     details: ["+234 (0) 806 536 1349", "+234 (0) 803 123 4568"],
-    description: "Speak with our team during business hours",
-    color: "bg-green-50 text-green-600 border-green-200",
-    iconBg: "bg-green-100"
+    description: "Speak with our team during business hours"
   },
   {
     icon: MapPin,
     title: "Visit Us",
     details: ["House 59 Zone C", " Apo Resettlement, FCT Abuja"],
-    description: "Stop by our office for an in-person meeting",
-    color: "bg-orange-50 text-orange-600 border-orange-200",
-    iconBg: "bg-orange-100"
+    description: "Stop by our office for an in-person meeting"
   },
   {
     icon: Clock,
     title: "Office Hours",
     details: ["Monday - Friday: 8:00 AM - 5:00 PM", "Saturday: 9:00 AM - 1:00 PM"],
-    description: "When you can reach us by phone or visit our office",
-    color: "bg-purple-50 text-purple-600 border-purple-200",
-    iconBg: "bg-purple-100"
+    description: "When you can reach us by phone or visit our office"
   },
 ]
 
 const socialLinks = [
-  { icon: Facebook, href: "#", label: "Facebook", color: "hover:bg-blue-600" },
-  { icon: Twitter, href: "#", label: "Twitter", color: "hover:bg-blue-400" },
-  { icon: Instagram, href: "#", label: "Instagram", color: "hover:bg-pink-600" },
-  { icon: Linkedin, href: "#", label: "LinkedIn", color: "hover:bg-blue-700" },
+  { icon: Facebook, href: "#", label: "Facebook" },
+  { icon: Twitter, href: "https://x.com/yargote_f88015", label: "Twitter" },
+  { icon: Instagram, href: "#", label: "Instagram" },
+  { icon: Linkedin, href: "#", label: "LinkedIn" },
 ]
 
 const quickContacts = [
   {
     title: "General Information",
-    email: "info@yargotefoundation.org",
+    email: "info@theyargotefoundation.org",
     description: "For general inquiries about our foundation"
   },
   {
     title: "Volunteer Opportunities",
-    email: "volunteer@yargotefoundation.org",
+    email: "volunteer@theyargotefoundation.org",
     description: "Join our team of dedicated volunteers"
   },
   {
     title: "Program Information",
-    email: "programs@yargotefoundation.org",
+    email: "programs@theyargotefoundation.org",
     description: "Learn about our programs and how to participate"
   },
   {
     title: "Media Inquiries",
-    email: "media@yargotefoundation.org",
+    email: "media@theyargotefoundation.org",
     description: "Press releases and media partnerships"
   },
 ]
 
+const ContactFormWrapper = () => {
+  return (
+    <div className="animate-slideInFromLeft contact-form">
+      <ContactForm />
+    </div>
+  )
+}
 
 export default function ContactPage() {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-background">
       <main>
-        {/* Hero Section */}
-        <section className="relative py-24 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 overflow-hidden">
-          <div
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20"
-            style={{ backgroundImage: "url('/boys-playing-sports-together.jpg')" }}
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-gray-900/90 to-gray-800/80"></div>
-          
+        {/* Enhanced Hero Section */}
+        <section className="relative bg-gradient-to-br from-emerald-50 via-white to-emerald-50/30 py-16 md:py-20 overflow-hidden">
           {/* Animated background elements */}
-          <div className="absolute inset-0 overflow-hidden">
-            <div className="absolute -top-24 -right-24 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
-            <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-green-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+          <div className="absolute inset-0">
+            <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-emerald-100/30 to-transparent rounded-full animate-pulse -translate-y-1/3 translate-x-1/3" />
+            <div className="absolute bottom-0 left-0 w-72 h-72 bg-gradient-to-tr from-emerald-100/40 to-transparent rounded-full animate-pulse delay-1000 translate-y-1/3 -translate-x-1/3" />
+            <div className="absolute top-1/2 left-1/2 w-80 h-80 bg-gradient-to-r from-emerald-50/20 to-emerald-100/20 rounded-full animate-pulse delay-500 -translate-x-1/2 -translate-y-1/2" />
           </div>
-          
-          <div className="container mx-auto px-4 relative z-10">
-            <div className="max-w-4xl mx-auto text-center space-y-8">
-              <Badge variant="secondary" className="mb-4 bg-white/20 text-white border-white/30 px-4 py-2">
-                Contact Us
-              </Badge>
-              <h1 className="text-5xl lg:text-6xl font-bold text-balance text-white leading-tight">
-                Get in <span className="text-blue-400">Touch</span>
+
+          {/* Floating elements */}
+          <div className="absolute top-1/4 right-1/4 w-4 h-4 bg-emerald-300 rounded-full animate-bounce" />
+          <div className="absolute bottom-1/3 left-1/4 w-3 h-3 bg-emerald-400 rounded-full animate-bounce delay-300" />
+          <div className="absolute top-1/3 left-1/2 w-2 h-2 bg-emerald-500 rounded-full animate-bounce delay-700" />
+
+          <div className="container mx-auto px-6 md:px-8 relative z-10">
+            <div className="max-w-4xl mx-auto text-center space-y-6">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/90 backdrop-blur-sm rounded-full border border-emerald-200 shadow-sm animate-slideInFromLeft">
+                <Mail className="w-4 h-4 text-emerald-500 animate-pulse" />
+                <span className="text-sm font-medium text-gray-700">Get in Touch</span>
+              </div>
+
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight tracking-tight animate-slideInFromLeft" style={{ animationDelay: '0.2s' }}>
+                Let's Connect and
+                <span className="block text-emerald-600 animate-slideInFromRight" style={{ animationDelay: '0.4s' }}>
+                  Make a Difference
+                </span>
               </h1>
-              <p className="text-xl text-white/90 text-pretty leading-relaxed max-w-3xl mx-auto">
+
+              <p className="text-lg md:text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto animate-slideInFromLeft" style={{ animationDelay: '0.6s' }}>
                 Have questions about our programs? Want to volunteer or partner with us? We'd love to hear from you and
                 explore how we can work together to empower young men in our communities.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-                <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8">
-                  <Mail className="w-4 h-4 mr-2" />
-                  Email Us
+
+              <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4 animate-fadeInUp" style={{ animationDelay: '0.8s' }}>
+                <Button
+                  size="lg"
+                  className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 md:w-[200px]"
+                  asChild
+                >
+                  <a href="mailto:info@theyargotefoundation.org">
+                    <Mail className="w-4 h-4 mr-2" />
+                    Email Us
+                  </a>
                 </Button>
-                <Button size="lg" variant="outline" className="border-white text-white bg-transparent hover:bg-white hover:text-gray-900">
-                  <Phone className="w-6 h-6 mr-2" />
-                  Call Now
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-emerald-600 text-emerald-600 hover:bg-emerald-600 md:w-[200px] hover:text-white"
+                  asChild
+                >
+                  <a href="tel:+2348065361349">
+                    <Phone className="w-4 h-4 mr-2" />
+                    Call Now
+                  </a>
                 </Button>
               </div>
             </div>
@@ -117,24 +134,39 @@ export default function ContactPage() {
         </section>
 
         {/* Contact Information Cards */}
-        <section className="py-20 bg-white relative -mt-16">
-          <div className="container mx-auto px-4">
+        <section className="py-20 bg-white relative">
+          <div className="container mx-auto px-6">
+            <div className="text-center space-y-4 mb-16 animate-fadeInUp">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-50 text-emerald-700 rounded-full border border-emerald-200">
+                <BookOpen className="w-4 h-4" />
+                <span className="text-sm font-medium">Contact Information</span>
+              </div>
+              <h2 className="text-3xl lg:text-4xl font-bold text-gray-900">How to Reach Us</h2>
+              <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+                Multiple ways to connect with our team and get the support you need
+              </p>
+            </div>
+
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
               {contactInfo.map((info, index) => (
-                <Card key={index} className={`text-center p-6 shadow-lg border-0 ${info.color} hover:shadow-xl transition-all duration-300 hover:-translate-y-1`}>
+                <Card
+                  key={index}
+                  className="text-center p-6 shadow-lg border-0 bg-white hover:shadow-xl transition-all duration-300 hover:-translate-y-1 animate-fadeInUp"
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
                   <CardContent className="space-y-4 p-0">
-                    <div className={`w-16 h-16 ${info.iconBg} rounded-full flex items-center justify-center mx-auto shadow-sm`}>
-                      <info.icon className="w-8 h-8" />
+                    <div className="w-16 h-16 bg-emerald-50 rounded-full flex items-center justify-center mx-auto shadow-sm border border-emerald-100">
+                      <info.icon className="w-8 h-8 text-emerald-600" />
                     </div>
-                    <h3 className="text-xl font-bold">{info.title}</h3>
+                    <h3 className="text-xl font-bold text-gray-900">{info.title}</h3>
                     <div className="space-y-1">
                       {info.details.map((detail, detailIndex) => (
-                        <p key={detailIndex} className="font-medium text-sm">
+                        <p key={detailIndex} className="font-medium text-sm text-gray-700">
                           {detail}
                         </p>
                       ))}
                     </div>
-                    <p className="text-sm opacity-80">{info.description}</p>
+                    <p className="text-sm text-gray-600">{info.description}</p>
                   </CardContent>
                 </Card>
               ))}
@@ -144,53 +176,31 @@ export default function ContactPage() {
 
         {/* Main Content - Form and Info */}
         <section className="py-20 bg-gray-50">
-          <div className="container mx-auto px-4">
+          <div className="container mx-auto px-6">
             <div className="grid lg:grid-cols-5 gap-12">
               <div className="lg:col-span-3">
-                <ContactForm />
+                <ContactFormWrapper />
               </div>
 
-              <div className="lg:col-span-2 space-y-6">
-                {/* Map Placeholder */}
-                <Card className="shadow-lg border-0">
-                  <CardContent className="p-0">
-                    <div className="h-64 bg-gradient-to-br from-gray-100 to-gray-200 rounded-t-lg flex items-center justify-center relative overflow-hidden">
-                      {/* Map background pattern */}
-                      <div className="absolute inset-0 opacity-10">
-                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-gray-400 via-transparent to-transparent"></div>
-                      </div>
-                      <div className="text-center space-y-3 z-10">
-                        <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-lg">
-                          <MapPin className="w-8 h-8 text-gray-600" />
-                        </div>
-                        <div>
-                          <p className="font-semibold text-gray-700">Our Location</p>
-                          <p className="text-sm text-gray-600">House 59 Zone C, Apo Resettlement</p>
-                          <p className="text-sm text-gray-600"> FCT Abuja</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="p-4 bg-white">
-                      <Button variant="outline" className="w-full">
-                        <MapPin className="w-4 h-4 mr-2" />
-                        Get Directions
-                      </Button>
-                    </div>
-                  </CardContent>
-                </Card>
+              <div className="lg:col-span-2 space-y-6 animate-slideInFromRight">
+
 
                 {/* Quick Contact Options */}
                 <Card className="shadow-lg border-0">
                   <CardContent className="p-6 space-y-6">
                     <div className="text-center space-y-2">
-                      <h3 className="text-xl font-bold text-gray-900">Quick Contact</h3>
-                      <p className="text-gray-600 text-sm">Choose the right department for your inquiry</p>
+                      <div className="inline-flex items-center gap-2 px-3 py-1 bg-emerald-50 text-emerald-700 rounded-full border border-emerald-200 text-sm">
+                        <Heart className="w-3 h-3" />
+                        <span className="font-medium">Quick Contact</span>
+                      </div>
+                      <h3 className="text-xl font-bold text-gray-900">Choose Your Department</h3>
+                      <p className="text-gray-600 text-sm">Get connected with the right team member</p>
                     </div>
-                    <div className="space-y-4">
+                    <div className="space-y-3">
                       {quickContacts.map((contact, index) => (
-                        <div key={index} className="p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors cursor-pointer">
+                        <div key={index} className="p-4 bg-gray-50 rounded-lg hover:bg-emerald-50 transition-colors cursor-pointer border border-gray-100 hover:border-emerald-200">
                           <h4 className="font-semibold text-gray-900 text-sm">{contact.title}</h4>
-                          <p className="text-blue-600 text-sm font-medium">{contact.email}</p>
+                          <p className="text-emerald-600 text-sm font-medium">{contact.email}</p>
                           <p className="text-gray-500 text-xs mt-1">{contact.description}</p>
                         </div>
                       ))}
@@ -218,11 +228,42 @@ export default function ContactPage() {
           </div>
         </section>
 
+        {/* Map Placeholder */}
+        <Card className="shadow-lg border-0 my-16">
+          <CardContent className="p-0">
+            <div className="h-64 bg-gradient-to-br from-emerald-50 to-emerald-100 rounded-t-lg flex items-center justify-center relative overflow-hidden">
+              <div className="absolute inset-0 opacity-20">
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-emerald-400 via-transparent to-transparent"></div>
+              </div>
+              <div className="text-center space-y-3 z-10">
+                <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-lg">
+                  <MapPin className="w-8 h-8 text-emerald-600" />
+                </div>
+                <div>
+                  <p className="font-semibold text-gray-800">Our Location</p>
+                  <p className="text-sm text-gray-700">House 59 Zone C, Apo Resettlement</p>
+                  <p className="text-sm text-gray-700">FCT Abuja</p>
+                </div>
+              </div>
+            </div>
+            <div className="p-4 bg-white flex justify-center">
+              <Button variant="outline" className="w-auto border-emerald-600 text-emerald-600 hover:bg-emerald-600 hover:text-white">
+                <MapPin className="w-4 h-4 mr-2" />
+                Get Directions
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
+
         {/* Social Media Section */}
         <section className="py-16 bg-white">
-          <div className="container mx-auto px-4">
-            <div className="text-center space-y-6">
-              <h3 className="text-2xl font-bold text-gray-900">Follow Our Journey</h3>
+          <div className="container mx-auto px-6">
+            <div className="text-center space-y-6 animate-fadeInUp">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-50 text-emerald-700 rounded-full border border-emerald-200">
+                <Heart className="w-4 h-4" />
+                <span className="text-sm font-medium">Stay Connected</span>
+              </div>
+              <h3 className="text-3xl font-bold text-gray-900">Follow Our Journey</h3>
               <p className="text-gray-600 max-w-2xl mx-auto">
                 Stay connected with us on social media to see the latest updates, success stories, and ways you can get involved in our mission.
               </p>
@@ -231,7 +272,8 @@ export default function ContactPage() {
                   <a
                     key={index}
                     href={social.href}
-                    className={`w-14 h-14 bg-gray-100 rounded-full flex items-center justify-center hover:text-white transition-all duration-300 hover:shadow-lg hover:-translate-y-1 ${social.color}`}
+                    target="_blank"
+                    className="w-14 h-14 bg-emerald-50 text-emerald-600 rounded-full flex items-center justify-center hover:bg-emerald-600 hover:text-white transition-all duration-300 hover:shadow-lg hover:-translate-y-1 border border-emerald-200"
                     aria-label={social.label}
                   >
                     <social.icon className="w-6 h-6" />
@@ -241,21 +283,83 @@ export default function ContactPage() {
             </div>
           </div>
         </section>
-
-        {/* Bottom CTA */}
-        <section className="py-16 bg-gray-900 text-white">
-          <div className="container mx-auto px-4 text-center space-y-6">
-            <h2 className="text-2xl font-bold">Ready to Make a Difference?</h2>
-            <p className="text-gray-300 max-w-2xl mx-auto">
-              Join us in our mission to empower young men and transform communities. Every conversation starts with a simple message.
-            </p>
-            <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8">
-              <Send className="w-4 h-4 mr-2" />
-              Start the Conversation
-            </Button>
-          </div>
-        </section>
       </main>
+
+      {/* Custom CSS for animations and theme integration */}
+      <style jsx global>{`
+        @keyframes fadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+
+        @keyframes slideInFromLeft {
+          from { 
+            opacity: 0; 
+            transform: translateX(-50px); 
+          }
+          to { 
+            opacity: 1; 
+            transform: translateX(0); 
+          }
+        }
+
+        @keyframes slideInFromRight {
+          from { 
+            opacity: 0; 
+            transform: translateX(50px); 
+          }
+          to { 
+            opacity: 1; 
+            transform: translateX(0); 
+          }
+        }
+
+        @keyframes fadeInUp {
+          from { 
+            opacity: 0; 
+            transform: translateY(30px); 
+          }
+          to { 
+            opacity: 1; 
+            transform: translateY(0); 
+          }
+        }
+
+        .animate-fadeIn {
+          animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        .animate-slideInFromLeft {
+          animation: slideInFromLeft 0.8s ease-out forwards;
+          opacity: 0;
+        }
+
+        .animate-slideInFromRight {
+          animation: slideInFromRight 0.8s ease-out forwards;
+          opacity: 0;
+        }
+
+        .animate-fadeInUp {
+          animation: fadeInUp 0.8s ease-out forwards;
+          opacity: 0;
+        }
+
+        /* Theme integration for ContactForm component */
+        .contact-form input:focus,
+        .contact-form textarea:focus,
+        .contact-form [role="combobox"]:focus {
+          border-color: rgb(5 150 105) !important;
+          box-shadow: 0 0 0 2px rgb(5 150 105 / 0.2) !important;
+        }
+
+        .contact-form button[type="submit"] {
+          background-color: rgb(5 150 105) !important;
+        }
+
+        .contact-form button[type="submit"]:hover {
+          background-color: rgb(4 120 87) !important;
+        }
+      `}</style>
     </div>
   )
 }

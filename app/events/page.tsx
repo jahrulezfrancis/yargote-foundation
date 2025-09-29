@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge"
 import { EventCard } from "@/components/event-card"
 import { mockEvents } from "@/lib/mock-data"
 import { Calendar, Users, Clock, MapPin, Sparkles } from "lucide-react"
+import scrollToSection from "@/utils/scrollTo"
 
 export default function EventsPage() {
   const upcomingEvents = mockEvents.filter((event) => event.status === "upcoming")
@@ -13,16 +14,16 @@ export default function EventsPage() {
     <div className="min-h-screen">
       <main>
         {/* Enhanced Hero Section with Animations */}
-        <section className="relative bg-gradient-to-br from-purple-50 via-blue-50 to-white py-12 md:py-16 overflow-hidden">
+        <section className="relative bg-gradient-to-br from-emerald-50 via-blue-50 to-white py-12 md:py-16 overflow-hidden">
           {/* Animated background elements */}
           <div className="absolute inset-0">
-            <div className="absolute top-0 right-0 w-80 h-80 bg-gradient-to-bl from-purple-100/60 to-transparent rounded-full animate-pulse -translate-y-1/4 translate-x-1/4" />
+            <div className="absolute top-0 right-0 w-80 h-80 bg-gradient-to-bl from-emerald-100/60 to-transparent rounded-full animate-pulse -translate-y-1/4 translate-x-1/4" />
             <div className="absolute bottom-0 left-0 w-64 h-64 bg-gradient-to-tr from-blue-100/50 to-transparent rounded-full animate-pulse delay-1000 translate-y-1/4 -translate-x-1/4" />
             <div className="absolute top-1/2 left-1/2 w-96 h-96 bg-gradient-to-r from-green-50/30 to-yellow-50/30 rounded-full animate-pulse delay-500 -translate-x-1/2 -translate-y-1/2" />
           </div>
 
           {/* Floating animated dots */}
-          <div className="absolute top-1/4 right-1/3 w-3 h-3 bg-purple-300 rounded-full animate-bounce" />
+          <div className="absolute top-1/4 right-1/3 w-3 h-3 bg-emerald-300 rounded-full animate-bounce" />
           <div className="absolute bottom-1/3 left-1/4 w-2 h-2 bg-blue-300 rounded-full animate-bounce delay-300" />
           <div className="absolute top-1/3 left-1/3 w-1.5 h-1.5 bg-green-300 rounded-full animate-bounce delay-700" />
 
@@ -32,15 +33,15 @@ export default function EventsPage() {
                 {/* Main content with staggered animations */}
                 <div className="lg:col-span-2 space-y-6">
                   {/* Animated badge */}
-                  <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/90 backdrop-blur-sm rounded-full border border-purple-200 shadow-sm animate-slideInFromLeft">
-                    <Sparkles className="w-4 h-4 text-purple-500 animate-spin" style={{ animationDuration: '3s' }} />
+                  <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/90 backdrop-blur-sm rounded-full border border-emerald-200 shadow-sm animate-slideInFromLeft">
+                    <Sparkles className="w-4 h-4 text-emerald-500 animate-spin" style={{ animationDuration: '3s' }} />
                     <span className="text-sm font-medium text-gray-700">Events & Activities</span>
                   </div>
 
                   {/* Animated title */}
                   <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight tracking-tight animate-slideInFromLeft" style={{ animationDelay: '0.2s' }}>
                     Join Us in Making
-                    <span className="block text-purple-600 animate-slideInFromRight" style={{ animationDelay: '0.4s' }}>
+                    <span className="block text-emerald-600 animate-slideInFromRight" style={{ animationDelay: '0.4s' }}>
                       a Difference
                     </span>
                   </h1>
@@ -53,7 +54,7 @@ export default function EventsPage() {
 
                   {/* Animated event highlights */}
                   <div className="flex flex-wrap items-center gap-6 pt-2 animate-slideInFromLeft" style={{ animationDelay: '0.8s' }}>
-                    <div className="flex items-center gap-2 text-gray-600 hover:text-purple-600 transition-colors cursor-pointer group">
+                    <div className="flex items-center gap-2 text-gray-600 hover:text-emerald-600 transition-colors cursor-pointer group">
                       <Calendar className="w-4 h-4 group-hover:scale-110 transition-transform" />
                       <span className="text-sm">Monthly <span className="font-semibold text-gray-900">Workshops</span></span>
                     </div>
@@ -69,18 +70,18 @@ export default function EventsPage() {
 
                   {/* Animated action buttons */}
                   <div className="flex flex-wrap items-center gap-4 pt-4 animate-slideInFromLeft" style={{ animationDelay: '1s' }}>
-                    <button className="group px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white font-semibold rounded-lg transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                    <button onClick={()=> scrollToSection("event-section")} className="group px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-lg transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
                       <span className="flex items-center gap-2">
                         View Events
                         <Calendar className="w-4 h-4 group-hover:rotate-12 transition-transform" />
                       </span>
                     </button>
-                    <button className="group px-6 py-3 text-gray-600 hover:text-gray-900 font-medium transition-all duration-300 border border-gray-200 rounded-lg hover:border-purple-300 hover:bg-purple-50 transform hover:-translate-y-1">
+                    {/* <button className="group px-6 py-3 text-gray-600 hover:text-gray-900 font-medium transition-all duration-300 border border-gray-200 rounded-lg hover:border-emerald-300 hover:bg-emerald-50 transform hover:-translate-y-1">
                       <span className="flex items-center gap-2">
                         Create Event
                         <Sparkles className="w-4 h-4 group-hover:animate-pulse" />
                       </span>
-                    </button>
+                    </button> */}
                   </div>
                 </div>
 
@@ -89,7 +90,7 @@ export default function EventsPage() {
                   {/* Main stats card with animation */}
                   <div className="bg-white/95 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-gray-200 shadow-xl animate-slideInFromRight transform hover:scale-105 transition-all duration-300">
                     <h3 className="text-lg font-semibold text-gray-900 mb-6 flex items-center gap-2">
-                      <Calendar className="w-5 h-5 text-purple-500 animate-pulse" />
+                      <Calendar className="w-5 h-5 text-emerald-500 animate-pulse" />
                       Event Statistics
                     </h3>
 
@@ -116,7 +117,7 @@ export default function EventsPage() {
 
                       <div className="flex items-center justify-between group cursor-pointer">
                         <div className="flex items-center gap-3">
-                          <div className="w-3 h-3 bg-purple-500 rounded-full animate-pulse delay-500"></div>
+                          <div className="w-3 h-3 bg-emerald-500 rounded-full animate-pulse delay-500"></div>
                           <span className="text-gray-600 group-hover:text-gray-900 transition-colors">Total Attendees</span>
                         </div>
                         <div className="text-2xl font-bold text-gray-900 group-hover:scale-110 transition-transform">500+</div>
@@ -126,7 +127,7 @@ export default function EventsPage() {
                         <div className="text-sm text-gray-500 mb-2">This Month's Activity</div>
                         <div className="flex items-center gap-3">
                           <div className="flex-1 h-2 bg-gray-100 rounded-full overflow-hidden">
-                            <div className="h-full bg-gradient-to-r from-purple-500 to-blue-500 rounded-full animate-pulse" style={{ width: '78%' }}></div>
+                            <div className="h-full bg-gradient-to-r from-emerald-500 to-blue-500 rounded-full animate-pulse" style={{ width: '78%' }}></div>
                           </div>
                           <span className="text-sm font-semibold text-gray-900">78%</span>
                         </div>
@@ -135,7 +136,7 @@ export default function EventsPage() {
                   </div>
 
                   {/* Quick action card with animation */}
-                  <div className="bg-gradient-to-br from-purple-600 to-blue-600 text-white rounded-2xl p-6 shadow-xl animate-slideInFromRight hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1" style={{ animationDelay: '0.2s' }}>
+                  <div className="bg-gradient-to-br from-emerald-600 to-blue-600 text-white rounded-2xl p-6 shadow-xl animate-slideInFromRight hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1" style={{ animationDelay: '0.2s' }}>
                     <div className="flex items-center gap-3 mb-4">
                       <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
                         <Clock className="w-4 h-4 animate-spin" style={{ animationDuration: '4s' }} />
@@ -145,8 +146,8 @@ export default function EventsPage() {
 
                     {upcomingEvents.length > 0 ? (
                       <div className="space-y-2">
-                        <p className="font-medium text-purple-100">{upcomingEvents[0].title}</p>
-                        <p className="text-sm text-purple-200">
+                        <p className="font-medium text-emerald-100">{upcomingEvents[0].title}</p>
+                        <p className="text-sm text-emerald-200">
                           {new Date(upcomingEvents[0].date).toLocaleDateString('en-US', {
                             month: 'long',
                             day: 'numeric',
@@ -155,10 +156,10 @@ export default function EventsPage() {
                         </p>
                       </div>
                     ) : (
-                      <p className="text-purple-100">No upcoming events scheduled</p>
+                      <p className="text-emerald-100">No upcoming events scheduled</p>
                     )}
 
-                    <button className="mt-4 text-sm text-purple-100 hover:text-white font-medium flex items-center gap-2 transition-colors group">
+                    <button className="mt-4 text-sm text-emerald-100 hover:text-white font-medium flex items-center gap-2 transition-colors group">
                       View Details
                       <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -172,7 +173,7 @@ export default function EventsPage() {
         </section>
 
         {/* Animated Upcoming Events */}
-        <section className="py-20 bg-background">
+        <section className="py-20 bg-background event-section">
           <div className="container mx-auto px-4">
             <div className="text-center space-y-4 mb-16 animate-fadeInUp">
               <h2 className="text-3xl lg:text-4xl font-bold">Upcoming Events</h2>
