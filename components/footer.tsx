@@ -66,14 +66,15 @@ export function Footer() {
             <div className="flex gap-4">
               {[
                 { icon: Facebook, href: "#" },
-                { icon: Twitter, href: "#" },
+                { icon: Twitter, href: "https://x.com/yargote_f88015" },
                 { icon: Instagram, href: "#" },
                 { icon: Linkedin, href: "#" },
               ].map((social, index) => (
                 <Link
                   key={index}
                   href={social.href}
-                  className="w-10 h-10 bg-primary-foreground/10 rounded-full flex items-center justify-center hover:bg-accent transition-colors"
+                  target="_blank"
+                  className="w-10 h-10 bg-primary-foreground/10 rounded-full flex items-center justify-center hover:bg-primary-foreground/50 transition-colors"
                 >
                   <social.icon className="w-5 h-5" />
                 </Link>
