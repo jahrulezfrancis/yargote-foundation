@@ -7,6 +7,8 @@ import { mockBlogPosts } from "@/lib/mock-data" // Updated import for multiple p
 import { BlogCategory, BlogPost } from "@/lib/types"
 import { Calendar, Clock, User, ArrowLeft, Share2, Heart, Bookmark, Eye } from "lucide-react"
 import { useState, useEffect } from "react"
+import { useShareModal } from '@/hooks/use-share'
+import ShareModal from '@/components/shareModal'
 
 const categoryColors: Record<BlogCategory, string> = {
   "success-story": "bg-emerald-100 text-emerald-700 border-emerald-200",
@@ -23,18 +25,26 @@ const categoryLabels: Record<BlogCategory, string> = {
 }
 
 interface EnhancedBlogPostPageProps {
-  // If you want to pass post directly as prop (alternative approach)
 }
 
 export default function EnhancedBlogPostPage({ }: EnhancedBlogPostPageProps) {
   const params = useParams()
-  const postId = params?.id as string // Assuming URL structure: /posts/[id]
+  const postId = params?.id as string
 
   const [currentPost, setCurrentPost] = useState<BlogPost | null>(null)
   const [isLiked, setIsLiked] = useState(false)
   const [isBookmarked, setIsBookmarked] = useState(false)
   const [likes, setLikes] = useState(0)
   const [loading, setLoading] = useState(true)
+
+  const { openShareModal, closeShareModal, isShareModalOpen } = useShareModal()
+
+  const handleShareClick = () => {
+    openShareModal({
+      title: "Custom Title",
+      description: "Custom description for this specific page"
+    })
+  }
 
   // Fetch or find the specific post based on ID
   useEffect(() => {
@@ -61,16 +71,6 @@ export default function EnhancedBlogPostPage({ }: EnhancedBlogPostPageProps) {
   const handleLike = () => {
     setIsLiked(!isLiked)
     setLikes(isLiked ? likes - 1 : likes + 1)
-  }
-
-  const handleShare = () => {
-    if (currentPost) {
-      navigator.share?.({
-        title: currentPost.title,
-        text: currentPost.title,
-        url: window.location.href,
-      }) || navigator.clipboard?.writeText(window.location.href)
-    }
   }
 
   if (loading) {
@@ -176,8 +176,8 @@ export default function EnhancedBlogPostPage({ }: EnhancedBlogPostPageProps) {
                     variant="ghost"
                     size="sm"
                     className={`group transition-all duration-300 ${isLiked
-                        ? 'text-red-500 hover:text-red-600 bg-red-50'
-                        : 'text-slate-600 hover:text-red-500 hover:bg-red-50'
+                      ? 'text-red-500 hover:text-red-600 bg-red-50'
+                      : 'text-slate-600 hover:text-red-500 hover:bg-red-50'
                       }`}
                     onClick={handleLike}
                   >
@@ -190,8 +190,8 @@ export default function EnhancedBlogPostPage({ }: EnhancedBlogPostPageProps) {
                     variant="ghost"
                     size="sm"
                     className={`transition-all duration-300 ${isBookmarked
-                        ? 'text-blue-500 hover:text-blue-600 bg-blue-50'
-                        : 'text-slate-600 hover:text-blue-500 hover:bg-blue-50'
+                      ? 'text-blue-500 hover:text-blue-600 bg-blue-50'
+                      : 'text-slate-600 hover:text-blue-500 hover:bg-blue-50'
                       }`}
                     onClick={() => setIsBookmarked(!isBookmarked)}
                   >
@@ -203,7 +203,7 @@ export default function EnhancedBlogPostPage({ }: EnhancedBlogPostPageProps) {
                     variant="ghost"
                     size="sm"
                     className="text-slate-600 hover:text-slate-800 hover:bg-slate-100 transition-all duration-300"
-                    onClick={handleShare}
+                    onClick={handleShareClick}
                   >
                     <Share2 className="w-5 h-5" />
                   </Button>
@@ -250,6 +250,11 @@ export default function EnhancedBlogPostPage({ }: EnhancedBlogPostPageProps) {
             </div>
           </div>
         </section>
+        <ShareModal
+          isOpen={isShareModalOpen}
+          onClose={closeShareModal}
+        />
+
       </main>
 
       <style jsx>{`
