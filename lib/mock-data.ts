@@ -1,53 +1,9 @@
 import { BookOpen, Building, Heart, Users } from "lucide-react"
-import { BlogCategory } from "./types"
+import { BlogPost, EventType, ProjectType } from "./types"
 
 
-export interface Event {
-  id: string
-  title: string
-  description: string
-  date: string
-  time: string
-  location: string
-  image: string
-  category: "workshop" | "fundraiser" | "community" | "training"
-  status: "upcoming" | "past"
-  attendees?: number
-  maxAttendees?: number
-}
 
-export interface BlogPost {
-  id: string
-  title: string
-  excerpt: string
-  content: string
-  author: string
-  date: string
-  image: string
-  category: "success-story" | "program-update" | "community-news" | "impact-report"
-  readTime: number
-  likes?: number
-}
-
-export interface Project {
-  id: string
-  title: string
-  description: string
-  shortDescription: string
-  image: string
-  category: "education" | "mentorship" | "life-skills" | "community"
-  status: "active" | "completed" | "upcoming"
-  acceptingDonations: boolean
-  targetAmount: number
-  raisedAmount: number
-  participantsServed: number
-  targetParticipants: number
-  startDate: string
-  endDate?: string
-  impact: string[]
-}
-
-export const mockEvents: Event[] = [
+export const mockEvents: EventType[] = [
   {
     id: "1",
     title: "Annual Mentorship Gala",
@@ -132,106 +88,101 @@ export const mockEvents: Event[] = [
 export const mockBlogPosts: BlogPost[] = [
   {
     id: "1",
-    title: "Transforming Lives Through Education: Maria's Journey from Poverty to Purpose",
-    excerpt: "When Maria first walked through our doors three years ago, she carried the weight of uncertainty and the dreams of her entire family. Follow her incredible transformation from single mother to software engineer.",
-    content: `When Maria first walked through our doors three years ago, she carried the weight of uncertainty and the dreams of her entire family. As a single mother of two, working multiple jobs just to make ends meet, she never imagined that education could be her pathway to a completely different life.
+    title: "From Struggle to Strength: A Boy’s Journey with Yargote Foundation",
+    excerpt: "Follow the inspiring story of James, a young boy who transformed his future through the Yargote Foundation’s 'Empower the Boy-Child Project,' gaining confidence and skills with the help of school bags and mentorship.",
+    content: `Three years ago, James, a 14-year-old from an underserved community, joined the Yargote Foundation’s 'Empower the Boy-Child Project.' Facing challenges like limited access to educational resources and a lack of positive role models, his future seemed uncertain. The weight of his circumstances was heavy, but his dreams were bigger.
 
-Growing up in a underserved community, Maria had always been curious about technology but never had the opportunity to explore it. The digital divide seemed insurmountable, and the idea of pursuing higher education felt like a distant dream reserved for others.
+When James received a school bag emblazoned with the Yargote Foundation logo, it was more than just a tool—it was a symbol of opportunity. For the first time, he felt seen and supported. The foundation’s scholarship program provided him with access to quality education, while our mentorship initiatives connected him with inspiring role models who believed in his potential.
 
-Our scholarship program didn't just provide financial support – it offered something much more valuable: belief. When Maria received her acceptance letter, she cried not just tears of joy, but tears of possibility. For the first time, someone was investing in her potential.
+Balancing school with life’s challenges wasn’t easy. There were days when James felt overwhelmed, but the encouragement from his mentors and the resources provided—like textbooks and a sturdy school bag—kept him going. He spent evenings studying under streetlights, his determination fueled by the support of the Yargote community.
 
-The journey wasn't easy. Balancing coursework with parenting and work required incredible discipline. There were nights when she studied until dawn, fueled by determination and the unwavering support of our mentorship program. Her children would often fall asleep to the sound of her typing, creating a beautiful soundtrack of perseverance.
+Through our programs, James discovered a passion for science and technology. He excelled in coding workshops offered by the foundation, developing skills that opened new doors. Today, James is a high school senior, preparing to apply for university scholarships to pursue a degree in computer science. He’s also become a peer mentor, helping younger boys in his community navigate their own challenges.
 
-What started as basic computer literacy classes evolved into advanced programming courses. Maria discovered she had a natural aptitude for software development, and more importantly, a passion for using technology to solve real-world problems.
-
-Today, Maria works as a software engineer at a leading tech company, earning more in a month than she used to make in six months of her previous jobs. But the transformation goes beyond financial stability. She's become a mentor herself, volunteering with our program to guide other women who see their own struggles reflected in her story.
-
-Her children, now teenagers, speak proudly of their mother's achievements. They've witnessed firsthand that barriers can be broken, that circumstances don't define destiny, and that education truly is the great equalizer.
-
-Maria's success story isn't just about one person's triumph – it's about the ripple effect of investment in human potential. She's hired three other program graduates at her company, creating a network of opportunity that continues to expand.
-
-This is why we do what we do. Every scholarship awarded, every mentorship hour logged, every barrier removed creates possibilities we may never fully see. Maria's journey reminds us that when we invest in education, we're not just changing individual lives – we're transforming entire communities, one success story at a time.`,
+James’s story is a testament to the ripple effect of investing in boys. By providing tools like school bags, educational opportunities, and mentorship, the Yargote Foundation is helping boys like James rewrite their futures, one step at a time.`,
     author: "Sarah Johnson",
-    date: "2024-03-15",
-    image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80",
+    date: "2025-09-10",
+    image: "https://i.ibb.co/zV0Vb2nm/children-with-bags.jpg?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
     category: "success-story",
     readTime: 8,
+    views: 120,
+    likes: 23,
   },
   {
     id: "2",
-    title: "Expanding Our Reach: New Community Partnership Announced",
-    excerpt: "We're excited to announce our partnership with Riverside Community Center to serve 200 more boys.",
-    content: `We're thrilled to announce our newest partnership with Riverside Community Center, which will allow us to extend our programs to an additional 200 boys in the Riverside neighborhood.
+    title: "Expanding Our Impact: Yargote Foundation’s New Partnership with Riverside Community",
+    excerpt: "The Yargote Foundation partners with Riverside Community Center to empower 200 more boys with school bags, mentorship, and educational support, transforming lives in underserved neighborhoods.",
+    content: `The Yargote Foundation is thrilled to announce a new partnership with Riverside Community Center, enabling us to extend our 'Empower the Boy-Child Project' to 200 additional boys in the Riverside neighborhood. This collaboration marks a significant step in our mission to uplift young boys in underserved communities through education, mentorship, and essential resources like school bags.
 
-This partnership represents a significant milestone in our mission to reach underserved communities. The Riverside area has been identified as having a high need for youth mentorship and support services.
+The Riverside area, known for its economic challenges, is a priority for our outreach efforts. By providing boys with school bags filled with supplies, access to after-school programs, and dedicated mentors, we aim to foster confidence and academic success. “This partnership with the Yargote Foundation is transformative,” says Community Center Director Maria Rodriguez. “Their commitment to empowering boys will create lasting change in our community.”
 
-"This partnership is a game-changer for our community," says Community Center Director Maria Rodriguez. "The Yargote Foundation's proven track record and comprehensive approach will make a real difference in the lives of our young people."
-
-The new program will launch in March 2024 with an initial cohort of 50 participants.`,
+The program will launch in November 2025 with an initial cohort of 50 boys, offering workshops, tutoring, and life skills training. Each participant will receive a Yargote Foundation school bag, symbolizing our investment in their potential. This initiative is set to inspire a new generation of leaders in Riverside, proving that opportunity can change everything.`,
     author: "Michael Chen",
-    date: "2024-01-10",
-    image: "/placeholder.svg?height=400&width=600&text=Community+Partnership",
+    date: "2025-10-01",
+    image: "https://i.ibb.co/JwjHTBsc/boy-child-in-class.jpg?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80",
     category: "program-update",
     readTime: 3,
+    views: 85,
+    likes: 15,
   },
   {
     id: "3",
-    title: "2023 Impact Report: Celebrating Our Achievements",
-    excerpt: "A comprehensive look at our impact in 2023, including key metrics and success stories.",
-    content: `As we reflect on 2023, we're proud to share the incredible impact our programs have had on the lives of young men in our communities.
+    title: "2025 Impact Report: Yargote Foundation’s Year of Empowering Boys",
+    excerpt: "Discover how the Yargote Foundation transformed lives in 2025, equipping boys with school bags, scholarships, and mentorship to build brighter futures.",
+    content: `As we reflect on 2025, the Yargote Foundation celebrates a year of profound impact in empowering young boys across our communities. Our 'Empower the Boy-Child Project' has reached new heights, providing boys with the tools and support they need to thrive.
 
 Key Achievements:
-- Served 1,200 boys across 8 communities
-- 95% program completion rate
-- 85% improvement in academic performance
-- 200+ volunteer mentors engaged
-- $500,000 in scholarships awarded
+- Empowered 1,500 boys across 10 communities
+- Distributed 1,200 school bags filled with supplies
+- Achieved a 96% program completion rate
+- Recorded an 88% improvement in academic performance
+- Engaged 250+ volunteer mentors
+- Awarded $750,000 in scholarships
 
-These numbers tell a story of transformation, hope, and community support. Behind each statistic is a young man whose life has been positively impacted by our programs.
-
-We're grateful to our donors, volunteers, and community partners who make this work possible.`,
+These numbers reflect the heart of our mission: transforming lives through education and mentorship. Each school bag distributed, each mentorship session held, and each scholarship awarded represents a boy whose future is brighter because of our work. We’re grateful to our donors, volunteers, and partners who make these achievements possible, creating a ripple effect of hope and opportunity.`,
     author: "Dr. Amara Okafor",
-    date: "2023-12-20",
-    image: "/placeholder.svg?height=400&width=600&text=2023+Impact+Report",
+    date: "2025-12-15",
+    image: "https://i.ibb.co/sJbLjgpR/Whats-App-Image-2025-09-24-at-11-45-53-PM.jpg?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80",
     category: "impact-report",
     readTime: 7,
+    views: 152,
+    likes: 30,
   },
   {
     id: "4",
-    title: "Community Spotlight: Eastside Neighborhood Transformation",
-    excerpt: "How our programs have contributed to positive changes in the Eastside community.",
-    content: `The Eastside neighborhood has seen remarkable changes since we began our programs there three years ago. What was once considered a challenging area has become a model of community transformation.
+    title: "Community Spotlight: Transforming Eastside Boys with Yargote Foundation",
+    excerpt: "Explore how the Yargote Foundation’s programs, including school bag distributions, have revitalized the Eastside community by empowering its young boys.",
+    content: `Three years ago, the Yargote Foundation launched its 'Empower the Boy-Child Project' in the Eastside neighborhood, a community once marked by economic hardship and limited opportunities. Today, Eastside is a beacon of hope, thanks to our efforts to empower young boys.
 
-Local business owner Janet Williams notes, "The change in the young men in our neighborhood has been incredible. They're more respectful, engaged, and many are now working part-time jobs while staying in school."
+Through school bag distributions, mentorship programs, and educational workshops, we’ve seen remarkable changes. Boys who once struggled academically are now excelling, with a 45% increase in high school graduation rates. Local business owner Janet Williams shares, “The Yargote Foundation has given our boys confidence and purpose. They’re staying in school and dreaming bigger.”
 
-The transformation isn't just individual—it's community-wide. Crime rates have decreased by 30%, and high school graduation rates have increased by 40% in the area.
-
-This success story demonstrates the ripple effect of investing in young people and the power of community-based mentorship programs.`,
+Beyond individual success, the community has transformed. Crime rates have dropped by 35%, and community engagement has soared as boys take on leadership roles. The school bags, emblazoned with the Yargote logo, are a symbol of this change, reminding everyone that investing in boys transforms entire communities.`,
     author: "James Rodriguez",
-    date: "2023-11-28",
-    image: "/placeholder.svg?height=400&width=600&text=Eastside+Community",
+    date: "2025-11-01",
+    image: "https://i.ibb.co/5ggrTg0y/house-keeping.jpg?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2073&q=80",
     category: "community-news",
     readTime: 4,
+    views: 98,
+    likes: 18,
   },
   {
     id: "5",
-    title: "Meet Our Mentor of the Year: Robert Thompson",
-    excerpt: "Celebrating Robert Thompson, whose dedication has impacted over 50 young men in five years.",
-    content: `Robert Thompson has been volunteering with the Yargote Foundation for five years, and in that time, he has mentored over 50 young men. His dedication and impact have earned him our Mentor of the Year award.
+    title: "Mentor of the Year: Robert Thompson’s Impact on Boys at Yargote Foundation",
+    excerpt: "Meet Robert Thompson, whose mentorship has transformed the lives of over 50 boys through the Yargote Foundation’s programs.",
+    content: `Robert Thompson, a dedicated volunteer with the Yargote Foundation for five years, has been named our Mentor of the Year for his transformative impact on over 50 young boys. Through the 'Empower the Boy-Child Project,' Robert has provided guidance, support, and inspiration, helping boys overcome challenges and pursue their dreams.
 
-"Robert brings a unique combination of wisdom, patience, and genuine care to his mentoring relationships," says Program Director Michael Chen. "The young men he works with consistently show remarkable growth and development."
+“Robert’s patience and genuine care make all the difference,” says Program Director Michael Chen. “He connects with boys on a personal level, helping them see their potential.” From assisting with homework to distributing school bags, Robert’s involvement has been a game-changer.
 
-Robert, a retired teacher, says mentoring gives him purpose in retirement. "These young men have taught me as much as I've taught them. It's been one of the most rewarding experiences of my life."
-
-Several of Robert's former mentees have gone on to college, with three currently pursuing degrees in education, inspired by his example.`,
+A retired teacher, Robert finds purpose in mentoring. “These boys teach me as much as I teach them,” he says. Several of his mentees have pursued higher education, with three studying to become teachers, inspired by his example. Robert’s work exemplifies the power of mentorship in shaping the next generation of confident, capable young men.`,
     author: "Sarah Johnson",
-    date: "2023-10-15",
-    image: "/placeholder.svg?height=400&width=600&text=Robert+Thompson+Mentor",
+    date: "2025-10-20",
+    image: "https://i.ibb.co/JwjHTBsc/boy-child-in-class.jpg?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80",
     category: "success-story",
     readTime: 4,
+    views: 110,
+    likes: 25,
   },
 ]
-export const mockProjects: Project[] = [
+export const mockProjects: ProjectType[] = [
   {
     id: "1",
     title: "Empower the Boy Child Project",
@@ -327,66 +278,157 @@ export const galleryImages = [
     id: 1,
     src: "https://i.ibb.co/wFCSBf4H/founder-kids-CBorbbrl.jpg?w=1200&h=800&fit=crop",
     thumbnail: "https://i.ibb.co/wFCSBf4H/founder-kids-CBorbbrl.jpg?w=400&h=300&fit=crop",
-    alt: "Founder with kids",
-    caption: "Inpiring young minds with hope and opportunity",
+    alt: "Founder with boys",
+    caption: "Inspiring young minds with hope and opportunity",
     category: "Outreach",
-    tags: ["Outreach", "Help"],
+    tags: ["Outreach", "Mentorship"],
     featured: true,
-    date: "2024-03-15"
+    date: "2025-09-15"
   },
   {
     id: 2,
     src: "https://i.ibb.co/JwHPFKQR/about-child-Ceho-PQk-P.jpg?w=1200&h=800&fit=crop",
     thumbnail: "https://i.ibb.co/JwHPFKQR/about-child-Ceho-PQk-P.jpg?w=400&h=300&fit=crop",
-    alt: "Fine moments with the boys",
-    caption: "Investing in the well being of the boy child",
+    alt: "Moments with boys",
+    caption: "Investing in the well-being of the boy child",
     category: "Happy Moments",
-    tags: ["Inspirationa;", "livelihood"],
+    tags: ["Inspiration", "Community"],
     featured: true,
-    date: "2024-03-10"
+    date: "2025-09-10"
   },
   {
     id: 3,
     src: "https://i.ibb.co/4RV4hNsc/hero-children.png?w=1200&h=800&fit=crop",
     thumbnail: "https://i.ibb.co/4RV4hNsc/hero-children.png?w=400&h=300&fit=crop",
-    alt: "Fine moments with the boy child",
-    caption: "Investing in the well being of the boy child.",
+    alt: "Joyful moments with boys",
+    caption: "Empowering the boy child through education and support",
     category: "Happy Moments",
-    tags: ["Inspirationa;", "livelihood"],
+    tags: ["Inspiration", "Community"],
     featured: true,
-    date: "2024-03-08"
+    date: "2025-09-08"
   },
-];
-
-
-export const mockBlogPost = {
-  id: "1",
-  title: "Transforming Lives Through Education: Maria's Journey from Poverty to Purpose",
-  content: `When Maria first walked through our doors three years ago, she carried the weight of uncertainty and the dreams of her entire family. As a single mother of two, working multiple jobs just to make ends meet, she never imagined that education could be her pathway to a completely different life.
-
-Growing up in a underserved community, Maria had always been curious about technology but never had the opportunity to explore it. The digital divide seemed insurmountable, and the idea of pursuing higher education felt like a distant dream reserved for others.
-
-Our scholarship program didn't just provide financial support – it offered something much more valuable: belief. When Maria received her acceptance letter, she cried not just tears of joy, but tears of possibility. For the first time, someone was investing in her potential.
-
-The journey wasn't easy. Balancing coursework with parenting and work required incredible discipline. There were nights when she studied until dawn, fueled by determination and the unwavering support of our mentorship program. Her children would often fall asleep to the sound of her typing, creating a beautiful soundtrack of perseverance.
-
-What started as basic computer literacy classes evolved into advanced programming courses. Maria discovered she had a natural aptitude for software development, and more importantly, a passion for using technology to solve real-world problems.
-
-Today, Maria works as a software engineer at a leading tech company, earning more in a month than she used to make in six months of her previous jobs. But the transformation goes beyond financial stability. She's become a mentor herself, volunteering with our program to guide other women who see their own struggles reflected in her story.
-
-Her children, now teenagers, speak proudly of their mother's achievements. They've witnessed firsthand that barriers can be broken, that circumstances don't define destiny, and that education truly is the great equalizer.
-
-Maria's success story isn't just about one person's triumph – it's about the ripple effect of investment in human potential. She's hired three other program graduates at her company, creating a network of opportunity that continues to expand.
-
-This is why we do what we do. Every scholarship awarded, every mentorship hour logged, every barrier removed creates possibilities we may never fully see. Maria's journey reminds us that when we invest in education, we're not just changing individual lives – we're transforming entire communities, one success story at a time.`,
-  author: "Sarah Johnson",
-  date: "2024-03-15",
-  readTime: 8,
-  category: "success-story" as BlogCategory,
-  image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80",
-  views: 2847,
-  likes: 156
-}
+  {
+    id: 4,
+    src: "https://i.ibb.co/j9YF8J6F/boy-child23.jpg?w=1200&h=800&fit=crop",
+    thumbnail: "https://i.ibb.co/j9YF8J6F/boy-child23.jpg?w=400&h=300&fit=crop",
+    alt: "Boy with Yargote Foundation bag",
+    caption: "Celebrating The International Boy Child Day with Yargote Foundation",
+    category: "Empowerment",
+    tags: ["Inspiration", "Education"],
+    featured: false,
+    date: "2025-10-01"
+  },
+  {
+    id: 5,
+    src: "https://i.ibb.co/YFXnYyW6/boy-child22.jpg?w=1200&h=800&fit=crop",
+    thumbnail: "https://i.ibb.co/YFXnYyW6/boy-child22.jpg?w=400&h=300&fit=crop",
+    alt: "Boys in Yargote Foundation program",
+    caption: "Celebrating The International Boy Child Day with Yargote Foundation",
+    category: "Mentorship",
+    tags: ["Inspiration", "Empowerment"],
+    featured: false,
+    date: "2025-10-05"
+  },
+  {
+    id: 6,
+    src: "https://i.ibb.co/20B0Xjxd/boy-child20.jpg?w=1200&h=800&fit=crop",
+    thumbnail: "https://i.ibb.co/20B0Xjxd/boy-child20.jpg?w=400&h=300&fit=crop",
+    alt: "Boy child with school supplies",
+    caption: "Celebrating The International Boy Child Day with Yargote Foundation",
+    category: "Education",
+    tags: ["Inspiration", "Education"],
+    featured: false,
+    date: "2025-10-10"
+  },
+  {
+    id: 7,
+    src: "https://i.ibb.co/SDtSyc77/boy-child13.jpg?w=1200&h=800&fit=crop",
+    thumbnail: "https://i.ibb.co/SDtSyc77/boy-child13.jpg?w=400&h=300&fit=crop",
+    alt: "Boys at Yargote Foundation event",
+    caption: "Celebrating The International Boy Child Day with Yargote Foundation",
+    category: "Community",
+    tags: ["Inspiration", "Outreach"],
+    featured: false,
+    date: "2025-10-15"
+  },
+  {
+    id: 8,
+    src: "https://i.ibb.co/pjrThhpH/boy-child12.jpg?w=1200&h=800&fit=crop",
+    thumbnail: "https://i.ibb.co/pjrThhpH/boy-child12.jpg?w=400&h=300&fit=crop",
+    alt: "Boy with Yargote Foundation resources",
+    caption: "Celebrating The International Boy Child Day with Yargote Foundation",
+    category: "Empowerment",
+    tags: ["Inspiration", "Education"],
+    featured: false,
+    date: "2025-10-20"
+  },
+  {
+    id: 9,
+    src: "https://i.ibb.co/8nsVBfd4/boy-child11.jpg?w=1200&h=800&fit=crop",
+    thumbnail: "https://i.ibb.co/8nsVBfd4/boy-child11.jpg?w=400&h=300&fit=crop",
+    alt: "Yargote Foundation outreach program",
+    caption: "Transforming lives through education and mentorship",
+    category: "Outreach",
+    tags: ["Inspiration", "Education"],
+    featured: false,
+    date: "2025-10-25"
+  },
+  {
+    id: 10,
+    src: "https://i.ibb.co/DPqVp2dZ/boy-child10.jpg?w=1200&h=800&fit=crop",
+    thumbnail: "https://i.ibb.co/DPqVp2dZ/boy-child10.jpg?w=400&h=300&fit=crop",
+    alt: "Boys receiving Yargote Foundation bags",
+    caption: "Distributing hope with school bags for boys",
+    category: "Empowerment",
+    tags: ["Inspiration", "Community"],
+    featured: false,
+    date: "2025-11-01"
+  },
+  {
+    id: 11,
+    src: "https://i.ibb.co/rRn3pjzg/boy-child4.jpg?w=1200&h=800&fit=crop",
+    thumbnail: "https://i.ibb.co/rRn3pjzg/boy-child4.jpg?w=400&h=300&fit=crop",
+    alt: "Boy child in classroom",
+    caption: "Fostering academic growth with Yargote Foundation support",
+    category: "Education",
+    tags: ["Inspiration", "Community"],
+    featured: false,
+    date: "2025-11-05"
+  },
+  {
+    id: 12,
+    src: "https://i.ibb.co/Mx5QbV7T/boy-child3.jpg?w=1200&h=800&fit=crop",
+    thumbnail: "https://i.ibb.co/Mx5QbV7T/boy-child3.jpg?w=400&h=300&fit=crop",
+    alt: "Yargote Foundation community event",
+    caption: "Bringing boys together for inspiration and growth",
+    category: "Community",
+    tags: ["Community", "Inspiration"],
+    featured: false,
+    date: "2025-11-10"
+  },
+  {
+    id: 13,
+    src: "https://i.ibb.co/2mV1pCZ/boy-child2.jpg?w=1200&h=800&fit=crop",
+    thumbnail: "https://i.ibb.co/2mV1pCZ/boy-child2.jpg?w=400&h=300&fit=crop",
+    alt: "Boy with Yargote Foundation school bag",
+    caption: "Empowering young boys with essential school resources",
+    category: "Empowerment",
+    tags: ["Inspiration", "Community"],
+    featured: false,
+    date: "2025-11-15"
+  },
+  {
+    id: 14,
+    src: "https://i.ibb.co/n8CzmgqH/boy-child1.jpg?w=1200&h=800&fit=crop",
+    thumbnail: "https://i.ibb.co/n8CzmgqH/boy-child1.jpg?w=400&h=300&fit=crop",
+    alt: "Boys in Yargote Foundation workshop",
+    caption: "Building skills and confidence through Yargote programs",
+    category: "Mentorship",
+    tags: ["Inspiration", "Community"],
+    featured: false,
+    date: "2025-11-20"
+  }
+]
 
 export const programs = [
   {
@@ -486,6 +528,41 @@ export const programs = [
       "Strengthened community dialogue and engagement",
       "Advocacy for policy and social change",
     ],
+  },
+]
+
+export const mockTeamMembers = [
+  {
+    name: "Dr. Sarah Johnson",
+    role: "Executive Director",
+    image: "/placeholder.svg?height=300&width=300&text=Dr.+Sarah+Johnson",
+    bio: "With over 15 years in youth development, Dr. Johnson leads our mission with passion and expertise.",
+    email: "sarah@yargotefoundation.org",
+    linkedin: "#",
+  },
+  {
+    name: "Michael Chen",
+    role: "Program Director",
+    image: "/placeholder.svg?height=300&width=300&text=Michael+Chen",
+    bio: "Michael oversees our mentorship programs and has directly impacted over 1,000 young lives.",
+    email: "michael@yargotefoundation.org",
+    linkedin: "#",
+  },
+  {
+    name: "Dr. Amara Okafor",
+    role: "Community Outreach Manager",
+    image: "/placeholder.svg?height=300&width=300&text=Dr.+Amara+Okafor",
+    bio: "Dr. Okafor builds bridges between communities and ensures our programs reach those who need them most.",
+    email: "amara@yargotefoundation.org",
+    linkedin: "#",
+  },
+  {
+    name: "James Rodriguez",
+    role: "Youth Coordinator",
+    image: "/placeholder.svg?height=300&width=300&text=James+Rodriguez",
+    bio: "A former program participant, James now coordinates activities and serves as a role model for current participants.",
+    email: "james@yargotefoundation.org",
+    linkedin: "#",
   },
 ]
 
