@@ -5,12 +5,12 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Calendar, Clock, MapPin, Users, ArrowRight } from "lucide-react"
-import type { Event } from "@/lib/mock-data"
 import { ImageLightbox } from "@/components/image-lightbox"
 import Link from "next/link"
+import type { EventType } from "@/lib/types"
 
 interface EventCardProps {
-  event: Event
+  event: EventType
 }
 
 const categoryColors = {
