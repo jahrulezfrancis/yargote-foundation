@@ -12,7 +12,7 @@ const heroSlides = [
     title: "Empowering Boys to",
     highlight: "Transform Communities",
     description: "Through mentorship, education, and advocacy, we shape boys into disciplined, responsible, and visionary young men who rise above challenges and lead positive change.",
-    image: "https://i.ibb.co/4RV4hNsc/hero-children.png",
+    image: "https://i.ibb.co/zV0Vb2nm/children-with-bags.jpg?w=600&h=600&fit=crop",
     alt: "Boys participating in mentorship program",
     floatingIcon1: Users,
     floatingIcon2: Target,
@@ -23,7 +23,7 @@ const heroSlides = [
     title: "Building Tomorrow's",
     highlight: "Leaders Today",
     description: "Our comprehensive programs focus on character development, academic excellence, and leadership skills that prepare young men for success in all areas of life.",
-    image: "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=600&h=600&fit=crop",
+    image: "https://i.ibb.co/4RV4hNsc/hero-children.png?w=600&h=600&fit=crop",
     alt: "Young leaders in training session",
     floatingIcon1: Trophy,
     floatingIcon2: BookOpen,
@@ -34,7 +34,7 @@ const heroSlides = [
     title: "Creating",
     highlight: "Lasting Impact",
     description: "From at-risk youth to community champions - witness the incredible transformation stories of young men who found their purpose through our mentorship programs.",
-    image: "https://images.unsplash.com/photo-1544717297-fa95b6ee9643?w=600&h=600&fit=crop",
+    image: "https://i.ibb.co/sJbLjgpR/Whats-App-Image-2025-09-24-at-11-45-53-PM.jpg?w=600&h=600&fit=crop",
     alt: "Success stories and testimonials",
     floatingIcon1: Zap,
     floatingIcon2: Heart,
@@ -106,13 +106,13 @@ export function HeroSection() {
     <section className="relative bg-gradient-to-br from-emerald-50 via-white to-emerald-50/30 py-8 lg:py-20 overflow-hidden">
       {/* Enhanced Background decoration with emerald theme */}
       <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
-      
+
       {/* Animated background elements */}
       <div className={`absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-emerald-200/30 to-transparent rounded-full transition-all duration-[3000ms] ease-out ${isVisible ? '-translate-y-1/4 translate-x-1/4' : 'translate-y-full translate-x-full'
         }`} />
       <div className={`absolute bottom-0 left-0 w-72 h-72 bg-gradient-to-tr from-emerald-100/40 to-transparent rounded-full transition-all duration-[3000ms] ease-out delay-500 ${isVisible ? 'translate-y-1/4 -translate-x-1/4' : 'translate-y-full -translate-x-full'
         }`} />
-      
+
       {/* Floating accent elements */}
       <div className={`absolute top-1/3 right-1/3 w-4 h-4 bg-emerald-400 rounded-full animate-pulse transition-all duration-1000 ease-out delay-1000 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-0'
         }`} />
@@ -120,7 +120,7 @@ export function HeroSection() {
         }`} />
       <div className={`absolute top-1/2 left-1/5 w-2 h-2 bg-emerald-500 rounded-full animate-ping transition-all duration-1000 ease-out delay-1400 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-0'
         }`} />
-      
+
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center min-h-[600px]">
           {/* Content with enhanced animations */}
@@ -134,7 +134,7 @@ export function HeroSection() {
                   {slide.highlight}
                 </span>
               </h1>
-              
+
               <p className={`text-xl text-gray-600 text-pretty leading-relaxed transition-all duration-1000 ease-out delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
                 } ${isSlideChanging ? 'opacity-50 translate-y-2' : ''}`}>
                 {slide.description}
@@ -239,7 +239,7 @@ export function HeroSection() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-emerald-900/20 via-transparent to-transparent group-hover:from-emerald-900/30 transition-all duration-500"></div>
               </div>
-              
+
               {/* Enhanced floating elements with emerald theme */}
               <div className={`absolute -top-6 -right-6 bg-emerald-500 text-white p-4 rounded-full shadow-xl transition-all duration-700 hover:scale-110 hover:rotate-12 transform ${!isSlideChanging ? 'animate-bounce' : ''
                 }`}>
@@ -269,7 +269,7 @@ export function HeroSection() {
                 <ChevronLeft className="w-5 h-5 text-emerald-600 group-hover:text-emerald-700 group-hover:-translate-x-0.5 transition-all duration-300" />
               </Button>
             </div>
-            
+
             <div className="absolute top-1/2 -right-6 transform -translate-y-1/2">
               <Button
                 onClick={nextSlide}
@@ -292,16 +292,15 @@ export function HeroSection() {
               key={index}
               onClick={() => goToSlide(index)}
               disabled={isSlideChanging}
-              className={`h-3 rounded-full transition-all duration-300 hover:scale-110 transform ${
-                index === currentSlide 
-                  ? 'w-8 bg-emerald-600 shadow-lg shadow-emerald-600/30' 
+              className={`h-3 rounded-full transition-all duration-300 hover:scale-110 transform ${index === currentSlide
+                  ? 'w-8 bg-emerald-600 shadow-lg shadow-emerald-600/30'
                   : 'w-3 bg-emerald-200 hover:bg-emerald-300'
-              } disabled:opacity-50`}
+                } disabled:opacity-50`}
             />
           ))}
         </div>
 
-       
+
 
         {/* Additional animated elements */}
         <div className={`absolute top-10 left-10 w-2 h-2 bg-emerald-400 rounded-full transition-all duration-1000 ease-out delay-1600 ${isVisible ? 'opacity-100 scale-100 animate-pulse' : 'opacity-0 scale-0'
