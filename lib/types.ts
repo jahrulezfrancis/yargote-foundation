@@ -10,8 +10,8 @@ export interface BlogPost {
   image: string
   category: BlogCategory
   readTime: number
-  views: number 
-  likes: number 
+  views: number
+  likes: number
 }
 
 export interface EventType {
@@ -22,6 +22,7 @@ export interface EventType {
   time: string
   location: string
   image: string
+  images?: string[]
   category: "workshop" | "fundraiser" | "community" | "training"
   status: "upcoming" | "past"
   attendees?: number
@@ -44,4 +45,13 @@ export interface ProjectType {
   startDate: string
   endDate?: string
   impact: string[]
+}
+
+export interface TeamMember {
+  name: string
+  role: string
+  image: string
+  bio: string
+  email: string
+  linkedin: string
 }
