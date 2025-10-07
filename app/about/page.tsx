@@ -5,9 +5,10 @@ import { Badge } from "@/components/ui/badge"
 import { Heart, Target, Users, Mail, Linkedin, User, UserPlus, Calendar, MapPin } from "lucide-react"
 import { useState, useEffect, useRef } from "react"
 import TimelineComponent from "@/components/Program/timeline"
-import { mockTeamMembers } from "@/lib/mock-data"
+import { coreValues, mockTeamMembers } from "@/lib/mock-data"
 import scrollToSection from "@/utils/scrollTo"
 import Link from "next/link"
+import TeamMemberCard from "@/components/sections/team-members"
 
 
 const missionStatement = [
@@ -93,140 +94,185 @@ export default function AboutPage() {
   return (
     <div className="min-h-screen overflow-hidden">
       <main>
-        {/* Enhanced Hero Section */}
-        <section className="relative bg-gradient-to-br from-emerald-50 to-white py-12 md:py-16 overflow-hidden">
+        {/* Enhanced Hero Section - About Foundation */}
+        <section className="relative bg-gradient-to-br from-emerald-50 via-blue-50 to-white py-16 md:py-20 overflow-hidden">
           {/* Animated background elements */}
-          <div className={`absolute top-0 right-0 w-72 h-72 bg-gradient-to-bl from-emerald-100/50 to-transparent rounded-full transition-all duration-[2000ms] ease-out ${isVisible ? '-translate-y-1/3 translate-x-1/3' : 'translate-y-full translate-x-full'
-            }`} />
-          <div className={`absolute bottom-0 left-0 w-56 h-56 bg-gradient-to-tr from-emerald-50/40 to-transparent rounded-full transition-all duration-[2000ms] ease-out delay-300 ${isVisible ? 'translate-y-1/3 -translate-x-1/3' : 'translate-y-full -translate-x-full'
-            }`} />
+          <div className="absolute inset-0">
+            <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-emerald-100/50 to-transparent rounded-full animate-pulse -translate-y-1/3 translate-x-1/3" />
+            <div className="absolute bottom-0 left-0 w-72 h-72 bg-gradient-to-tr from-blue-100/60 to-transparent rounded-full animate-pulse delay-1000 translate-y-1/3 -translate-x-1/3" />
+            <div className="absolute top-1/2 left-1/2 w-80 h-80 bg-gradient-to-r from-purple-50/40 to-pink-50/40 rounded-full animate-pulse delay-500 -translate-x-1/2 -translate-y-1/2" />
+          </div>
 
-          {/* Floating accent elements with staggered animation */}
-          <div className={`absolute top-1/4 right-1/4 w-3 h-3 bg-emerald-600 rounded-full animate-pulse transition-all duration-1000 ease-out delay-500 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-0'
-            }`} />
-          <div className={`absolute bottom-1/3 left-1/5 w-2 h-2 bg-emerald-300 rounded-full animate-pulse transition-all duration-1000 ease-out delay-700 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-0'
-            }`} />
+          {/* Floating elements */}
+          <div className="absolute top-1/4 right-1/4 w-4 h-4 bg-emerald-300 rounded-full animate-bounce" />
+          <div className="absolute bottom-1/3 left-1/4 w-3 h-3 bg-blue-300 rounded-full animate-bounce delay-300" />
+          <div className="absolute top-1/3 left-1/2 w-2 h-2 bg-purple-300 rounded-full animate-bounce delay-700" />
 
           <div className="container mx-auto px-6 md:px-8 relative z-10">
-            <div className="max-w-6xl mx-auto">
-              <div className="grid lg:grid-cols-5 gap-8 lg:gap-12 items-center">
-                {/* Main content with staggered animations */}
-                <div className="lg:col-span-3 space-y-6">
-                  {/* Category badge */}
-                  <div className={`inline-flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-gray-200 shadow-sm transition-all duration-700 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-                    }`}>
-                    <div className="w-2 h-2 bg-emerald-600 rounded-full animate-pulse" />
-                    <span className="text-sm font-medium text-gray-700">About us</span>
-                  </div>
-
-                  {/* Title with split animation */}
-                  <div className="space-y-2">
-                    <h1 className={`text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight tracking-tight transition-all duration-700 ease-out delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
-                      }`}>
-                      Building Brighter
-                    </h1>
-                    <span className={`block text-3xl md:text-4xl lg:text-5xl font-bold text-emerald-600 leading-tight tracking-tight transition-all duration-700 ease-out delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
-                      }`}>
-                      Futures for Boys
-                    </span>
-                  </div>
-
-                  {/* Description */}
-                  <p className={`text-lg md:text-xl text-gray-600 leading-relaxed max-w-2xl transition-all duration-700 ease-out delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-                    }`}>
-                    Since our founding, Yargote Foundation has been dedicated to empowering boys in underserved communities
-                    through comprehensive support programs that address their unique challenges and unlock their potential.
-                  </p>
-
-                  {/* Foundation info */}
-                  <div className={`flex flex-wrap items-center gap-6 pt-2 transition-all duration-700 ease-out delay-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-                    }`}>
-                    <div className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors duration-300">
-                      <Calendar className="w-4 h-4" />
-                      <span className="text-sm">Founded in <span className="font-semibold text-gray-900">2015</span></span>
-                    </div>
-                    <div className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors duration-300">
-                      <MapPin className="w-4 h-4" />
-                      <span className="text-sm">Based in <span className="font-semibold text-gray-900">Abuja, Nigeria</span></span>
-                    </div>
-                  </div>
-
-                  {/* Action buttons */}
-                  <div className={`flex flex-wrap items-center gap-4 pt-4 transition-all duration-700 ease-out delay-800 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-                    }`}>
-                    <button onClick={() => scrollToSection("our-mission-section")} className="px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-xl transform active:scale-95">
-                      Our Mission
-                    </button>
-                    <button
-                      className="px-6 py-3 text-gray-600 hover:text-gray-900 font-medium transition-all duration-300 border border-gray-200 rounded-lg hover:border-gray-300 hover:bg-white hover:shadow-md transform hover:scale-105 active:scale-95"
-                      onClick={() => scrollToSection("team-section")}
-                    >
-                      Meet Our Team
-                    </button>
-                  </div>
+            <div className="max-w-7xl mx-auto">
+              {/* Header */}
+              <div className="text-center mb-12 md:mb-16">
+                <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/90 backdrop-blur-sm rounded-full border border-emerald-200 shadow-sm animate-slideInFromLeft mb-6">
+                  <div className="w-2 h-2 bg-emerald-600 rounded-full animate-pulse" />
+                  <span className="text-sm font-medium text-gray-700">Who We Are</span>
                 </div>
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight tracking-tight animate-slideInFromLeft mb-4" style={{ animationDelay: '0.2s' }}>
+                  Yargote Foundation
+                </h1>
+                <p className="text-lg md:text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto animate-slideInFromLeft" style={{ animationDelay: '0.6s' }}>
+                  Dedicated to nurturing and empowering children, youth and women through comprehensive support programs
+                </p>
+              </div>
 
-                {/* Impact showcase */}
-                <div className="lg:col-span-2 space-y-6">
-                  {/* Main impact card */}
-                  <div className={`bg-white/90 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-gray-200 shadow-lg transition-all duration-700 ease-out delay-500 hover:shadow-2xl hover:scale-105 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                    }`}>
-                    <h3 className="text-lg font-semibold text-gray-900 mb-6">Our Impact Since 2015</h3>
+              {/* Mission Statement Cards */}
+              <div className="grid md:grid-cols-3 gap-6 mb-12">
+                {missionStatement.map((item, index) => (
+                  <Card key={index} className={`group hover:shadow-xl transition-all duration-700 border-2 hover:border-emerald-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
+                    }`}
+                    style={{ transitionDelay: `${index * 200 + 300}ms` }}>
+                    <CardContent className="p-6 space-y-4">
+                      <div className="flex items-start gap-4">
+                        <div className="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-emerald-600 group-hover:scale-110 transition-all duration-500">
+                          <item.icon className="w-6 h-6 text-emerald-600 group-hover:text-white transition-colors duration-500" />
+                        </div>
+                        <div className="flex-1">
+                          <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-emerald-600 transition-colors duration-300">
+                            {item.title}
+                          </h3>
+                          <p className="text-sm text-gray-600 leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
+                            {item.content}
+                          </p>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
 
+              {/* Foundation Stats & Info */}
+              <div className="grid md:grid-cols-2 gap-8">
+                {/* Stats Card */}
+                <Card className={`border-2 transition-all duration-1000 ease-out ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-12'
+                  }`} style={{ transitionDelay: '900ms' }}>
+                  <CardContent className="p-8">
+                    <h3 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+                      <div className="w-1 h-6 bg-emerald-600 rounded-full"></div>
+                      Our Impact Journey
+                    </h3>
                     <div className="space-y-6">
-                      <div className="flex items-center justify-between group">
+                      <div className="flex items-center justify-between group cursor-default">
                         <div className="flex items-center gap-3">
-                          <div className="w-3 h-3 bg-emerald-600 rounded-full group-hover:scale-125 transition-transform duration-300"></div>
-                          <span className="text-gray-600 group-hover:text-gray-900 transition-colors duration-300">Boys Empowered</span>
-                        </div>
-                        <div className="text-2xl font-bold text-gray-900 tabular-nums">{counters.boys}+</div>
-                      </div>
-
-                      <div className="flex items-center justify-between group">
-                        <div className="flex items-center gap-3">
-                          <div className="w-3 h-3 bg-emerald-700 rounded-full group-hover:scale-125 transition-transform duration-300"></div>
-                          <span className="text-gray-600 group-hover:text-gray-900 transition-colors duration-300">Active Mentors</span>
-                        </div>
-                        <div className="text-2xl font-bold text-gray-900 tabular-nums">{counters.mentors}+</div>
-                      </div>
-
-                      <div className="flex items-center justify-between group">
-                        <div className="flex items-center gap-3">
-                          <div className="w-3 h-3 bg-emerald-800 rounded-full group-hover:scale-125 transition-transform duration-300"></div>
-                          <span className="text-gray-600 group-hover:text-gray-900 transition-colors duration-300">Communities</span>
-                        </div>
-                        <div className="text-2xl font-bold text-gray-900 tabular-nums">{counters.communities}+</div>
-                      </div>
-
-                      <div className="pt-4 border-t border-gray-100">
-                        <div className="text-sm text-gray-500 mb-2">Years of Service</div>
-                        <div className="flex items-center gap-3">
-                          <div className="flex-1 h-2 bg-gray-100 rounded-full overflow-hidden">
-                            <div className={`h-full bg-gradient-to-r from-emerald-600 to-emerald-800 rounded-full transition-all duration-[1500ms] ease-out delay-1000 ${isVisible ? 'w-full' : 'w-0'
-                              }`}></div>
+                          <div className="w-10 h-10 bg-emerald-50 rounded-lg flex items-center justify-center group-hover:bg-emerald-100 transition-colors duration-300">
+                            <Users className="w-5 h-5 text-emerald-600" />
                           </div>
-                          <span className="text-sm font-semibold text-gray-900">9 Years</span>
+                          <span className="font-medium text-gray-700">Boys Empowered</span>
+                        </div>
+                        <div className="text-3xl font-bold text-emerald-600 tabular-nums">{counters.boys}+</div>
+                      </div>
+
+                      <div className="flex items-center justify-between group cursor-default">
+                        <div className="flex items-center gap-3">
+                          <div className="w-10 h-10 bg-emerald-50 rounded-lg flex items-center justify-center group-hover:bg-emerald-100 transition-colors duration-300">
+                            <UserPlus className="w-5 h-5 text-emerald-600" />
+                          </div>
+                          <span className="font-medium text-gray-700">Active Mentors</span>
+                        </div>
+                        <div className="text-3xl font-bold text-emerald-600 tabular-nums">{counters.mentors}+</div>
+                      </div>
+
+                      <div className="flex items-center justify-between group cursor-default">
+                        <div className="flex items-center gap-3">
+                          <div className="w-10 h-10 bg-emerald-50 rounded-lg flex items-center justify-center group-hover:bg-emerald-100 transition-colors duration-300">
+                            <MapPin className="w-5 h-5 text-emerald-600" />
+                          </div>
+                          <span className="font-medium text-gray-700">Communities Reached</span>
+                        </div>
+                        <div className="text-3xl font-bold text-emerald-600 tabular-nums">{counters.communities}+</div>
+                      </div>
+
+                      <div className="pt-6 border-t border-gray-100">
+                        <div className="flex items-center justify-between mb-3">
+                          <span className="text-sm font-medium text-gray-600">Years of Service</span>
+                          <span className="text-lg font-bold text-gray-900">9 Years</span>
+                        </div>
+                        <div className="h-3 bg-gray-100 rounded-full overflow-hidden">
+                          <div className={`h-full bg-gradient-to-r from-emerald-500 to-emerald-700 rounded-full transition-all duration-[2000ms] ease-out ${isVisible ? 'w-full' : 'w-0'
+                            }`}></div>
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </CardContent>
+                </Card>
 
-                  {/* Quick mission card */}
-                  <div className={`bg-gradient-to-br from-emerald-600 to-emerald-800 text-white rounded-2xl p-6 shadow-lg transition-all duration-700 ease-out delay-700 hover:shadow-2xl hover:scale-105 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8 our-mission-section'
-                    }`}>
-                    <h4 className="text-lg font-semibold mb-3">Our Mission</h4>
-                    <p className="text-sm text-emerald-100 leading-relaxed">
-                      To nurture and empower children, youth and women through advocacy, education,
-                      life skills, mentorship and community engagement.
-                    </p>
-                    <button className="mt-4 text-sm text-emerald-100 hover:text-white font-medium flex items-center gap-2 transition-all duration-300 group">
-                      Learn More
-                      <svg className="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                      </svg>
-                    </button>
-                  </div>
-                </div>
+                {/* Quick Info Card */}
+                <Card className={`border-2 bg-gradient-to-br from-emerald-50 to-white transition-all duration-1000 ease-out ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-12'
+                  }`} style={{ transitionDelay: '900ms' }}>
+                  <CardContent className="p-8">
+                    <h3 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+                      <div className="w-1 h-6 bg-emerald-600 rounded-full"></div>
+                      Foundation Details
+                    </h3>
+                    <div className="space-y-6">
+                      <div className="flex items-start gap-4">
+                        <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center flex-shrink-0 shadow-sm">
+                          <Calendar className="w-5 h-5 text-emerald-600" />
+                        </div>
+                        <div>
+                          <div className="text-sm text-gray-600 mb-1">Established</div>
+                          <div className="font-semibold text-gray-900">2015</div>
+                        </div>
+                      </div>
+
+                      <div className="flex items-start gap-4">
+                        <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center flex-shrink-0 shadow-sm">
+                          <MapPin className="w-5 h-5 text-emerald-600" />
+                        </div>
+                        <div>
+                          <div className="text-sm text-gray-600 mb-1">Headquarters</div>
+                          <div className="font-semibold text-gray-900">Abuja, Nigeria</div>
+                        </div>
+                      </div>
+
+                      <div className="flex items-start gap-4">
+                        <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center flex-shrink-0 shadow-sm">
+                          <Target className="w-5 h-5 text-emerald-600" />
+                        </div>
+                        <div>
+                          <div className="text-sm text-gray-600 mb-1">Focus Areas</div>
+                          <div className="font-semibold text-gray-900">Education, Mentorship, Life Skills</div>
+                        </div>
+                      </div>
+
+                      <div className="pt-6 border-t border-emerald-100">
+                        <div className="text-sm text-gray-600 mb-3">Core Values</div>
+                        <div className="flex flex-wrap gap-2">
+                          {['Balance', 'Responsibility', 'Compassion', 'Discipline'].map((value, i) => (
+                            <span key={i} className="px-3 py-1 bg-white text-sm font-medium text-emerald-700 rounded-full border border-emerald-200">
+                              {value}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+
+              {/* CTA Buttons */}
+              <div className={`flex flex-wrap justify-center items-center gap-4 mt-12 transition-all duration-1000 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                }`} style={{ transitionDelay: '1100ms' }}>
+                <button
+                  onClick={() => scrollToSection("story-section")}
+                  className="px-8 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-xl transform active:scale-95"
+                >
+                  Our Story
+                </button>
+                <button
+                  className="px-8 py-3 text-gray-700 hover:text-gray-900 font-semibold transition-all duration-300 border-2 border-gray-200 rounded-lg hover:border-emerald-600 hover:bg-emerald-50 transform hover:scale-105 active:scale-95"
+                  onClick={() => scrollToSection("team-section")}
+                >
+                  Meet Our Team
+                </button>
               </div>
             </div>
           </div>
@@ -235,33 +281,6 @@ export default function AboutPage() {
         {/* Mission, Vision, Values */}
         <section ref={missionRef} id="mission-section" className="py-20 bg-background overflow-hidden">
           <div className="container mx-auto px-4">
-            {/* Section header with slide-up animation */}
-            <div className={`text-center mb-16 transition-all duration-1000 ease-out ${isSectonVisible('mission-section') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-              }`}>
-              <h2 className="text-3xl lg:text-4xl font-bold mb-4">Our Foundation</h2>
-              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                The pillars that guide our work and shape our impact
-              </p>
-            </div>
-
-            <div className="grid lg:grid-cols-3 gap-12 mb-16">
-              {missionStatement.map((item, index) => (
-                <Card key={index} className={`text-center p-8 group hover:shadow-xl transition-all duration-700 hover:scale-105 transform border-0 bg-white/80 backdrop-blur-sm ${isSectonVisible('mission-section') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
-                  }`}
-                  style={{ transitionDelay: `${index * 200 + 300}ms` }}>
-                  <CardContent className="space-y-4">
-                    <div className={`w-16 h-16 bg-emerald-50 rounded-full flex items-center justify-center mx-auto group-hover:scale-110 group-hover:bg-emerald-100 transition-all duration-500 group-hover:rotate-12 transform`}>
-                      <item.icon className={`w-8 h-8 text-emerald-600 group-hover:scale-110 transition-all duration-500`} />
-                    </div>
-                    <h3 className="text-2xl font-bold group-hover:text-emerald-600 transition-colors duration-300">{item.title}</h3>
-                    <p className="text-muted-foreground text-pretty leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
-                      {item.content}
-                    </p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-
             {/* Values */}
             <div className="space-y-12">
               <div className={`text-center space-y-4 transition-all duration-1000 ease-out ${isSectonVisible('mission-section') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
@@ -273,28 +292,7 @@ export default function AboutPage() {
               </div>
 
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                {[
-                  {
-                    icon: User,
-                    title: "Balance",
-                    description: "Restoring gender advocacy to include both boys and girls.",
-                  },
-                  {
-                    icon: UserPlus,
-                    title: "Responsibility",
-                    description: "Teaching boys accountability and leadership.",
-                  },
-                  {
-                    icon: Heart,
-                    title: "Compassion",
-                    description: "Raising boys with empathy for others.",
-                  },
-                  {
-                    icon: Target,
-                    title: "Discipline",
-                    description: "Instilling respect, values, and positive conduct.",
-                  },
-                ].map((value, index) => (
+                {coreValues.map((value, index) => (
                   <Card key={index} className={`text-center p-6 group hover:shadow-xl transition-all duration-700 hover:scale-105 transform hover:bg-gradient-to-br hover:from-emerald-50 hover:to-white border-0 bg-white/60 backdrop-blur-sm hover:-translate-y-2 ${isSectonVisible('mission-section') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
                     }`}
                     style={{ transitionDelay: `${index * 150 + 1000}ms` }}>
@@ -313,7 +311,7 @@ export default function AboutPage() {
         </section>
 
         {/* Our Story */}
-        <section ref={storyRef} id="story-section" className="py-20 bg-card overflow-hidden">
+        <section ref={storyRef} id="story-section" className="py-20 bg-card overflow-hidden story-section">
           <div className="container mx-auto px-4">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div className={`space-y-6 transition-all duration-1000 ease-out ${isSectonVisible('story-section') ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-12'
@@ -433,7 +431,7 @@ export default function AboutPage() {
                           Education & Credentials
                           <div className="w-2 h-2 bg-emerald-600 rounded-full animate-pulse"></div>
                         </h4>
-                        <div className="grid gap-2 text-sm text-muted-foreground max-h-48 overflow-y-auto">
+                        <div className="grid gap-2 text-sm text-muted-foreground max-h-48 ">
                           {[
                             "MSc International Business - University of Hertfordshire",
                             "BSc Business Administration - University of Abuja",
@@ -457,7 +455,7 @@ export default function AboutPage() {
                       <div className={`flex gap-3 pt-4 transition-all duration-700 ease-out ${isSectonVisible('founder-section') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                         }`} style={{ transitionDelay: '1400ms' }}>
                         <a
-                          href="mailto:anna@yargotefoundation.org"
+                          href="mailto:yargotefoundation@gmail.com"
                           className="flex items-center gap-2 px-4 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-all duration-300 hover:scale-105 hover:shadow-lg transform active:scale-95 group"
                         >
                           <Mail className="w-4 h-4 group-hover:rotate-12 transition-transform duration-300" />
@@ -480,7 +478,7 @@ export default function AboutPage() {
         </section>
 
         {/* Team Section */}
-        <section className="py-20 bg-card team-section">
+        <section id="team-section" className="py-20 bg-card team-section">
           <div className="container mx-auto px-4">
             <div className="text-center space-y-4 mb-16">
               <h2 className="text-3xl lg:text-4xl font-bold">Meet Our Team</h2>
@@ -491,36 +489,7 @@ export default function AboutPage() {
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
               {mockTeamMembers.map((member, index) => (
-                <Card key={index} className="text-center overflow-hidden">
-                  <CardContent className="p-0">
-                    <img
-                      src={member.image || "/placeholder.svg"}
-                      alt={member.name}
-                      className="w-full h-64 object-cover"
-                    />
-                    <div className="p-6 space-y-4">
-                      <div>
-                        <h3 className="text-xl font-semibold">{member.name}</h3>
-                        <p className="text-accent font-medium">{member.role}</p>
-                      </div>
-                      <p className="text-muted-foreground text-sm text-pretty leading-relaxed">{member.bio}</p>
-                      <div className="flex justify-center gap-2">
-                        <a
-                          href={`mailto:${member.email}`}
-                          className="w-8 h-8 bg-muted rounded-full flex items-center justify-center hover:bg-accent hover:text-accent-foreground transition-colors"
-                        >
-                          <Mail className="w-4 h-4" />
-                        </a>
-                        <a
-                          href={member.linkedin}
-                          className="w-8 h-8 bg-muted rounded-full flex items-center justify-center hover:bg-accent hover:text-accent-foreground transition-colors"
-                        >
-                          <Linkedin className="w-4 h-4" />
-                        </a>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
+              <TeamMemberCard member={member} key={index} />
               ))}
             </div>
           </div>
@@ -533,6 +502,66 @@ export default function AboutPage() {
         </section>
 
       </main>
+
+      {/* Custom CSS for animations */}
+      <style jsx>{`
+        @keyframes fadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+
+        @keyframes slideInFromLeft {
+          from { 
+            opacity: 0; 
+            transform: translateX(-50px); 
+          }
+          to { 
+            opacity: 1; 
+            transform: translateX(0); 
+          }
+        }
+
+        @keyframes slideInFromRight {
+          from { 
+            opacity: 0; 
+            transform: translateX(50px); 
+          }
+          to { 
+            opacity: 1; 
+            transform: translateX(0); 
+          }
+        }
+
+        @keyframes fadeInUp {
+          from { 
+            opacity: 0; 
+            transform: translateY(30px); 
+          }
+          to { 
+            opacity: 1; 
+            transform: translateY(0); 
+          }
+        }
+
+        .animate-fadeIn {
+          animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        .animate-slideInFromLeft {
+          animation: slideInFromLeft 0.8s ease-out forwards;
+          opacity: 0;
+        }
+
+        .animate-slideInFromRight {
+          animation: slideInFromRight 0.8s ease-out forwards;
+          opacity: 0;
+        }
+
+        .animate-fadeInUp {
+          animation: fadeInUp 0.8s ease-out forwards;
+          opacity: 0;
+        }
+      `}</style>
     </div>
   )
 }
