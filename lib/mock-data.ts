@@ -37,7 +37,7 @@ export const mockEvents: EventType[] = [
     id: "international-day-of-the-boy-child-roadwork",
     title: "International Day Of The Boy Child Roadwork",
     description: "The International Day of the Boy Child Roadwalk brought together community members, educators, and advocates to raise awareness about the importance of supporting boys’ growth and development. The event highlighted issues affecting young boys, promoted mental well-being, and encouraged mentorship as a pathway to building responsible and confident men for the future.",
-    date: "2024-02-10",
+    date: "2025-07-10",
     time: "9:00 AM",
     location: "Various Community Locations",
     image: "https://i.ibb.co/YFXnYyW6/boy-child22.jpg?height=400&width=600&text=Community+Service+Day",
@@ -105,18 +105,11 @@ export const mockEvents: EventType[] = [
 export const mockBlogPosts: BlogPost[] = [
   {
     id: "1",
-    title: "From Struggle to Strength: A Boy’s Journey with Yargote Foundation",
-    excerpt: "Follow the inspiring story of James, a young boy who transformed his future through the Yargote Foundation’s 'Empower the Boy-Child Project,' gaining confidence and skills with the help of school bags and mentorship.",
-    content: `Three years ago, James, a 14-year-old from an underserved community, joined the Yargote Foundation’s 'Empower the Boy-Child Project.' Facing challenges like limited access to educational resources and a lack of positive role models, his future seemed uncertain. The weight of his circumstances was heavy, but his dreams were bigger.
+    title: "How Yargote Foundation Empowers the Boy Child: A Story of Transformation",
+    excerpt: "In a world where the challenges of the boy child are often overlooked, the Yargote Foundation is quietly rewriting a powerful story, one of hope, guidance, and transformation.",
 
-When James received a school bag emblazoned with the Yargote Foundation logo, it was more than just a tool—it was a symbol of opportunity. For the first time, he felt seen and supported. The foundation’s scholarship program provided him with access to quality education, while our mentorship initiatives connected him with inspiring role models who believed in his potential.
-
-Balancing school with life’s challenges wasn’t easy. There were days when James felt overwhelmed, but the encouragement from his mentors and the resources provided—like textbooks and a sturdy school bag—kept him going. He spent evenings studying under streetlights, his determination fueled by the support of the Yargote community.
-
-Through our programs, James discovered a passion for science and technology. He excelled in coding workshops offered by the foundation, developing skills that opened new doors. Today, James is a high school senior, preparing to apply for university scholarships to pursue a degree in computer science. He’s also become a peer mentor, helping younger boys in his community navigate their own challenges.
-
-James’s story is a testament to the ripple effect of investing in boys. By providing tools like school bags, educational opportunities, and mentorship, the Yargote Foundation is helping boys like James rewrite their futures, one step at a time.`,
-    author: "Sarah Johnson",
+    content: "In a world where the challenges of the boy child are often overlooked, the Yargote Foundation is quietly rewriting a powerful story, one of hope, guidance, and transformation. At a recent Boy Child Training Program, dozens of young boys gathered with eager faces, some shy, some curious, and others simply grateful to be seen. Many of them come from backgrounds where support is scarce, where dreams often fade before they begin. But for a moment, in that small classroom and open community space, they found something different: a place where they mattered. \nThe program, designed to empower boys with essential life skills, mentorship, and values, was more than just a training, it was a life-changing experience. Under the warm guidance of Yargote Foundation facilitators, the boys learned about leadership, discipline, respect, and the power of believing in themselves. Each session was filled with energy, laughter, and heartfelt conversations. They shared their stories, listened to mentors who understood their struggles, and began to see new possibilities for their future. At the end of the day, every boy left with a Yargote Foundation Reality Kit, a simple but meaningful package symbolizing a new beginning, filled not just with educational materials, but with hope.One could see it in their eyes, the spark of realization that they, too, could become tomorrow’s leaders, innovators, and changemakers.Through this initiative, the Yargote Foundation continues to stand firm in its mission to empower, educate, and uplift. The foundation believes that when we invest in boys today, we're not just shaping individuals, we're building stronger men, families, and communities for tomorrow. This training is not the end of the journey, but the beginning of many more stories of transformation that Yargote Foundation aims to nurture across Nigeria and beyond. Because when a boy is guided, believed in, and given the tools to thrive, he grows into a man who helps the world heal.",
+    author: "Media Team",
     date: "2025-09-10",
     image: "https://i.ibb.co/zV0Vb2nm/children-with-bags.jpg?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
     category: "success-story",
@@ -126,16 +119,24 @@ James’s story is a testament to the ripple effect of investing in boys. By pro
   },
   {
     id: "2",
-    title: "Expanding Our Impact: Yargote Foundation’s New Partnership with Riverside Community",
-    excerpt: "The Yargote Foundation partners with Riverside Community Center to empower 200 more boys with school bags, mentorship, and educational support, transforming lives in underserved neighborhoods.",
-    content: `The Yargote Foundation is thrilled to announce a new partnership with Riverside Community Center, enabling us to extend our 'Empower the Boy-Child Project' to 200 additional boys in the Riverside neighborhood. This collaboration marks a significant step in our mission to uplift young boys in underserved communities through education, mentorship, and essential resources like school bags.
+    title: "2025 International Day of the Boy Child Road Walk: Raising Awareness",
+    excerpt: "The Yargote Foundation set the tone for the International Day of the Boy Child 2025 with a vibrant 3-kilometer road walk through the heart of Abuja, Nigeria. The event shone a spotlight on the often-overlooked challenges faced by boys, especially those in unreachable or conflict-affected communities.",
+    content: `The Yargote Foundation set the tone for the International Day of the Boy Child 2025 with a vibrant 3-kilometer road walk through the heart of Abuja, Nigeria. The event shone a spotlight on the often-overlooked challenges faced by boys, especially those in unreachable or conflict-affected communities.
 
-The Riverside area, known for its economic challenges, is a priority for our outreach efforts. By providing boys with school bags filled with supplies, access to after-school programs, and dedicated mentors, we aim to foster confidence and academic success. “This partnership with the Yargote Foundation is transformative,” says Community Center Director Maria Rodriguez. “Their commitment to empowering boys will create lasting change in our community.”
+    Held at Millennium Park, the walk brought together boys dressed in white tees emblazoned with the “Boy Walk” logo and green wristbands, a symbol of unity, hope, and resilience. Supporters joined in, carrying signs with messages like “Listen to Him, The Boy Child Has a Voice” and “The Boy Child is Not a Threat, He Needs Support.”
 
-The program will launch in November 2025 with an initial cohort of 50 boys, offering workshops, tutoring, and life skills training. Each participant will receive a Yargote Foundation school bag, symbolizing our investment in their potential. This initiative is set to inspire a new generation of leaders in Riverside, proving that opportunity can change everything.`,
-    author: "Michael Chen",
+    Speaking at the event, Executive Director Anna Hussaini Pai emphasized the importance of raising awareness around boys’ wellbeing, from educational neglect to mental health stigma, particularly in marginalized areas.
+
+    The campaign focused on reaching the “unreachable boys”, those living in remote or underserved communities who need access to mentorship, skills development, and emotional support.
+
+    Sponsors such as CWAY and Taronic Scents showed their commitment to the cause, reinforcing that empowering boys requires a collective effort from every part of society.
+
+    The event concluded with smiles, cheers, and a powerful image, a young boy proudly holding his “International Boy Child Day 2025” sign, embodying the day’s message of hope, visibility, and belonging.
+
+    Together, we continue to raise the boy , one step, one voice, and one story at a time.`,
+    author: "Media Team",
     date: "2025-10-01",
-    image: "https://i.ibb.co/JwjHTBsc/boy-child-in-class.jpg?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80",
+    image: "https://i.ibb.co/sJbLjgpR/Whats-App-Image-2025-09-24-at-11-45-53-PM.jpg?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80",
     category: "program-update",
     readTime: 3,
     views: 85,
@@ -147,18 +148,18 @@ The program will launch in November 2025 with an initial cohort of 50 boys, offe
     excerpt: "Discover how the Yargote Foundation transformed lives in 2025, equipping boys with school bags, scholarships, and mentorship to build brighter futures.",
     content: `As we reflect on 2025, the Yargote Foundation celebrates a year of profound impact in empowering young boys across our communities. Our 'Empower the Boy-Child Project' has reached new heights, providing boys with the tools and support they need to thrive.
 
-Key Achievements:
-- Empowered 1,500 boys across 10 communities
-- Distributed 1,200 school bags filled with supplies
-- Achieved a 96% program completion rate
-- Recorded an 88% improvement in academic performance
-- Engaged 250+ volunteer mentors
-- Awarded $750,000 in scholarships
+    Key Achievements:
+    - Empowered 1,500 boys across 10 communities
+    - Distributed 1,200 school bags filled with supplies
+    - Achieved a 96% program completion rate
+    - Recorded an 88% improvement in academic performance
+    - Engaged 250+ volunteer mentors
+    - Awarded $750,000 in scholarships
 
-These numbers reflect the heart of our mission: transforming lives through education and mentorship. Each school bag distributed, each mentorship session held, and each scholarship awarded represents a boy whose future is brighter because of our work. We’re grateful to our donors, volunteers, and partners who make these achievements possible, creating a ripple effect of hope and opportunity.`,
-    author: "Dr. Amara Okafor",
+    These numbers reflect the heart of our mission: transforming lives through education and mentorship. Each school bag distributed, each mentorship session held, and each scholarship awarded represents a boy whose future is brighter because of our work. We’re grateful to our donors, volunteers, and partners who make these achievements possible, creating a ripple effect of hope and opportunity.`,
+    author: "Media Team",
     date: "2025-12-15",
-    image: "https://i.ibb.co/sJbLjgpR/Whats-App-Image-2025-09-24-at-11-45-53-PM.jpg?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80",
+    image: "https://i.ibb.co/JwjHTBsc/boy-child-in-class.jpg?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80",
     category: "impact-report",
     readTime: 7,
     views: 152,
@@ -169,11 +170,9 @@ These numbers reflect the heart of our mission: transforming lives through educa
     title: "Community Spotlight: Transforming Eastside Boys with Yargote Foundation",
     excerpt: "Explore how the Yargote Foundation’s programs, including school bag distributions, have revitalized the Eastside community by empowering its young boys.",
     content: `Three years ago, the Yargote Foundation launched its 'Empower the Boy-Child Project' in the Eastside neighborhood, a community once marked by economic hardship and limited opportunities. Today, Eastside is a beacon of hope, thanks to our efforts to empower young boys.
-
-Through school bag distributions, mentorship programs, and educational workshops, we’ve seen remarkable changes. Boys who once struggled academically are now excelling, with a 45% increase in high school graduation rates. Local business owner Janet Williams shares, “The Yargote Foundation has given our boys confidence and purpose. They’re staying in school and dreaming bigger.”
-
-Beyond individual success, the community has transformed. Crime rates have dropped by 35%, and community engagement has soared as boys take on leadership roles. The school bags, emblazoned with the Yargote logo, are a symbol of this change, reminding everyone that investing in boys transforms entire communities.`,
-    author: "James Rodriguez",
+    Through school bag distributions, mentorship programs, and educational workshops, we’ve seen remarkable changes. Boys who once struggled academically are now excelling, with a 45% increase in high school graduation rates. Local business owner Janet Williams shares, “The Yargote Foundation has given our boys confidence and purpose. They’re staying in school and dreaming bigger.”
+    Beyond individual success, the community has transformed. Crime rates have dropped by 35%, and community engagement has soared as boys take on leadership roles. The school bags, emblazoned with the Yargote logo, are a symbol of this change, reminding everyone that investing in boys transforms entire communities.`,
+    author: "Media Team",
     date: "2025-11-01",
     image: "https://i.ibb.co/5ggrTg0y/house-keeping.jpg?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2073&q=80",
     category: "community-news",
@@ -187,10 +186,10 @@ Beyond individual success, the community has transformed. Crime rates have dropp
     excerpt: "Meet Robert Thompson, whose mentorship has transformed the lives of over 50 boys through the Yargote Foundation’s programs.",
     content: `Robert Thompson, a dedicated volunteer with the Yargote Foundation for five years, has been named our Mentor of the Year for his transformative impact on over 50 young boys. Through the 'Empower the Boy-Child Project,' Robert has provided guidance, support, and inspiration, helping boys overcome challenges and pursue their dreams.
 
-“Robert’s patience and genuine care make all the difference,” says Program Director Michael Chen. “He connects with boys on a personal level, helping them see their potential.” From assisting with homework to distributing school bags, Robert’s involvement has been a game-changer.
+    “Robert’s patience and genuine care make all the difference,” says Program Director Michael Chen. “He connects with boys on a personal level, helping them see their potential.” From assisting with homework to distributing school bags, Robert’s involvement has been a game-changer.
 
-A retired teacher, Robert finds purpose in mentoring. “These boys teach me as much as I teach them,” he says. Several of his mentees have pursued higher education, with three studying to become teachers, inspired by his example. Robert’s work exemplifies the power of mentorship in shaping the next generation of confident, capable young men.`,
-    author: "Sarah Johnson",
+    A retired teacher, Robert finds purpose in mentoring. “These boys teach me as much as I teach them,” he says. Several of his mentees have pursued higher education, with three studying to become teachers, inspired by his example. Robert’s work exemplifies the power of mentorship in shaping the next generation of confident, capable young men.`,
+    author: "Media Team",
     date: "2025-10-20",
     image: "https://i.ibb.co/JwjHTBsc/boy-child-in-class.jpg?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80",
     category: "success-story",
