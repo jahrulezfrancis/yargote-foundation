@@ -5,10 +5,17 @@ import { BlogCard } from "@/components/blog-card"
 import { mockBlogPosts } from "@/lib/mock-data"
 import { BookOpen, Heart, Calendar, TrendingUp } from "lucide-react"
 import { VideoTestimonialsSection } from "@/components/sections/video-stories-section"
+import { useState } from "react"
+import { Button } from "@/components/ui/button"
 
 export default function BlogPage() {
   const featuredPost = mockBlogPosts[0]
+  const [numberOfPosts, setNumberOfPosts] = useState(3);
   const otherPosts = mockBlogPosts.slice(1)
+
+  const loadMorePosts = () => {
+    setNumberOfPosts((prev) => prev + 3);
+  }
 
   return (
     <div className="min-h-screen bg-background">
@@ -92,7 +99,7 @@ export default function BlogPage() {
             </div>
 
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-7xl mx-auto">
-              {otherPosts.map((post, index) => (
+              {otherPosts.slice(0, numberOfPosts).map((post, index) => (
                 <div
                   key={post.id}
                   className="animate-fadeInUp hover:scale-[1.03] transition-transform duration-300 hover:shadow-xl"
@@ -105,12 +112,15 @@ export default function BlogPage() {
 
             {/* Load more button */}
             <div className="text-center mt-12 md:mt-16 animate-fadeInUp" style={{ animationDelay: '0.5s' }}>
-              <button className="group px-8 py-4 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-xl transform hover:-translate-y-1">
+              <Button
+                disabled={numberOfPosts >= otherPosts.length}
+                style={{ cursor: numberOfPosts >= otherPosts.length ? "wait" : "pointer" }}
+                onClick={loadMorePosts} className="group px-8 py-5 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-xl transform hover:-translate-y-1">
                 <span className="flex items-center gap-2">
                   Load More Stories
                   <TrendingUp className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </span>
-              </button>
+              </Button>
             </div>
           </div>
         </section>
