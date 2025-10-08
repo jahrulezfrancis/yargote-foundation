@@ -3,26 +3,24 @@ import VideoTestimonialCard from "../video-testimonial-component"
 export function VideoTestimonialsSection() {
     const testimonials = [
         {
-            videoUrl: "https://cdn.pixabay.com/video/2024/10/13/236256_large.mp4",
-            thumbnailUrl: "/images/testimonial-thumb-1.jpg",
-            name: "Chukwuemeka Okonkwo",
-            // age: 16,
+            videoUrl: "https://res.cloudinary.com/dsaaffacl/video/upload/v1759920310/69117f5d-56dd-478e-9cb3-2653a184277f_fqnwpw.mov",
+            thumbnailUrl: "https://res.cloudinary.com/dsaaffacl/video/upload/v1759920310/69117f5d-56dd-478e-9cb3-2653a184277f_fqnwpw.jpg",
+            name: "Lydia",
             location: "Abuja, FCT",
             testimonial: "The Empower the Boy Child Project changed my life. I learned valuable skills and gained confidence to pursue my dreams. Now I'm mentoring younger boys in my community.",
             program: "Leadership Training"
         },
         {
-            videoUrl: "/videos/testimonial-2.mp4",
-            thumbnailUrl: "/images/testimonial-thumb-2.jpg",
+            videoUrl: "https://res.cloudinary.com/dsaaffacl/video/upload/v1759920321/a04aca15-a993-429a-82cf-32983f3f124b_beed2r.mov",
+            thumbnailUrl: "https://res.cloudinary.com/dsaaffacl/video/upload/v1759920321/a04aca15-a993-429a-82cf-32983f3f124b_beed2r.jpg",
             name: "Umar Tahiru",
-            // age: 15,
             location: "Abuja, FCT",
             testimonial: "Before joining this program, I didn't believe in myself. Now I have the tools and support to build a better future. Thank you for believing in us.",
             program: "Skills Development"
         },
         {
-            videoUrl: "/videos/testimonial-3.mp4",
-            thumbnailUrl: "/images/testimonial-thumb-3.jpg",
+            videoUrl: "https://res.cloudinary.com/dsaaffacl/video/upload/bef107ff-bc07-4cb7-b8c0-32ac3ba75c73_qameuf.mov",
+            thumbnailUrl: "https://res.cloudinary.com/dsaaffacl/video/upload/bef107ff-bc07-4cb7-b8c0-32ac3ba75c73_qameuf.jpg",
             name: "Kefas Ayuba",
             // age: 17,
             location: "Abuja, FCT",
@@ -30,8 +28,8 @@ export function VideoTestimonialsSection() {
             program: "Education Support"
         },
         {
-            videoUrl: "/videos/testimonial-3.mp4",
-            thumbnailUrl: "/images/testimonial-thumb-3.jpg",
+            videoUrl: "https://res.cloudinary.com/dsaaffacl/video/upload/66e8e2a1-01d8-4151-af3b-e96fe7d1d600_udvri0.mov",
+            thumbnailUrl: "https://res.cloudinary.com/dsaaffacl/video/upload/66e8e2a1-01d8-4151-af3b-e96fe7d1d600_udvri0.jpg",
             name: "Khadija Abdullahi",
             // age: 17,
             location: "Abuja, FCT",
