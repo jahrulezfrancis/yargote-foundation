@@ -4,13 +4,14 @@ import { Badge } from "@/components/ui/badge"
 import { BlogCard } from "@/components/blog-card"
 import { mockBlogPosts } from "@/lib/mock-data"
 import { BookOpen, Heart, Calendar, TrendingUp } from "lucide-react"
+import { VideoTestimonialsSection } from "@/components/sections/video-stories-section"
 
 export default function BlogPage() {
   const featuredPost = mockBlogPosts[0]
   const otherPosts = mockBlogPosts.slice(1)
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-background">
       <main>
         {/* Simplified Hero Section with Animations */}
         <section className="relative bg-gradient-to-br from-emerald-50 via-blue-50 to-white py-16 md:py-20 overflow-hidden">
@@ -51,47 +52,50 @@ export default function BlogPage() {
           </div>
         </section>
 
-        {/* Animated Featured Post */}
-        <section className="py-20 bg-background">
-          <div className="container mx-auto px-4">
-            <div className="text-center space-y-4 mb-16 animate-fadeInUp">
+        {/* Featured Post Section */}
+        <section className="py-16 md:py-20 bg-white">
+          <div className="container mx-auto px-4 md:px-6 lg:px-8">
+            <div className="text-center space-y-4 mb-12 md:mb-16 animate-fadeInUp">
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-50 text-emerald-700 rounded-full border border-emerald-200">
                 <Heart className="w-4 h-4" />
                 <span className="text-sm font-medium">Featured Story</span>
               </div>
-              <h2 className="text-3xl lg:text-4xl font-bold">Transformative Impact</h2>
-              <p className="text-xl text-muted-foreground text-pretty max-w-2xl mx-auto">
-                Discover how our programs are changing lives and building stronger communities
-              </p>
             </div>
 
-            <div className="max-w-4xl mx-auto animate-slideInFromLeft">
-              <div className="transform hover:scale-105 transition-transform duration-300 hover:shadow-2xl">
+            <div className="max-w-5xl mx-auto animate-slideInFromLeft">
+              <div className="transform hover:scale-[1.02] transition-transform duration-300 hover:shadow-2xl">
                 <BlogCard post={featuredPost} />
               </div>
             </div>
           </div>
         </section>
 
-        {/* Animated Other Posts */}
-        <section className="py-20 bg-card">
-          <div className="container mx-auto px-4">
-            <div className="text-center space-y-4 mb-16 animate-fadeInUp">
+        {/* Video Testimonials Section */}
+        <section className="py-16 md:py-20 bg-gradient-to-b from-gray-50 to-white">
+          <div className="container mx-auto px-4 md:px-6 lg:px-8">
+            <VideoTestimonialsSection />
+          </div>
+        </section>
+
+        {/* Other Posts Section */}
+        <section className="py-16 md:py-20 bg-white">
+          <div className="container mx-auto px-4 md:px-6 lg:px-8">
+            <div className="text-center space-y-4 mb-12 md:mb-16 animate-fadeInUp">
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 text-blue-700 rounded-full border border-blue-200">
                 <Calendar className="w-4 h-4" />
                 <span className="text-sm font-medium">Latest Updates</span>
               </div>
-              <h2 className="text-3xl lg:text-4xl font-bold">More Stories</h2>
-              <p className="text-xl text-muted-foreground text-pretty leading-relaxed max-w-2xl mx-auto">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold">More Stories</h2>
+              <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
                 Discover more inspiring stories and important updates from our community
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-7xl mx-auto">
               {otherPosts.map((post, index) => (
                 <div
                   key={post.id}
-                  className="animate-fadeInUp hover:scale-105 transition-transform duration-300 hover:shadow-xl"
+                  className="animate-fadeInUp hover:scale-[1.03] transition-transform duration-300 hover:shadow-xl"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
                   <BlogCard post={post} />
@@ -99,12 +103,12 @@ export default function BlogPage() {
               ))}
             </div>
 
-            {/* Load more button with animation */}
-            <div className="text-center mt-12 animate-fadeInUp" style={{ animationDelay: '0.5s' }}>
-              <button className="group px-8 py-3 bg-white border border-gray-200 hover:border-emerald-300 text-gray-700 hover:text-emerald-700 font-medium rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg transform hover:-translate-y-1">
+            {/* Load more button */}
+            <div className="text-center mt-12 md:mt-16 animate-fadeInUp" style={{ animationDelay: '0.5s' }}>
+              <button className="group px-8 py-4 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-xl transform hover:-translate-y-1">
                 <span className="flex items-center gap-2">
                   Load More Stories
-                  <TrendingUp className="w-4 h-4 group-hover:rotate-12 transition-transform" />
+                  <TrendingUp className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </span>
               </button>
             </div>
