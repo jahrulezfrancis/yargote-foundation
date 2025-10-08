@@ -5,17 +5,31 @@ import { FeaturedCarousel } from "@/components/featured-carousel"
 import { FeaturedProjectSection } from "@/components/active-projects-section"
 import { RecentImagesGallery } from "@/components/recent-images-gallery"
 import { FadeInSection } from "@/components/fade-in-section"
+import { AboutSection } from "@/components/homepage/about-section"
+import { PartnersSection } from "@/components/homepage/partners-section"
+import { GetInvolvedSection } from "@/components/homepage/get-involved-section"
+import { EmpowerBoyChildBanner } from "@/components/homepage/the-boy-child-banner"
 
 export default function HomePage() {
   return (
     <div className="min-h-screen scroll-smooth">
       <main>
+        <EmpowerBoyChildBanner />
         <HeroSection />
+        <AboutSection />
         <FeaturesSection />
+
+        <div id="the-boy-child-section" className="the-boy-child-section">
+
         <ImpactSection />
+        </div>
 
         <FadeInSection>
           <FeaturedProjectSection />
+        </FadeInSection>
+
+        <FadeInSection>
+          <PartnersSection />
         </FadeInSection>
 
         <section className="py-20 bg-background">
@@ -33,9 +47,16 @@ export default function HomePage() {
               <FeaturedCarousel />
             </FadeInSection>
           </div>
+
         </section>
 
-        <RecentImagesGallery />
+        <FadeInSection>
+          <RecentImagesGallery />
+        </FadeInSection>
+
+        <FadeInSection>
+          <GetInvolvedSection />
+        </FadeInSection>
       </main>
     </div>
   )
