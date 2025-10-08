@@ -217,17 +217,23 @@ export default function EnhancedBlogPostPage({ }: EnhancedBlogPostPageProps) {
               {/* Article Text */}
               <article className="prose prose-xl max-w-none">
                 <div className="space-y-8">
-                  {currentPost.content.split("\n\n").map((paragraph, index) => (
-                    <p
-                      key={index}
-                      className="text-slate-700 leading-relaxed text-lg"
-                      style={{
-                        animationDelay: `${index * 0.1}s`
-                      }}
-                    >
-                      {paragraph.trim()}
-                    </p>
-                  ))}
+                  {currentPost.content
+                    .split(/(?<=[.?!])\s+(?=[A-Z])/)
+                    .reduce((acc: string[], sentence, index) => {
+                      // Group sentences into paragraphs of about 3 sentences each
+                      if (index % 3 === 0) acc.push(sentence);
+                      else acc[acc.length - 1] += " " + sentence;
+                      return acc;
+                    }, [])
+                    .map((paragraph, index) => (
+                      <p
+                        key={index}
+                        className="text-slate-700 leading-relaxed text-lg"
+                        style={{ animationDelay: `${index * 0.1}s` }}
+                      >
+                        {paragraph.trim()}
+                      </p>
+                    ))}
                 </div>
               </article>
 
@@ -240,8 +246,7 @@ export default function EnhancedBlogPostPage({ }: EnhancedBlogPostPageProps) {
                   <div className="flex-1">
                     <h3 className="text-xl font-bold text-slate-900 mb-2">{currentPost.author}</h3>
                     <p className="text-slate-600 leading-relaxed">
-                      {currentPost.author} is our Lead Program Coordinator with over 8 years of experience in educational outreach.
-                      They're passionate about sharing the transformative stories of our scholarship recipients and
+                     Our Media team are passionate about sharing the transformative stories of our scholarship recipients and
                       highlighting the impact of community-driven education initiatives.
                     </p>
                   </div>
