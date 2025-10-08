@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import { X, ChevronLeft, ChevronRight, Heart, Download, Share2 } from "lucide-react";
 import { galleryImages as recentImages } from "@/lib/mock-data";
 
@@ -23,6 +24,17 @@ type SimpleLightboxProps = {
 const SimpleLightbox = ({ images, currentIndex, onClose }: SimpleLightboxProps) => {
   const [index, setIndex] = useState(currentIndex);
   const [liked, setLiked] = useState(new Set());
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+    // Prevent body scroll when lightbox is open
+    document.body.style.overflow = 'hidden';
+    
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, []);
 
   const nextImage = () => {
     setIndex((prev) => (prev + 1) % images.length);
@@ -44,8 +56,10 @@ const SimpleLightbox = ({ images, currentIndex, onClose }: SimpleLightboxProps) 
     });
   };
 
-  return (
-    <div className="fixed inset-0 z-50 bg-black/90 backdrop-blur-sm flex flex-col">
+  if (!mounted) return null;
+
+  const lightboxContent = (
+    <div className="fixed inset-0 z-[9999] bg-black/90 backdrop-blur-sm flex flex-col">
       <div className="relative flex-1 flex items-center justify-center p-4 sm:p-6">
         {/* Close button */}
         <button
@@ -71,7 +85,7 @@ const SimpleLightbox = ({ images, currentIndex, onClose }: SimpleLightboxProps) 
         </button>
 
         {/* Image */}
-        <div className="max-w-[90vw] sm:max-w-4xl max-h-[70vh] sm:max-h-[80vh] relative">
+        <div className="max-w-[90vw] sm:max-w-4xl max-h-[50vh] sm:max-h-[80vh] relative">
           <img
             src={images[index].src}
             alt={images[index].alt}
@@ -117,7 +131,10 @@ const SimpleLightbox = ({ images, currentIndex, onClose }: SimpleLightboxProps) 
       </div>
     </div>
   );
+
+  return createPortal(lightboxContent, document.body);
 };
+
 export function RecentImagesGallery() {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
   const [loadingImages, setLoadingImages] = useState(new Set());
@@ -221,15 +238,13 @@ export function RecentImagesGallery() {
       </div>
 
       {/* Simple Lightbox */}
-      {
-        selectedImage !== null && (
-          <SimpleLightbox
-            images={recentImages}
-            currentIndex={selectedImage}
-            onClose={() => setSelectedImage(null)}
-          />
-        )
-      }
-    </section >
+      {selectedImage !== null && (
+        <SimpleLightbox
+          images={recentImages}
+          currentIndex={selectedImage}
+          onClose={() => setSelectedImage(null)}
+        />
+      )}
+    </section>
   );
 }
