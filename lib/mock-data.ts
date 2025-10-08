@@ -180,23 +180,6 @@ export const mockBlogPosts: BlogPost[] = [
     views: 98,
     likes: 18,
   },
-  {
-    id: "5",
-    title: "Mentor of the Year: Robert Thompson’s Impact on Boys at Yargote Foundation",
-    excerpt: "Meet Robert Thompson, whose mentorship has transformed the lives of over 50 boys through the Yargote Foundation’s programs.",
-    content: `Robert Thompson, a dedicated volunteer with the Yargote Foundation for five years, has been named our Mentor of the Year for his transformative impact on over 50 young boys. Through the 'Empower the Boy-Child Project,' Robert has provided guidance, support, and inspiration, helping boys overcome challenges and pursue their dreams.
-
-    “Robert’s patience and genuine care make all the difference,” says Program Director Michael Chen. “He connects with boys on a personal level, helping them see their potential.” From assisting with homework to distributing school bags, Robert’s involvement has been a game-changer.
-
-    A retired teacher, Robert finds purpose in mentoring. “These boys teach me as much as I teach them,” he says. Several of his mentees have pursued higher education, with three studying to become teachers, inspired by his example. Robert’s work exemplifies the power of mentorship in shaping the next generation of confident, capable young men.`,
-    author: "Media Team",
-    date: "2025-10-20",
-    image: "https://i.ibb.co/JwjHTBsc/boy-child-in-class.jpg?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80",
-    category: "success-story",
-    readTime: 4,
-    views: 110,
-    likes: 25,
-  },
 ]
 export const mockProjects: ProjectType[] = [
   {
