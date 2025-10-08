@@ -60,7 +60,7 @@ export function BlogCard({ post }: BlogCardProps) {
             </div>
           </div>
 
-          <div className="p-8 space-y-6">
+          <div className="p-4 space-y-6">
             <div className="space-y-3">
               <h3 className="text-xl font-bold text-balance text-foreground group-hover:text-primary transition-colors duration-300">
                 {post.title}
@@ -69,8 +69,8 @@ export function BlogCard({ post }: BlogCardProps) {
             </div>
 
             <div className="flex items-center justify-between">
-              <div className="flex items-center gap-4 text-sm text-foreground/70">
-                <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 text-sm text-foreground/70">
+                <div className="flex items-center gap-1">
                   <div className="flex items-center justify-center w-7 h-7 rounded-full bg-primary/10">
                     <User className="w-3 h-3 text-primary" />
                   </div>
@@ -82,10 +82,10 @@ export function BlogCard({ post }: BlogCardProps) {
                   </div>
                   <span className="font-medium">{formatDate(post.date)}</span>
                 </div>
-              </div>
               <div className="flex items-center gap-2 text-sm text-foreground/70">
                 <Clock className="w-4 h-4 text-primary" />
                 <span className="font-medium">{post.readTime} min</span>
+              </div>
               </div>
             </div>
 

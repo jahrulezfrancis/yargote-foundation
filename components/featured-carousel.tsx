@@ -6,47 +6,11 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { ChevronLeft, ChevronRight, Calendar, Users, Play, Pause, ArrowUpRight, Clock, Heart } from "lucide-react"
 import Link from "next/link"
+import { mockBlogPosts, mockEvents } from "@/lib/mock-data"
 
-// Mock data matching your structure
-const mockEvents = [
-  {
-    id: "1",
-    title: "From Bags to Brighter Futures: Yargote Foundation’s Boy Child Initiative",
-    description: "Join us for an inspiring evening of dinner, entertainment, and fundraising to support the Yargote Foundation’s mission to empower young boys. Our 'Empower the Boy-Child Project' provides essential resources like school bags, fostering confidence and opportunity for a brighter future.",
-    image: "https://i.ibb.co/zV0Vb2nm/children-with-bags.jpg?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-    date: "2024-04-15",
-    attendees: 57,
-  },
-  {
-    id: "2",
-    title: "Reaching Out, Raising Up: A Foundation’s Work with Boys",
-    description: "Join our outreach program dedicated to uplifting young boys through mentorship, education, and life skills training. The Yargote Foundation equips boys with tools like school bags and knowledge to build resilience and achieve their potential.",
-    image: "https://i.ibb.co/JwjHTBsc/boy-child-in-class.jpg?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80",
-    date: "2024-04-22",
-    attendees: 43,
-  }
-]
-const mockBlogPosts = [
-  {
-    id: "1",
-    title: "Celebrating The International Day of The Boy Child",
-    excerpt: "On International Day of the Boy Child, we spotlight the Yargote Foundation’s efforts to empower boys with resources like school bags and mentorship, helping them overcome challenges and pursue their dreams with confidence.",
-    image: "https://i.ibb.co/sJbLjgpR/Whats-App-Image-2025-09-24-at-11-45-53-PM.jpg?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80",
-    date: "2024-03-15",
-    author: "Victor",
-  },
-  {
-    id: "2",
-    title: "Building Stronger Communities Together",
-    excerpt: "Learn how the Yargote Foundation’s partnerships are transforming communities by supporting boys with educational resources, including school bags, and fostering environments where young boys can thrive.",
-    image: "https://i.ibb.co/5ggrTg0y/house-keeping.jpg?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2073&q=80",
-    date: "2024-03-10",
-    author: "Victor",
-  }
-]
 
 const featuredItems = [
-  ...mockEvents.slice(0, 2).map((event) => ({
+  ...mockEvents.slice(0, 1).map((event) => ({
     id: event.id,
     type: "event" as const,
     title: event.title,

@@ -116,6 +116,18 @@ export function EventCard({ event }: EventCardProps) {
                 </Link>
               </Button>
             )}
+            {event.status === "past" && (
+              <Button
+                asChild
+                variant="outline"
+                className="w-full h-12 text-foreground/80 hover:text-foreground hover:bg-emerald-100 font-semibold group/btn transition-all duration-200"
+              >
+                <Link href={`/events/${event.id}`} className="flex items-center justify-center gap-2">
+                  View Past Event
+                  <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover/btn:translate-x-1" />
+                </Link>
+              </Button>
+            )}
           </div>
         </CardContent>
       </Card>

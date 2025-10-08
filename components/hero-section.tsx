@@ -28,7 +28,7 @@ const heroSlides = [
     floatingIcon1: Trophy,
     floatingIcon2: BookOpen,
     primaryCta: { text: "Join Our Programs", href: "/programs", icon: ArrowRight },
-    secondaryCta: { text: "Meet Our Team", href: "/team", icon: Users }
+    secondaryCta: { text: "Meet Our Team", href: "/about#team-section", icon: Users }
   },
   {
     title: "Creating",
