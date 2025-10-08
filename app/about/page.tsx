@@ -371,7 +371,7 @@ export default function AboutPage() {
         </section>
 
         {/* Our Founder Section */}
-        <section ref={founderRef} id="founder-section" className="py-20 bg-background overflow-hidden">
+        <section ref={founderRef} id="founder-section" className="py-20 bg-background">
           <div className="container mx-auto px-4">
             <div className={`text-center space-y-4 mb-16 transition-all duration-1000 ease-out ${isSectonVisible('founder-section') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               }`}>
@@ -431,7 +431,7 @@ export default function AboutPage() {
                           Education & Credentials
                           <div className="w-2 h-2 bg-emerald-600 rounded-full animate-pulse"></div>
                         </h4>
-                        <div className="grid gap-2 text-sm text-muted-foreground max-h-48 ">
+                        <div className="grid gap-2 text-sm text-muted-foreground">
                           {[
                             "MSc International Business - University of Hertfordshire",
                             "BSc Business Administration - University of Abuja",

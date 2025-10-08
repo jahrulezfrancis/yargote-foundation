@@ -20,8 +20,7 @@ export default function HomePage() {
         <FeaturesSection />
 
         <div id="the-boy-child-section" className="the-boy-child-section">
-
-        <ImpactSection />
+          <ImpactSection />
         </div>
 
         <FadeInSection>

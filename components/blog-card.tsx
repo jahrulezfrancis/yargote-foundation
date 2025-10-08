@@ -40,7 +40,7 @@ export function BlogCard({ post }: BlogCardProps) {
 
   return (
     <>
-      <Card className="group overflow-hidden border-0 premium-shadow hover:premium-shadow-lg transition-all duration-500 hover-lift bg-card">
+      <Card className="group overflow-hidden border-0 premium-shadow hover:premium-shadow-sm transition-all duration-500 hover-lift bg-card">
         <CardContent className="p-0">
           <div className="relative overflow-hidden">
             <div className="aspect-[16/10] relative">
@@ -54,7 +54,7 @@ export function BlogCard({ post }: BlogCardProps) {
             </div>
 
             <div className="absolute top-4 left-4">
-              <Badge className={`${categoryColors[post.category]} font-medium px-3 py-1 text-xs`}>
+              <Badge className={`${categoryColors[post.category]} font-medium px-3 bg-amber-200 py-1 text-xs`}>
                 {categoryLabels[post.category]}
               </Badge>
             </div>
