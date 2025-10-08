@@ -32,19 +32,15 @@ export function Navigation() {
   return (
     <nav
       className={`sticky top-0 z-50 w-full transition-all duration-300 ${isScrolled
-          ? "glass-effect shadow-lg"
-          : "bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
+        ? "glass-effect shadow-lg"
+        : "bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
         } border-b border-border/50`}
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           <Link href="/" className="flex items-center space-x-3 hover:scale-105 transition-transform duration-300">
-            <div className="relative w-12 h-12">
+            <div className="relative w-40 h-20">
               <Image src="/yargote-logo.png" alt="Yargote Foundation" fill className="object-contain" />
-            </div>
-            <div className="flex flex-col">
-              <span className="font-bold text-xl text-primary">Yargote</span>
-              <span className="text-xs text-foreground font-medium">FOUNDATION</span>
             </div>
           </Link>
 
@@ -56,8 +52,8 @@ export function Navigation() {
                   key={item.href}
                   href={item.href}
                   className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 relative group ${isActive
-                      ? "text-white bg-primary shadow-md font-semibold scale-105"
-                      : "text-foreground hover:text-primary hover:bg-primary/8 hover:scale-105"
+                    ? "text-white bg-emerald-500 shadow-md font-semibold scale-105"
+                    : "text-foreground hover:text-primary hover:bg-primary/8 hover:scale-105"
                     }`}
                 >
                   {item.label}
@@ -99,8 +95,8 @@ export function Navigation() {
                     key={item.href}
                     href={item.href}
                     className={`block px-4 py-3 rounded-lg font-medium transition-all duration-200 relative ${isActive
-                        ? "text-white bg-primary shadow-md font-semibold"
-                        : "text-foreground hover:text-primary hover:bg-primary/8"
+                      ? "text-white bg-primary shadow-md font-semibold"
+                      : "text-foreground hover:text-primary hover:bg-primary/8"
                       }`}
                     onClick={() => setIsOpen(false)}
                   >
