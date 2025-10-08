@@ -1,22 +1,27 @@
 "use client"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Mail, Phone, MapPin, Clock, Facebook, Twitter, Instagram, Linkedin, Heart, BookOpen } from "lucide-react"
+import { Mail, Phone, MapPin, Clock, Facebook, Twitter, Instagram, Linkedin, Heart, BookOpen, MessageCircle } from "lucide-react"
 import { ContactForm } from "@/components/contact-form"
+import { WhatsappIcon } from "next-share"
+import Link from "next/link"
 
 const contactInfo = [
   {
     icon: Mail,
     title: "Email Us",
-    details: ["info@theyargotefoundation.org", "programs@theyargotefoundation.org"],
-    description: "Send us an email and we'll respond within 24 hours"
+    details: ["yargotefoundation@gmail.com"],
+    description: "Send us an email and we'll respond within 24 hours",
+    link: "mailto:yargotefoundation@gmail.com"
   },
   {
     icon: Phone,
     title: "Call Us",
-    details: ["+234 (0) 806 536 1349", "+234 (0) 803 123 4568"],
-    description: "Speak with our team during business hours"
+    details: ["+234 (0) 806 536 1349"],
+    description: "Speak with our team during business hours",
+    link: "tel:+2348065361349"
   },
+
   {
     icon: MapPin,
     title: "Visit Us",
@@ -41,23 +46,13 @@ const socialLinks = [
 const quickContacts = [
   {
     title: "General Information",
-    email: "info@theyargotefoundation.org",
+    email: "yargotefoundation@gmail.com",
     description: "For general inquiries about our foundation"
   },
   {
     title: "Volunteer Opportunities",
     email: "volunteer@theyargotefoundation.org",
     description: "Join our team of dedicated volunteers"
-  },
-  {
-    title: "Program Information",
-    email: "programs@theyargotefoundation.org",
-    description: "Learn about our programs and how to participate"
-  },
-  {
-    title: "Media Inquiries",
-    email: "media@theyargotefoundation.org",
-    description: "Press releases and media partnerships"
   },
 ]
 
@@ -112,7 +107,7 @@ export default function ContactPage() {
                   className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 md:w-[200px]"
                   asChild
                 >
-                  <a href="mailto:info@theyargotefoundation.org">
+                  <a href="mailto:yargotefoundation@gmail.com">
                     <Mail className="w-4 h-4 mr-2" />
                     Email Us
                   </a>
@@ -167,6 +162,17 @@ export default function ContactPage() {
                       ))}
                     </div>
                     <p className="text-sm text-gray-600">{info.description}</p>
+                    {info.link && (
+                      <Button
+                        asChild
+                        size="sm"
+                        className="bg-emerald-600 hover:bg-emerald-700 text-white mt-2"
+                      >
+                        <a href={info.link} target={info.link.startsWith('http') ? '_blank' : undefined} rel={info.link.startsWith('http') ? 'noopener noreferrer' : undefined}>
+                          Contact Now
+                        </a>
+                      </Button>
+                    )}
                   </CardContent>
                 </Card>
               ))}
@@ -183,8 +189,6 @@ export default function ContactPage() {
               </div>
 
               <div className="lg:col-span-2 space-y-6 animate-slideInFromRight">
-
-
                 {/* Quick Contact Options */}
                 <Card className="shadow-lg border-0">
                   <CardContent className="p-6 space-y-6">
@@ -204,8 +208,32 @@ export default function ContactPage() {
                           <p className="text-gray-500 text-xs mt-1">{contact.description}</p>
                         </div>
                       ))}
+
+                      <div className="">
+                        <div className="p-4 bg-gray-50 rounded-lg flex items-center gap-2 hover:bg-emerald-50 transition-colors cursor-pointer border border-gray-100 hover:border-emerald-200">
+                          <div className="w-14 h-14 bg-emerald-50 rounded-full flex items-center justify-center shadow-sm border border-emerald-100">
+                            <WhatsappIcon className="w-8 h-8 text-emerald-600" />
+                          </div>
+
+                          <div>
+                            <p className="text-gray-500 text-sm mt-1">Chat with us on WhatsApp for quick responses</p>
+                            <Button
+                              asChild
+                              size="sm"
+                              className="bg-emerald-600 hover:bg-emerald-700 text-white mt-2"
+                            >
+                              <a href={"https://wa.me/2348065361349"} target={'_blank'} rel={'noopener noreferrer'}>
+                                Message Now
+                              </a>
+                            </Button>
+                          </div>
+
+                        </div>
+                      </div>
                     </div>
                   </CardContent>
+
+
                 </Card>
 
                 {/* Emergency Contact */}
@@ -231,26 +259,21 @@ export default function ContactPage() {
         {/* Map Placeholder */}
         <Card className="shadow-lg border-0 my-16">
           <CardContent className="p-0">
-            <div className="h-64 bg-gradient-to-br from-emerald-50 to-emerald-100 rounded-t-lg flex items-center justify-center relative overflow-hidden">
-              <div className="absolute inset-0 opacity-20">
+            <div className="h-100 bg-gradient-to-br from-emerald-50 to-emerald-100 rounded-t-lg flex items-center justify-center relative overflow-hidden">
+              {/* <div className="absolute inset-0 opacity-20">
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-emerald-400 via-transparent to-transparent"></div>
-              </div>
-              <div className="text-center space-y-3 z-10">
-                <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-lg">
-                  <MapPin className="w-8 h-8 text-emerald-600" />
-                </div>
-                <div>
-                  <p className="font-semibold text-gray-800">Our Location</p>
-                  <p className="text-sm text-gray-700">House 59 Zone C, Apo Resettlement</p>
-                  <p className="text-sm text-gray-700">FCT Abuja</p>
-                </div>
+              </div> */}
+              <div className="text-center w-full h-full space-y-3 z-10">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3940.949863713974!2d7.497096074144363!3d8.976760968089247!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x104e0db594ca0017%3A0x9ae4c3d302e204c9!2sAPO%20RESETTLEMENT%20AREA!5e0!3m2!1sen!2sng!4v1759860099206!5m2!1sen!2sng" width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
               </div>
             </div>
             <div className="p-4 bg-white flex justify-center">
+              <Link href={"https://maps.app.goo.gl/DXw2LDrJeThEoUpWA"} target="_blank" rel="noopener noreferrer">
               <Button variant="outline" className="w-auto border-emerald-600 text-emerald-600 hover:bg-emerald-600 hover:text-white">
                 <MapPin className="w-4 h-4 mr-2" />
                 Get Directions
               </Button>
+              </Link>
             </div>
           </CardContent>
         </Card>

@@ -1,185 +1,301 @@
 "use client"
 
 import { Badge } from "@/components/ui/badge"
+import { Card, CardContent } from "@/components/ui/card"
 import { EventCard } from "@/components/event-card"
 import { mockEvents } from "@/lib/mock-data"
-import { Calendar, Users, Clock, MapPin, Sparkles } from "lucide-react"
+import { Calendar, Users, Clock, MapPin, Sparkles, TrendingUp, Award, PartyPopper, Megaphone } from "lucide-react"
 import scrollToSection from "@/utils/scrollTo"
+import { useState, useEffect, useRef } from "react"
+import Link from "next/link"
 
 export default function EventsPage() {
+  const [isVisible, setIsVisible] = useState(false)
+  const [visibleSections, setVisibleSections] = useState(new Set())
+
+  const upcomingRef = useRef(null)
+  const pastRef = useRef(null)
+
   const upcomingEvents = mockEvents.filter((event) => event.status === "upcoming")
   const pastEvents = mockEvents.filter((event) => event.status === "past")
 
+  useEffect(() => {
+    setIsVisible(true)
+  }, [])
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setVisibleSections(prev => new Set(prev).add(entry.target.id))
+          }
+        })
+      },
+      { threshold: 0.1, rootMargin: '50px' }
+    )
+
+    const sections = [upcomingRef.current, pastRef.current]
+    sections.forEach(section => {
+      if (section) observer.observe(section)
+    })
+
+    return () => observer.disconnect()
+  }, [])
+
+  const isSectionVisible = (sectionId: string) => visibleSections.has(sectionId)
+
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen overflow-hidden">
       <main>
-        {/* Enhanced Hero Section with Animations */}
-        <section className="relative bg-gradient-to-br from-emerald-50 via-blue-50 to-white py-12 md:py-16 overflow-hidden">
+        {/* Enhanced Hero Section - Events Overview */}
+        <section className="relative bg-gradient-to-br from-emerald-50 via-blue-50 to-white py-16 md:py-20 overflow-hidden">
           {/* Animated background elements */}
           <div className="absolute inset-0">
-            <div className="absolute top-0 right-0 w-80 h-80 bg-gradient-to-bl from-emerald-100/60 to-transparent rounded-full animate-pulse -translate-y-1/4 translate-x-1/4" />
-            <div className="absolute bottom-0 left-0 w-64 h-64 bg-gradient-to-tr from-blue-100/50 to-transparent rounded-full animate-pulse delay-1000 translate-y-1/4 -translate-x-1/4" />
-            <div className="absolute top-1/2 left-1/2 w-96 h-96 bg-gradient-to-r from-green-50/30 to-yellow-50/30 rounded-full animate-pulse delay-500 -translate-x-1/2 -translate-y-1/2" />
+            <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-emerald-100/50 to-transparent rounded-full animate-pulse -translate-y-1/3 translate-x-1/3" />
+            <div className="absolute bottom-0 left-0 w-72 h-72 bg-gradient-to-tr from-blue-100/60 to-transparent rounded-full animate-pulse delay-1000 translate-y-1/3 -translate-x-1/3" />
+            <div className="absolute top-1/2 left-1/2 w-80 h-80 bg-gradient-to-r from-purple-50/40 to-pink-50/40 rounded-full animate-pulse delay-500 -translate-x-1/2 -translate-y-1/2" />
           </div>
 
-          {/* Floating animated dots */}
-          <div className="absolute top-1/4 right-1/3 w-3 h-3 bg-emerald-300 rounded-full animate-bounce" />
-          <div className="absolute bottom-1/3 left-1/4 w-2 h-2 bg-blue-300 rounded-full animate-bounce delay-300" />
-          <div className="absolute top-1/3 left-1/3 w-1.5 h-1.5 bg-green-300 rounded-full animate-bounce delay-700" />
+          {/* Floating elements */}
+          <div className="absolute top-1/4 right-1/4 w-4 h-4 bg-emerald-300 rounded-full animate-bounce" />
+          <div className="absolute bottom-1/3 left-1/4 w-3 h-3 bg-blue-300 rounded-full animate-bounce delay-300" />
+          <div className="absolute top-1/3 left-1/2 w-2 h-2 bg-purple-300 rounded-full animate-bounce delay-700" />
 
           <div className="container mx-auto px-6 md:px-8 relative z-10">
-            <div className="max-w-6xl mx-auto">
-              <div className="grid lg:grid-cols-3 gap-8 lg:gap-12 items-center">
-                {/* Main content with staggered animations */}
-                <div className="lg:col-span-2 space-y-6">
-                  {/* Animated badge */}
-                  <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/90 backdrop-blur-sm rounded-full border border-emerald-200 shadow-sm animate-slideInFromLeft">
-                    <Sparkles className="w-4 h-4 text-emerald-500 animate-spin" style={{ animationDuration: '3s' }} />
-                    <span className="text-sm font-medium text-gray-700">Events & Activities</span>
-                  </div>
-
-                  {/* Animated title */}
-                  <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight tracking-tight animate-slideInFromLeft" style={{ animationDelay: '0.2s' }}>
-                    Join Us in Making
-                    <span className="block text-emerald-600 animate-slideInFromRight" style={{ animationDelay: '0.4s' }}>
-                      a Difference
-                    </span>
-                  </h1>
-
-                  {/* Animated description */}
-                  <p className="text-lg md:text-xl text-gray-600 leading-relaxed max-w-2xl animate-slideInFromLeft" style={{ animationDelay: '0.6s' }}>
-                    Participate in our community events, workshops, and fundraisers that bring together mentors,
-                    participants, and supporters to create positive change.
-                  </p>
-
-                  {/* Animated event highlights */}
-                  <div className="flex flex-wrap items-center gap-6 pt-2 animate-slideInFromLeft" style={{ animationDelay: '0.8s' }}>
-                    <div className="flex items-center gap-2 text-gray-600 hover:text-emerald-600 transition-colors cursor-pointer group">
-                      <Calendar className="w-4 h-4 group-hover:scale-110 transition-transform" />
-                      <span className="text-sm">Monthly <span className="font-semibold text-gray-900">Workshops</span></span>
-                    </div>
-                    <div className="flex items-center gap-2 text-gray-600 hover:text-blue-600 transition-colors cursor-pointer group">
-                      <Users className="w-4 h-4 group-hover:scale-110 transition-transform" />
-                      <span className="text-sm">Community <span className="font-semibold text-gray-900">Gatherings</span></span>
-                    </div>
-                    <div className="flex items-center gap-2 text-gray-600 hover:text-green-600 transition-colors cursor-pointer group">
-                      <MapPin className="w-4 h-4 group-hover:scale-110 transition-transform" />
-                      <span className="text-sm">Local <span className="font-semibold text-gray-900">Venues</span></span>
-                    </div>
-                  </div>
-
-                  {/* Animated action buttons */}
-                  <div className="flex flex-wrap items-center gap-4 pt-4 animate-slideInFromLeft" style={{ animationDelay: '1s' }}>
-                    <button onClick={()=> scrollToSection("event-section")} className="group px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-lg transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
-                      <span className="flex items-center gap-2">
-                        View Events
-                        <Calendar className="w-4 h-4 group-hover:rotate-12 transition-transform" />
-                      </span>
-                    </button>
-                    {/* <button className="group px-6 py-3 text-gray-600 hover:text-gray-900 font-medium transition-all duration-300 border border-gray-200 rounded-lg hover:border-emerald-300 hover:bg-emerald-50 transform hover:-translate-y-1">
-                      <span className="flex items-center gap-2">
-                        Create Event
-                        <Sparkles className="w-4 h-4 group-hover:animate-pulse" />
-                      </span>
-                    </button> */}
-                  </div>
+            <div className="max-w-7xl mx-auto">
+              {/* Header */}
+              <div className="text-center mb-12 md:mb-16">
+                <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/90 backdrop-blur-sm rounded-full border border-emerald-200 shadow-sm animate-slideInFromLeft mb-6">
+                  <div className="w-2 h-2 bg-emerald-600 rounded-full animate-pulse" />
+                  <span className="text-sm font-medium text-gray-700">Events & Activities</span>
                 </div>
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight tracking-tight animate-slideInFromLeft mb-4" style={{ animationDelay: '0.2s' }}>
+                  Join Our Community Events
+                </h1>
+                <p className="text-lg md:text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto animate-slideInFromLeft" style={{ animationDelay: '0.6s' }}>
+                  Participate in workshops, fundraisers, and community gatherings that bring together mentors, participants, and supporters
+                </p>
+              </div>
 
-                {/* Animated stats and quick info */}
-                <div className="lg:col-span-1 space-y-6">
-                  {/* Main stats card with animation */}
-                  <div className="bg-white/95 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-gray-200 shadow-xl animate-slideInFromRight transform hover:scale-105 transition-all duration-300">
-                    <h3 className="text-lg font-semibold text-gray-900 mb-6 flex items-center gap-2">
-                      <Calendar className="w-5 h-5 text-emerald-500 animate-pulse" />
-                      Event Statistics
-                    </h3>
+              {/* Event Types Quick Cards */}
+              <div className="grid md:grid-cols-4 gap-4 mb-12">
+                {[
+                  { icon: Megaphone, name: "Workshops", color: "emerald", count: "5" },
+                  { icon: PartyPopper, name: "Fundraisers", color: "blue", count: "3" },
+                  { icon: Users, name: "Community Advocacy", color: "purple", count: "8" },
+                  { icon: Award, name: "Celebrations", color: "amber", count: "4" }
+                ].map((type, index) => (
+                  <Card key={index} className={`group hover:shadow-lg transition-all duration-500 border-2 hover:border-${type.color}-200 cursor-pointer ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
+                    }`}
+                    style={{ transitionDelay: `${index * 100 + 300}ms` }}>
+                    <CardContent className="p-6 text-center space-y-3">
+                      <div className={`w-12 h-12 bg-${type.color}-50 rounded-xl flex items-center justify-center mx-auto group-hover:bg-${type.color}-100 group-hover:scale-110 transition-all duration-500`}>
+                        <type.icon className={`w-6 h-6 text-${type.color}-600 transition-all duration-500`} />
+                      </div>
+                      <h3 className="text-sm font-bold text-gray-900 group-hover:text-emerald-600 transition-colors duration-300">
+                        {type.name}
+                      </h3>
+                      <p className="text-xs text-gray-500">{type.count} Events</p>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
 
+              {/* Event Stats & Details */}
+              <div className="grid md:grid-cols-3 gap-6 mb-12">
+                {/* Event Statistics Card */}
+                <Card className={`border-2 transition-all duration-1000 ease-out hover:shadow-xl ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
+                  }`} style={{ transitionDelay: '700ms' }}>
+                  <CardContent className="p-8">
+                    <div className="flex items-center gap-2 mb-6">
+                      <TrendingUp className="w-5 h-5 text-emerald-600" />
+                      <h3 className="text-lg font-bold text-gray-900">Event Statistics</h3>
+                    </div>
                     <div className="space-y-6">
-                      <div className="flex items-center justify-between group cursor-pointer">
-                        <div className="flex items-center gap-3">
-                          <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-                          <span className="text-gray-600 group-hover:text-gray-900 transition-colors">Upcoming Events</span>
+                      <div className="group cursor-default">
+                        <div className="flex items-center justify-between mb-2">
+                          <span className="text-sm font-medium text-gray-600">Upcoming Events</span>
+                          <span className="text-2xl font-bold text-emerald-600 tabular-nums">
+                            {upcomingEvents.length}
+                          </span>
                         </div>
-                        <div className="text-2xl font-bold text-gray-900 group-hover:scale-110 transition-transform">
-                          {upcomingEvents.length}
-                        </div>
-                      </div>
-
-                      <div className="flex items-center justify-between group cursor-pointer">
-                        <div className="flex items-center gap-3">
-                          <div className="w-3 h-3 bg-blue-500 rounded-full animate-pulse delay-300"></div>
-                          <span className="text-gray-600 group-hover:text-gray-900 transition-colors">Past Events</span>
-                        </div>
-                        <div className="text-2xl font-bold text-gray-900 group-hover:scale-110 transition-transform">
-                          {pastEvents.length}
+                        <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
+                          <div className={`h-full bg-emerald-600 rounded-full transition-all duration-[1500ms] ease-out ${isVisible ? 'w-[70%]' : 'w-0'
+                            }`}></div>
                         </div>
                       </div>
 
-                      <div className="flex items-center justify-between group cursor-pointer">
-                        <div className="flex items-center gap-3">
-                          <div className="w-3 h-3 bg-emerald-500 rounded-full animate-pulse delay-500"></div>
-                          <span className="text-gray-600 group-hover:text-gray-900 transition-colors">Total Attendees</span>
+                      <div className="group cursor-default">
+                        <div className="flex items-center justify-between mb-2">
+                          <span className="text-sm font-medium text-gray-600">Past Events</span>
+                          <span className="text-2xl font-bold text-primary-yellow tabular-nums">
+                            {pastEvents.length}
+                          </span>
                         </div>
-                        <div className="text-2xl font-bold text-gray-900 group-hover:scale-110 transition-transform">500+</div>
+                        <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
+                          <div className={`h-full bg-primary-yellow rounded-full transition-all duration-[1500ms] ease-out delay-200 ${isVisible ? 'w-[85%]' : 'w-0'
+                            }`}></div>
+                        </div>
+                      </div>
+
+                      <div className="group cursor-default">
+                        <div className="flex items-center justify-between mb-2">
+                          <span className="text-sm font-medium text-gray-600">Total Attendees</span>
+                          <span className="text-2xl font-bold text-emerald-600 tabular-nums">300+</span>
+                        </div>
+                        <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
+                          <div className={`h-full bg-emerald-600 rounded-full transition-all duration-[1500ms] ease-out delay-400 ${isVisible ? 'w-[90%]' : 'w-0'
+                            }`}></div>
+                        </div>
                       </div>
 
                       <div className="pt-4 border-t border-gray-100">
-                        <div className="text-sm text-gray-500 mb-2">This Month's Activity</div>
-                        <div className="flex items-center gap-3">
-                          <div className="flex-1 h-2 bg-gray-100 rounded-full overflow-hidden">
-                            <div className="h-full bg-gradient-to-r from-emerald-500 to-blue-500 rounded-full animate-pulse" style={{ width: '78%' }}></div>
-                          </div>
-                          <span className="text-sm font-semibold text-gray-900">78%</span>
+                        <div className="flex items-center justify-between">
+                          <span className="text-sm font-medium text-gray-600">This Month</span>
+                          <span className="text-lg font-bold text-gray-900">78% Active</span>
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </CardContent>
+                </Card>
 
-                  {/* Quick action card with animation */}
-                  <div className="bg-gradient-to-br from-emerald-600 to-blue-600 text-white rounded-2xl p-6 shadow-xl animate-slideInFromRight hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1" style={{ animationDelay: '0.2s' }}>
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
-                        <Clock className="w-4 h-4 animate-spin" style={{ animationDuration: '4s' }} />
-                      </div>
-                      <h4 className="text-lg font-semibold">Next Event</h4>
+                {/* Next Event Card */}
+                <Card className={`border-2 bg-gradient-to-br from-emerald-50 to-white transition-all duration-1000 ease-out hover:shadow-xl ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
+                  }`} style={{ transitionDelay: '800ms' }}>
+                  <CardContent className="p-8">
+                    <div className="flex items-center gap-2 mb-6">
+                      <Calendar className="w-5 h-5 text-emerald-600" />
+                      <h3 className="text-lg font-bold text-gray-900">Next Event</h3>
                     </div>
 
                     {upcomingEvents.length > 0 ? (
-                      <div className="space-y-2">
-                        <p className="font-medium text-emerald-100">{upcomingEvents[0].title}</p>
-                        <p className="text-sm text-emerald-200">
-                          {new Date(upcomingEvents[0].date).toLocaleDateString('en-US', {
-                            month: 'long',
-                            day: 'numeric',
-                            year: 'numeric'
-                          })}
-                        </p>
+                      <div className="space-y-4">
+                        <div className={`transition-all duration-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+                          }`} style={{ transitionDelay: '900ms' }}>
+                          <h4 className="font-bold text-gray-900 mb-2">{upcomingEvents[0].title}</h4>
+                          <div className="space-y-3">
+                            <div className="flex items-start gap-3">
+                              <div className="w-8 h-8 bg-white rounded-lg flex items-center justify-center flex-shrink-0 shadow-sm">
+                                <Calendar className="w-4 h-4 text-emerald-600" />
+                              </div>
+                              <div>
+                                <div className="text-xs text-gray-500">Date</div>
+                                <div className="text-sm font-medium text-gray-900">
+                                  {upcomingEvents[0].date}
+                                </div>
+                              </div>
+                            </div>
+
+                            <div className="flex items-start gap-3">
+                              <div className="w-8 h-8 bg-white rounded-lg flex items-center justify-center flex-shrink-0 shadow-sm">
+                                <MapPin className="w-4 h-4 text-emerald-600" />
+                              </div>
+                              <div>
+                                <div className="text-xs text-gray-500">Location</div>
+                                <div className="text-sm font-medium text-gray-900">{upcomingEvents[0].location}</div>
+                              </div>
+                            </div>
+
+                            <div className="flex items-start gap-3">
+                              <div className="w-8 h-8 bg-white rounded-lg flex items-center justify-center flex-shrink-0 shadow-sm">
+                                <Users className="w-4 h-4 text-emerald-600" />
+                              </div>
+                              <div>
+                                <div className="text-xs text-gray-500">Attendees</div>
+                                <div className="text-sm font-medium text-gray-900">{upcomingEvents[0].attendees} registered</div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <Link href={`/events/${upcomingEvents[0].id}`}>
+                          <button
+                            className="w-full mt-4 px-4 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-all duration-300 hover:scale-105 transform text-sm font-medium"
+                          >
+                            View Details
+                          </button>
+                        </Link>
                       </div>
                     ) : (
-                      <p className="text-emerald-100">No upcoming events scheduled</p>
+                      <div className="text-center py-8">
+                        <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                          <Calendar className="w-6 h-6 text-gray-400" />
+                        </div>
+                        <p className="text-sm text-gray-500">No upcoming events scheduled</p>
+                      </div>
                     )}
+                  </CardContent>
+                </Card>
 
-                    <button className="mt-4 text-sm text-emerald-100 hover:text-white font-medium flex items-center gap-2 transition-colors group">
-                      View Details
-                      <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                      </svg>
-                    </button>
-                  </div>
-                </div>
+                {/* Event Categories Card */}
+                <Card className={`border-2 transition-all duration-1000 ease-out hover:shadow-xl ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
+                  }`} style={{ transitionDelay: '900ms' }}>
+                  <CardContent className="p-8">
+                    <div className="flex items-center gap-2 mb-6">
+                      <Sparkles className="w-5 h-5 text-amber-500" />
+                      <h3 className="text-lg font-bold text-gray-900">Event Types</h3>
+                    </div>
+                    <div className="space-y-4">
+                      {[
+                        { icon: Megaphone, label: "Workshops & Training", color: "emerald" },
+                        { icon: PartyPopper, label: "Fundraising Events", color: "blue" },
+                        { icon: Users, label: "Community Gatherings", color: "purple" },
+                        { icon: Award, label: "Award Ceremonies", color: "amber" }
+                      ].map((item, index) => (
+                        <div key={index} className={`flex items-center gap-3 group hover:bg-gray-50 hover:px-3 hover:py-2 hover:rounded-lg transition-all duration-300 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'
+                          }`} style={{ transitionDelay: `${index * 100 + 1000}ms` }}>
+                          <div className={`w-8 h-8 bg-${item.color}-50 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-${item.color}-100 transition-colors duration-300`}>
+                            <item.icon className={`w-4 h-4 text-${item.color}-600`} />
+                          </div>
+                          <span className="text-sm font-medium text-gray-700 group-hover:text-gray-900 transition-colors duration-300">{item.label}</span>
+                        </div>
+                      ))}
+                    </div>
+
+                    <div className={`pt-6 border-t border-gray-100 mt-6 transition-all duration-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+                      }`} style={{ transitionDelay: '1400ms' }}>
+                      <div className="flex flex-wrap gap-2">
+                        <span className="px-3 py-1 bg-emerald-50 text-xs font-medium text-emerald-700 rounded-full border border-emerald-200">
+                          Monthly
+                        </span>
+                        <span className="px-3 py-1 bg-blue-50 text-xs font-medium text-blue-700 rounded-full border border-blue-200">
+                          Free Entry
+                        </span>
+                        <span className="px-3 py-1 bg-purple-50 text-xs font-medium text-purple-700 rounded-full border border-purple-200">
+                          Open to All
+                        </span>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+
+              {/* CTA Buttons */}
+              <div className={`flex flex-wrap justify-center items-center gap-4 transition-all duration-1000 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                }`} style={{ transitionDelay: '1000ms' }}>
+                <button
+                  onClick={() => scrollToSection("upcoming-section")}
+                  className="px-8 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-xl transform active:scale-95 flex items-center gap-2"
+                >
+                  <Calendar className="w-5 h-5" />
+                  View All Events
+                </button>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Animated Upcoming Events */}
-        <section className="py-20 bg-background event-section">
+        {/* Upcoming Events */}
+        <section ref={upcomingRef} id="upcoming-section" className="py-20 bg-background upcoming-section">
           <div className="container mx-auto px-4">
-            <div className="text-center space-y-4 mb-16 animate-fadeInUp">
+            <div className={`text-center space-y-4 mb-16 transition-all duration-1000 ease-out ${isSectionVisible('upcoming-section') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+              }`}>
               <h2 className="text-3xl lg:text-4xl font-bold">Upcoming Events</h2>
               <p className="text-xl text-muted-foreground text-pretty max-w-2xl mx-auto">
                 Don't miss these exciting opportunities to get involved and support our mission
               </p>
+              <div className={`w-24 h-1 bg-gray-900 mx-auto transition-all duration-1000 ease-out delay-300 ${isSectionVisible('upcoming-section') ? 'w-24' : 'w-0'
+                }`}></div>
             </div>
 
             {upcomingEvents.length > 0 ? (
@@ -187,15 +303,17 @@ export default function EventsPage() {
                 {upcomingEvents.map((event, index) => (
                   <div
                     key={event.id}
-                    className="animate-fadeInUp hover:scale-105 transition-transform duration-300"
-                    style={{ animationDelay: `${index * 0.1}s` }}
+                    className={`transition-all duration-700 ease-out hover:scale-105 ${isSectionVisible('upcoming-section') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
+                      }`}
+                    style={{ transitionDelay: `${index * 150 + 300}ms` }}
                   >
                     <EventCard event={event} />
                   </div>
                 ))}
               </div>
             ) : (
-              <div className="text-center py-12 animate-fadeInUp">
+              <div className={`text-center py-12 transition-all duration-1000 ease-out ${isSectionVisible('upcoming-section') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                }`}>
                 <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Calendar className="w-8 h-8 text-gray-400" />
                 </div>
@@ -207,22 +325,26 @@ export default function EventsPage() {
           </div>
         </section>
 
-        {/* Animated Past Events */}
-        <section className="py-20 bg-card">
+        {/* Past Events */}
+        <section ref={pastRef} id="past-section" className="py-20 bg-card">
           <div className="container mx-auto px-4">
-            <div className="text-center space-y-4 mb-16 animate-fadeInUp">
+            <div className={`text-center space-y-4 mb-16 transition-all duration-1000 ease-out ${isSectionVisible('past-section') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+              }`}>
               <h2 className="text-3xl lg:text-4xl font-bold">Past Events</h2>
               <p className="text-xl text-muted-foreground text-pretty max-w-2xl mx-auto">
                 Take a look at some of our recent successful events and activities
               </p>
+              <div className={`w-24 h-1 bg-gray-900 mx-auto transition-all duration-1000 ease-out delay-300 ${isSectionVisible('past-section') ? 'w-24' : 'w-0'
+                }`}></div>
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {pastEvents.map((event, index) => (
                 <div
                   key={event.id}
-                  className="animate-fadeInUp hover:scale-105 transition-transform duration-300 opacity-80 hover:opacity-100"
-                  style={{ animationDelay: `${index * 0.1}s` }}
+                  className={`transition-all duration-700 ease-out hover:scale-105 ${isSectionVisible('past-section') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
+                    }`}
+                  style={{ transitionDelay: `${index * 150 + 300}ms` }}
                 >
                   <EventCard event={event} />
                 </div>
