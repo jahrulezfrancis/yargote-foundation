@@ -113,10 +113,10 @@ export default function ProgramsPage() {
               <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-12">
                 {[
                   { icon: Users, name: "Mentorship Circles", color: "emerald" },
-                  { icon: BookOpen, name: "Safe Space for Boys", color: "blue" },
-                  { icon: Award, name: "Life Skills Training", color: "#C7B55D" },
-                  { icon: Heart, name: "Parent-Boy Bonding", color: "#C7B55D" },
-                  { icon: Lightbulb, name: "Community Advocacy", color: "amber" }
+                  { icon: BookOpen, name: "Safe Space for Boys", color: "emerald" },
+                  { icon: Award, name: "Life Skills Training", color: "emerald" },
+                  { icon: Heart, name: "Parent-Boy Bonding", color: "emerald" },
+                  { icon: Lightbulb, name: "Community Advocacy", color: "emerald" }
                 ].map((program, index) => (
                   <Card key={index} className={`group hover:shadow-lg transition-all duration-500 border-2 hover:border-${program.color}-200 cursor-pointer ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
                     }`}
