@@ -1,4 +1,5 @@
 import { TeamMember } from '@/lib/types';
+import splitIntoParagraphs from '@/utils/formartText';
 import { Linkedin, Mail, X } from 'lucide-react';
 import { useState } from 'react';
 
@@ -10,12 +11,15 @@ interface TeamMemberProps {
 const TeamMemberModal = ({ member, isOpen, onClose }: { member: TeamMember; isOpen: boolean; onClose: () => void }) => {
     if (!isOpen) return null;
 
+
+    const aboutContent = splitIntoParagraphs(member.bio, 2);
+
     return (
-        <div 
+        <div
             className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm animate-fadeIn"
             onClick={onClose}
         >
-            <div 
+            <div
                 className="bg-card rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto animate-slideUp"
                 onClick={(e) => e.stopPropagation()}
             >
@@ -41,7 +45,7 @@ const TeamMemberModal = ({ member, isOpen, onClose }: { member: TeamMember; isOp
                         <div className="flex-1">
                             <h3 className="text-2xl md:text-3xl font-bold mb-2">{member.name}</h3>
                             <p className="text-accent font-medium text-lg mb-4">{member.role}</p>
-                            
+
                             <div className="flex gap-3">
                                 <a
                                     href={`mailto:${member.email}`}
@@ -65,7 +69,16 @@ const TeamMemberModal = ({ member, isOpen, onClose }: { member: TeamMember; isOp
 
                     <div className="space-y-4">
                         <h4 className="text-lg font-semibold">About</h4>
-                        <p className="text-muted-foreground leading-relaxed">{member.bio}</p>
+
+                        {aboutContent.map((paragraph, index) => (
+                            <p
+                                key={index}
+                                className="text-slate-700 leading-relaxed text-md"
+                                style={{ animationDelay: `${index * 0.1}s` }}
+                            >
+                                {paragraph}
+                            </p>
+                        ))}
                     </div>
                 </div>
             </div>
