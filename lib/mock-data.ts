@@ -167,11 +167,18 @@ export const mockBlogPosts: BlogPost[] = [
   },
   {
     id: "4",
-    title: "Community Spotlight: Transforming Eastside Boys with Yargote Foundation",
-    excerpt: "Explore how the Yargote Foundation’s programs, including school bag distributions, have revitalized the Eastside community by empowering its young boys.",
-    content: `Three years ago, the Yargote Foundation launched its 'Empower the Boy-Child Project' in the Eastside neighborhood, a community once marked by economic hardship and limited opportunities. Today, Eastside is a beacon of hope, thanks to our efforts to empower young boys.
-    Through school bag distributions, mentorship programs, and educational workshops, we’ve seen remarkable changes. Boys who once struggled academically are now excelling, with a 45% increase in high school graduation rates. Local business owner Janet Williams shares, “The Yargote Foundation has given our boys confidence and purpose. They’re staying in school and dreaming bigger.”
-    Beyond individual success, the community has transformed. Crime rates have dropped by 35%, and community engagement has soared as boys take on leadership roles. The school bags, emblazoned with the Yargote logo, are a symbol of this change, reminding everyone that investing in boys transforms entire communities.`,
+    title: "Community Cleaning in Kabusa: Building Responsibility Through Service",
+    excerpt: "In a powerful display of community spirit, the Yargote Foundation organized a “Community Cleaning in Kabusa” initiative, a hands-on exercise aimed at teaching young boys the value of cleanliness, responsibility, and giving back to their environment.",
+
+    content: `In a powerful display of community spirit, the Yargote Foundation organized a “Community Cleaning in Kabusa” initiative, a hands-on exercise aimed at teaching young boys the value of cleanliness, responsibility, and giving back to their environment.
+
+    Wearing black Yargote Foundation tees and protective gloves, the boys came together to clean their surroundings, sweeping, gathering waste, and restoring order to public spaces. The activity wasn’t just about keeping Kabusa clean; it was about instilling discipline, teamwork, and leadership in the next generation of young men.
+
+    Guided by Yargote Foundation volunteers, the boys learned that community development starts with personal responsibility. Each broom stroke and bag of collected waste symbolized their growing understanding that every small act of service contributes to a greater good.
+
+    Beyond the cleaning, the day was filled with laughter, teamwork, and unity, a reminder that empowering boys goes beyond words; it’s about helping them take action that impacts their communities.
+
+    Through this initiative, Yargote Foundation continues its mission to raise boys who are confident, compassionate, and community-minded, shaping them into responsible citizens ready to build a cleaner and stronger society.`,
     author: "Media Team",
     date: "2025-11-01",
     image: "https://i.ibb.co/5ggrTg0y/house-keeping.jpg?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2073&q=80",
@@ -179,7 +186,7 @@ export const mockBlogPosts: BlogPost[] = [
     readTime: 4,
     views: 98,
     likes: 18,
-  },
+  }
 ]
 export const mockProjects: ProjectType[] = [
   {
