@@ -10,6 +10,7 @@ import { notFound } from "next/navigation"
 import ShareModal from "@/components/shareModal"
 import { useShareModal } from "@/hooks/use-share"
 import Image from "next/image"
+import ImagesRenderer from "@/components/sections/render-images"
 
 interface EventPageProps {
   params: {
@@ -105,16 +106,7 @@ export default function EventPage({ params }: EventPageProps) {
                   </div>
 
                   {/* Image gallery section */}
-                  {event.images?.length &&
-                    <div>
-                      <h2 className="font-semibold text-gray-500 p-3">Images from the {event.title} </h2>
-                      <div className="flex p-3 flex-wrap gap-5">
-                        {event.images?.map((image, index) => {
-                          return <Image objectFit="cover" src={image} key={index} width={300} height={400} className="h-75 object-cover" alt={event.title} />
-                        })}
-                      </div>
-                    </div>
-                  }
+                  <ImagesRenderer title={event.title} images={event.images ?? []} />
                 </div>
 
 
