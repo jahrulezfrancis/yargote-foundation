@@ -10,6 +10,7 @@ import { useState, useEffect } from "react"
 import { useShareModal } from '@/hooks/use-share'
 import ShareModal from '@/components/shareModal'
 import splitIntoParagraphs from '@/utils/formartText'
+import ImagesRenderer from '@/components/sections/render-images'
 
 const categoryColors: Record<BlogCategory, string> = {
   "success-story": "bg-emerald-100 text-emerald-700 border-emerald-200",
@@ -123,7 +124,7 @@ export default function EnhancedBlogPostPage({ }: EnhancedBlogPostPageProps) {
 
           {/* Content */}
           <div className="relative z-10 container mx-auto px-4 pt-20 pb-32">
-            <div className="max-w-4xl mx-auto text-white">
+            <div className="max-w-5xl mx-auto text-white">
               <div className="space-y-8 animate-fade-in">
                 {/* Category Badge */}
                 <div className="inline-block">
@@ -230,6 +231,8 @@ export default function EnhancedBlogPostPage({ }: EnhancedBlogPostPageProps) {
                     </p>
                   ))}
                 </div>
+
+                {currentPost.images && currentPost.images.length > 0 && <ImagesRenderer images={currentPost.images ?? []} title={currentPost.title} />}
               </article>
 
               {/* Author Bio */}
