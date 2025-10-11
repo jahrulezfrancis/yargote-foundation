@@ -14,7 +14,7 @@ export const mockEvents: EventType[] = [
     location:
       "Day 1: Kabusa Community School, Abuja Day 2: GSTC, Garki, Abuja",
     image: "https://i.ibb.co/MDQGRdrT/empower-summit.jpg",
-    images: ["https://i.ibb.co/YFXnYyW6/boy-child22.jpg", "https://i.ibb.co/MDQGRdrT/empower-summit.jpg"],
+    // images: ["https://i.ibb.co/YFXnYyW6/boy-child22.jpg", "https://i.ibb.co/MDQGRdrT/empower-summit.jpg"],
     category: "community",
     status: "upcoming",
     attendees: 2,
@@ -22,12 +22,38 @@ export const mockEvents: EventType[] = [
   },
   {
     id: "empower-boy-child-summit-1",
-    title: "Empower the Boy Child Summit 1.0",
-    description: "Addressing the challenges faced by boys in today's society and preparing them to become responsible, confident, and empowered men of tomorrow. The summit featured guest speakers, engaging discussions, and community-building activities aimed at creating a balanced approach to youth development.",
-    date: "2024-02-28",
+    title: "First Cohort of the Empower the Boy Child Summit: 2024",
+    description: `
+    In November 2024, Yargote Foundation hosted the first edition of the Empower the Boy Child Summit, bringing together parents, educators, community leaders, and young boys who share a common dream of building a brighter future for the boy child.
+
+    The summit created a warm and engaging space for open conversations about the challenges boys face and the collective role society can play in supporting them. Participants shared experiences, exchanged ideas, and listened to heartfelt talks that emphasized mentorship, discipline, and emotional growth.
+
+    The gathering was filled with energy, learning, and a deep sense of community. Parents and guardians came out in large numbers to show their support, while young boys listened with curiosity and enthusiasm, eager to learn and be inspired. The summit became more than just an event — it became a movement that reminded everyone that empowering boys is essential for building balanced and thriving communities.
+
+    As we look forward to the next edition, our commitment remains firm. The upcoming summit will build on this strong foundation, introducing new opportunities to educate, guide, and inspire.
+
+    At Yargote Foundation, we believe every boy deserves to be seen, heard, and supported as he grows into a responsible and confident young man.`,
+    date: "2024-11-14",
     time: "2:00 PM",
     location: "Yargote Foundation",
-    image: "/placeholder.svg?height=400&width=600&text=Financial+Literacy+Workshop",
+    image: "https://i.ibb.co/NnVFH8YD/first-summit11.jpg?height=400&width=600&text=Financial+Literacy+Workshop",
+    images: [
+      "https://i.ibb.co/Rkkvfj4K/first-summit15.jpg",
+      "https://i.ibb.co/xqy5LskZ/first-summit14.jpg",
+      "https://i.ibb.co/gF93KGWM/first-summit13.jpg",
+      "https://i.ibb.co/SX8KsTPw/first-summit12.jpg",
+      "https://i.ibb.co/NnVFH8YD/first-summit11.jpg",
+      "https://i.ibb.co/kgkQpc3Y/first-summit10.jpg",
+      "https://i.ibb.co/wFsW1vnv/first-summit09.jpg",
+      "https://i.ibb.co/9HGg5C2T/first-summit08.jpg",
+      "https://i.ibb.co/XxGKYxsw/first-summit07.jpg",
+      "https://i.ibb.co/9H30RL7S/first-summit06.jpg",
+      "https://i.ibb.co/tMrJWc5T/first-summit05.jpg",
+      "https://i.ibb.co/fzGXBDTX/first-summit04.jpg",
+      "https://i.ibb.co/KpwZry9w/first-summit03.jpg",
+      "https://i.ibb.co/MxVkszzg/first-summit02.jpg",
+      "https://i.ibb.co/x8qzDdY1/first-summit01.jpg"
+    ],
     category: "workshop",
     status: "past",
     attendees: 45,
@@ -61,14 +87,26 @@ export const mockEvents: EventType[] = [
   },
   {
     id: "4",
-    title: "Soft Skills Training",
-    description: "Comprehensive training program for new mentors joining our programs.",
+    title: "Mentorship session with Ahmed Buhari. Former presidential condition",
+    description: `The Yargote Foundation recently hosted a powerful mentorship session with Ahmed Buhari, a respected leader, entrepreneur, and former presidential candidate. It was an inspiring day filled with stories, lessons, and reflections that left a lasting impression on everyone who attended.
+
+    During the session, Mr. Buhari spoke passionately about purpose, leadership, and the importance of self-belief. He encouraged the young participants to embrace education, discipline, and hard work as tools for creating a meaningful life. His words were not just motivational but deeply practical, drawn from his own experiences in business and public service.
+
+    The boys listened with keen attention as he shared the importance of integrity and community involvement. He reminded them that true leadership begins with the choices they make every day — how they treat others, how they manage their time, and how they stay focused on their goals.
+
+    It was a day of connection and inspiration. Many participants left the room feeling renewed, with a clearer sense of direction and a stronger belief in what they can achieve. The session reflected one of Yargote Foundation’s core values: building confident, informed, and purposeful young men who will shape a better future for their communities.
+
+    At Yargote Foundation, we remain grateful to Ahmed Buhari for sharing his time and wisdom, and for believing in the power of mentorship. Moments like this remind us why we do what we do — to open minds, build confidence, and light the path for tomorrow’s leaders.`,
     date: "2025-12-20",
     time: "10:00 AM",
     location: "Yargote Foundation Headquarters",
-    image: "/placeholder.svg?height=400&width=600&text=Mentor+Training",
+    image: "https://res.cloudinary.com/dsaaffacl/video/upload/v1760182066/ec66b788-f153-44af-869c-540c965526ce_r8dnem.png?height=400&width=600&text=Mentor+Training",
+    videos: [
+      "https://res.cloudinary.com/dsaaffacl/video/upload/v1760182066/ec66b788-f153-44af-869c-540c965526ce_r8dnem.mov",
+      "https://res.cloudinary.com/dsaaffacl/video/upload/v1760181822/c7c05653-a375-4e8e-9318-e7d0821dd859_onrunn.mov"
+    ],
     category: "training",
-    status: "upcoming",
+    status: "past",
     attendees: 25,
     maxAttendees: 30,
   },
@@ -112,6 +150,9 @@ export const mockBlogPosts: BlogPost[] = [
     author: "Media Team",
     date: "2025-09-10",
     image: "https://i.ibb.co/zV0Vb2nm/children-with-bags.jpg?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+    images: [
+
+    ],
     category: "success-story",
     readTime: 8,
     views: 120,
@@ -137,11 +178,50 @@ export const mockBlogPosts: BlogPost[] = [
     author: "Media Team",
     date: "2025-10-01",
     image: "https://i.ibb.co/sJbLjgpR/Whats-App-Image-2025-09-24-at-11-45-53-PM.jpg?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80",
+    images: [
+      // "https://i.ibb.co/j9YF8J6F/boy-child23.jpg",
+      "https://i.ibb.co/YFXnYyW6/boy-child22.jpg",
+      "https://i.ibb.co/20B0Xjxd/boy-child20.jpg",
+      "https://i.ibb.co/SDtSyc77/boy-child13.jpg",
+      "https://i.ibb.co/pjrThhpH/boy-child12.jpg",
+      "https://i.ibb.co/8nsVBfd4/boy-child11.jpg",
+    ],
     category: "program-update",
     readTime: 3,
     views: 85,
     likes: 15,
   },
+
+  {
+    id: "learning-beyond-walls",
+    title: "When the Class Was Closed, the Will to Learn Stayed Open",
+    excerpt: "The Yargote Foundation set the tone for the International Day of the Boy Child 2025 with a vibrant 3-kilometer road walk through the heart of Abuja, Nigeria. The event shone a spotlight on the often-overlooked challenges faced by boys, especially those in unreachable or conflict-affected communities.",
+    content: `
+    At Yargote Foundation, we believe that learning should never be limited by walls or circumstances. This belief came alive in a powerful way during one of our regular class sessions when the security personnel didn’t open the classroom on time.
+
+    Instead of letting that setback stop them, our boys decided to take their lessons outdoors. With notebooks in hand and determination on their faces, they gathered under the open sky to continue learning. It was a beautiful reminder that education is not about a building—it’s about the will to grow, learn, and share knowledge wherever you are.
+
+    Moments like these reflect the spirit of resilience and commitment we hope to instill in every child we support. These boys remind us daily that when passion meets purpose, no locked door can stop progress.
+
+    We are inspired at Yargote foundation to keep providing access, encouragement, and the resources needed to nurture such unbreakable spirits.`,
+    author: "Media Team",
+    date: "2025-10-01",
+    image: "https://i.ibb.co/zVyNwGJv/boys-outside.jpg?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80",
+    images: [
+      "https://i.ibb.co/zVyNwGJv/boys-outside.jpg",
+      "https://i.ibb.co/KxzbYY1G/boys-outside2.jpg"
+    ],
+    category: "program-update",
+    readTime: 3,
+    views: 85,
+    likes: 15,
+  },
+
+  // Mentorship session with Ahmed Buhari. Former presidential condition
+
+  // Regular class session on a day that the security man didn't open the class
+
+
   {
     id: "3",
     title: "2025 Impact Report: Yargote Foundation’s Year of Empowering Boys",
@@ -182,6 +262,18 @@ export const mockBlogPosts: BlogPost[] = [
     author: "Media Team",
     date: "2025-11-01",
     image: "https://i.ibb.co/5ggrTg0y/house-keeping.jpg?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2073&q=80",
+    images: [
+      "https://i.ibb.co/SDPSSPtM/cleaning11.jpg",
+      "https://i.ibb.co/QFbztTR4/cleaning10.jpg",
+      "https://i.ibb.co/sdC2BDxg/cleaning9.jpg",
+      "https://i.ibb.co/x8S9HjtD/cleaning8.jpg",
+      "https://i.ibb.co/sJ5hLwB9/cleaning7.jpg",
+      "https://i.ibb.co/67G0ys7L/cleaning6.jpg",
+      "https://i.ibb.co/hFSk6Y0f/cleaning5.jpg",
+      "https://i.ibb.co/6Jg4fskL/cleaning4.jpg",
+      "https://i.ibb.co/HL1tVSvm/cleaning3.jpg",
+      "https://i.ibb.co/B5zHJCpX/cleaning2.jpg",
+      "https://i.ibb.co/kVpGTLp1/cleaning1.jpg"],
     category: "community-news",
     readTime: 4,
     views: 98,
@@ -558,7 +650,7 @@ export const coreValues = [
 
 export const mockTeamMembers = [
   {
-    name: "ANNA HUSSAINI PAI",
+    name: "Anna Hussaini Pai",
     role: "Executive Director",
     image: "/placeholder.svg?height=300&width=300&text=Dr.+Sarah+Johnson",
     bio: "With over 15 years in youth development, Dr. Johnson leads our mission with passion and expertise.",
@@ -566,15 +658,23 @@ export const mockTeamMembers = [
     linkedin: "#",
   },
   {
-    name: "IBRAHIM DAN-MUSA",
+    name: "John Doe",
+    role: "Board Of Trustee Chairman",
+    image: "https://i.ibb.co/jPp616F4/board-director.jpg?height=300&width=300&text=James+Rodriguez",
+    bio: "A former program participant, James now coordinates activities and serves as a role model for current participants.",
+    email: "james@yargotefoundation.org",
+    linkedin: "#",
+  },
+  {
+    name: "Ibrahim Dan-Musa",
     role: "Program Director",
     image: "https://i.ibb.co/V0fbLMzZ/Whats-App-Image-2025-10-05-at-12-35-55-AM.jpg?height=300&width=300&text=Michael+Chen",
-    bio: "Ibrahim Gambo Dan-Musa is a dynamic lawyer and energy professional with a strong track record in Contract, Property, and Oil & Gas Law, as well as strategic management. A First Class graduate of Law  from the University of Hertfordshire, England, and holder of a Masters Degree in International Oil & Gas Management from the University of Dundee, Scotland. He combines legal expertise with deep industry insight. Passionate about driving innovation in Nigeria’s energy sector, Ibrahim has authored influential papers on Gas Flaring, Electricity Market Liberalization, and Culture Management in Multinational Acquisitions. He is also a key player in operations management in the upstream oil and gas sector.Beyond his professional achievements, Ibrahim is known for his dedication to volunteering and community development, earning several awards for outstanding service during his time in the UK. His work reflects a commitment not just to legal and energy excellence, but also to creating meaningful impact in society.",
+    bio: "Ibrahim Gambo Dan-Musa is a dynamic lawyer and energy professional with a strong track record in Contract, Property, and Oil & Gas Law, as well as strategic management. A First Class graduate of Law from the University of Hertfordshire, England, and holder of a Masters Degree in International Oil & Gas Management from the University of Dundee, Scotland. He combines legal expertise with deep industry insight. Passionate about driving innovation in Nigeria’s energy sector, Ibrahim has authored influential papers on Gas Flaring, Electricity Market Liberalization, and Culture Management in Multinational Acquisitions. He is also a key player in operations management in the upstream oil and gas sector. Beyond his professional achievements, Ibrahim is known for his dedication to volunteering and community development, earning several awards for outstanding service during his time in the UK. His work reflects a commitment not just to legal and energy excellence, but also to creating meaningful impact in society.",
     email: "michael@yargotefoundation.org",
     linkedin: "#",
   },
   {
-    name: "EMMANUELLA ATIOMO",
+    name: "Emmanuella Atiomo",
     role: "Youth Coordinator",
     image: "/placeholder.svg?height=300&width=300&text=James+Rodriguez",
     bio: "A former program participant, James now coordinates activities and serves as a role model for current participants.",
@@ -582,7 +682,7 @@ export const mockTeamMembers = [
     linkedin: "#",
   },
   {
-    name: "HUSSAINI HALILU PAI",
+    name: "Hussaini Halilu Pai",
     role: "Community Outreach Manager",
     image: "/placeholder.svg?height=300&width=300&text=Dr.+Amara+Okafor",
     bio: "Dr. Okafor builds bridges between communities and ensures our programs reach those who need them most.",
@@ -590,7 +690,7 @@ export const mockTeamMembers = [
     linkedin: "#",
   },
   {
-    name: "TEMILADE DARAMOLA",
+    name: "Temilade Daramola",
     role: "Youth Coordinator",
     image: "/placeholder.svg?height=300&width=300&text=James+Rodriguez",
     bio: "A former program participant, James now coordinates activities and serves as a role model for current participants.",
@@ -598,12 +698,12 @@ export const mockTeamMembers = [
     linkedin: "#",
   },
   {
-    name: "JAMES VANDEFAN",
+    name: "James Vandefan",
     role: "Community Outreach Manager",
     image: "/placeholder.svg?height=300&width=300&text=Dr.+Amara+Okafor",
     bio: "Dr. Okafor builds bridges between communities and ensures our programs reach those who need them most.",
     email: "amara@yargotefoundation.org",
     linkedin: "#",
   },
-]
+];
 
