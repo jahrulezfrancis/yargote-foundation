@@ -146,7 +146,7 @@ const TimelineNode: React.FC<TimelineNodeProps> = ({ milestone, index, isActive,
 
             {/* Timeline node */}
             <div className="col-span-2 flex justify-center relative z-10">
-              <div className={`w-16 h-16 rounded-full bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center text-white font-bold shadow-2xl transform transition-all duration-500 ${isActive ? 'scale-125 ring-8 ring-gray-200 ring-opacity-50' : 'hover:scale-110'
+              <div className={`w-16 h-16 rounded-full bg-gradient-to-br from-emerald-600 to-gray-900 flex items-center justify-center text-white font-bold shadow-2xl transform transition-all duration-500 ${isActive ? 'scale-125 ring-8 ring-gray-200 ring-opacity-50' : 'hover:scale-110'
                 }`}>
                 <div className="text-center">
                   <div className="text-lg font-bold">{milestone.year.slice(-2)}</div>
@@ -268,7 +268,7 @@ const TimelineComponent = () => {
               <button
                 key={index}
                 className={`group relative px-4 py-2 rounded-full transition-all duration-300 ${index === activeIndex
-                  ? 'bg-gray-900 text-white shadow-md'
+                  ? ' bg-gradient-to-br from-emerald-600 to-gray-900 text-white shadow-md'
                   : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
                   }`}
                 onClick={() => setActiveIndex(index)}
@@ -326,7 +326,7 @@ const TimelineComponent = () => {
         {/* Call to action */}
         <div className="mt-16 text-center fade-in-up" style={{ animationDelay: "600ms" }}>
           <Link href={"/volunteer"} >
-            <button className="group inline-flex items-center gap-3 px-8 py-4 bg-gray-900 text-white rounded-full hover:bg-gray-800 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
+            <button className="group inline-flex items-center gap-3 px-8 py-3 bg-emerald-600 text-white rounded-full hover:bg-emerald-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
               <span className="font-semibold">Join Our Journey</span>
               <ArrowRight className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" />
             </button>
