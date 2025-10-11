@@ -9,8 +9,8 @@ import Link from "next/link"
 import { notFound } from "next/navigation"
 import ShareModal from "@/components/shareModal"
 import { useShareModal } from "@/hooks/use-share"
-import Image from "next/image"
 import ImagesRenderer from "@/components/sections/render-images"
+import splitIntoParagraphs from "@/utils/formartText"
 
 interface EventPageProps {
   params: {
@@ -36,6 +36,8 @@ export default function EventPage({ params }: EventPageProps) {
   }
 
   const { openShareModal, closeShareModal, isShareModalOpen } = useShareModal()
+
+  const paragraphContent = splitIntoParagraphs(event.description, 1)
 
   const handleShareClick = () => {
     openShareModal({
@@ -100,15 +102,35 @@ export default function EventPage({ params }: EventPageProps) {
                   {/* Event Description */}
                   <div className="prose prose-slate prose-lg max-w-none">
                     <h2 className="text-2xl font-bold text-slate-900 mb-4">About This Event</h2>
-                    <p className="text-slate-600 leading-relaxed">
-                      {event.description}
-                    </p>
+                    <div className="space-y-8">
+                      {paragraphContent.map((paragraph, index) => (
+                        <p
+                          key={index}
+                          className="text-slate-700 leading-relaxed text-lg"
+                          style={{ animationDelay: `${index * 0.1}s` }}
+                        >
+                          {paragraph}
+                        </p>
+                      ))}
+                    </div>
                   </div>
 
                   {/* Image gallery section */}
-                  <ImagesRenderer title={event.title} images={event.images ?? []} />
+                  {event.images && event.images.length > 0 && <ImagesRenderer title={event.title} images={event.images ?? []} />}
+                  {event.videos && event.videos.length > 0 &&
+                    event.videos.map((videoUrl, index) => (
+                      <div key={index} className="w-full aspect-video">
+                        <video
+                          src={videoUrl}
+                          controls
+                          className="w-full h-full object-cover rounded-lg"
+                        >
+                          Your browser does not support the video tag.
+                        </video>
+                      </div>
+                    ))
+                  }
                 </div>
-
 
                 {/* Sidebar */}
                 <div className="space-y-8 w-full">
