@@ -42,7 +42,7 @@ export function ImpactSection() {
                 </ul>
               </div>
 
-              <Button asChild className="bg-primary h-12 hover:bg-primary/90 hover:scale-105 transition-all duration-300">
+              <Button asChild variant={"gradient"} className="bg-primary h-12 hover:bg-primary/90 hover:scale-105 transition-all duration-300">
                 <Link href="/programs" className="flex items-center gap-2">
                   Learn More About Our Programs
                   <ArrowRight className="w-4 h-4" />

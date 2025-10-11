@@ -48,16 +48,15 @@ export function EventCard({ event }: EventCardProps) {
             </div>
 
             <div className="absolute top-4 left-4 flex gap-2">
-              <Badge className={`${categoryColors[event.category]} font-medium px-3 py-1 text-xs`}>
+              <Badge className={`bg-gray-700 font-medium px-3 py-1 text-xs`}>
                 {event.category.charAt(0).toUpperCase() + event.category.slice(1)}
               </Badge>
             </div>
             <div className="absolute top-4 right-4">
               <Badge
-                variant={event.status === "upcoming" ? "default" : "secondary"}
                 className={
                   event.status === "upcoming"
-                    ? "bg-accent text-accent-foreground font-medium px-3 py-1"
+                    ? "bg-emerald-700 text-accent-foreground font-medium px-3 py-1"
                     : "bg-muted text-muted-foreground font-medium px-3 py-1"
                 }
               >
@@ -107,11 +106,11 @@ export function EventCard({ event }: EventCardProps) {
 
             {event.status === "upcoming" && (
               <Button
-                asChild
-                className="w-full h-12 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold group/btn transition-all duration-200"
+                asChild variant={"emerald"}
+                className="w-full h-12 text-white bg-emerald-600 border font-semibold group/btn transition-all duration-200"
               >
                 <Link href={`/events/${event.id}`} className="flex items-center justify-center gap-2">
-                  Learn More
+                  View Details
                   <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover/btn:translate-x-1" />
                 </Link>
               </Button>
@@ -120,7 +119,7 @@ export function EventCard({ event }: EventCardProps) {
               <Button
                 asChild
                 variant="outline"
-                className="w-full h-12 text-foreground/80 hover:text-foreground hover:bg-emerald-100 font-semibold group/btn transition-all duration-200"
+                className="w-full h-12 text-foreground/80 hover:bg-gray-100 hover:text-gray-700 font-semibold group/btn transition-all duration-200"
               >
                 <Link href={`/events/${event.id}`} className="flex items-center justify-center gap-2">
                   View Past Event
