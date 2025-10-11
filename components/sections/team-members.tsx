@@ -105,7 +105,7 @@ export default function TeamMemberCard({ member }: TeamMemberProps) {
                     />
                     <div className="p-6 space-y-4">
                         <div>
-                            <h3 className="text-xl font-semibold">{member.name}</h3>
+                            <h3 style={{textTransform: "capitalize"}} className="text-xl font-semibold">{member.name}</h3>
                             <p className="text-accent font-medium">{member.role}</p>
                         </div>
 
