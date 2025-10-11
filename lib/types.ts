@@ -23,6 +23,7 @@ export interface EventType {
   time: string
   location: string
   image: string
+  videos?: string[]
   images?: string[]
   category: "workshop" | "fundraiser" | "community" | "training"
   status: "upcoming" | "past"
