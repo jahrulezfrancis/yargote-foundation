@@ -64,6 +64,9 @@ const ContactFormWrapper = () => {
   )
 }
 
+const waMessageLink = "https://wa.me/2348065361349?text=Hello!%20I%20just%20visited%20your%20website%20and%20would%20love%20to%20learn%20more%20about%20your%20organization%20and%20how%20I%20can%20get%20involved%20or%20support%20your%20work"
+
+
 export default function ContactPage() {
   return (
     <div className="min-h-screen bg-background">
@@ -220,9 +223,9 @@ export default function ContactPage() {
                             <Button
                               asChild
                               size="sm"
-                              className="bg-emerald-600 hover:bg-emerald-700 text-white mt-2"
+                              className="bg-emerald-600 hover:bg-emerald-700 text-white mt-2 h-7"
                             >
-                              <a href={"https://wa.me/2348065361349"} target={'_blank'} rel={'noopener noreferrer'}>
+                              <a href={waMessageLink} target={'_blank'} rel={'noopener noreferrer'}>
                                 Message Now
                               </a>
                             </Button>
@@ -269,10 +272,10 @@ export default function ContactPage() {
             </div>
             <div className="p-4 bg-white flex justify-center">
               <Link href={"https://maps.app.goo.gl/DXw2LDrJeThEoUpWA"} target="_blank" rel="noopener noreferrer">
-              <Button variant="outline" className="w-auto border-emerald-600 text-emerald-600 hover:bg-emerald-600 hover:text-white">
-                <MapPin className="w-4 h-4 mr-2" />
-                Get Directions
-              </Button>
+                <Button variant="outline" className="w-auto border-emerald-600 text-emerald-600 hover:bg-emerald-600 hover:text-white">
+                  <MapPin className="w-4 h-4 mr-2" />
+                  Get Directions
+                </Button>
               </Link>
             </div>
           </CardContent>
