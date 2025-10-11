@@ -1,10 +1,6 @@
-import { useState } from "react"
-import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Heart, Users, Handshake, ArrowRight, Quote, Mail, Target, Eye, CheckCircle2 } from "lucide-react"
+import { Target, Eye, CheckCircle2 } from "lucide-react"
 
-// About Section (Mission & Vision)
 export function AboutSection() {
     return (
         <section className="py-20 bg-white">
