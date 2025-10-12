@@ -3,7 +3,6 @@
 import { useParams } from 'next/navigation'
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { mockBlogPosts } from "@/lib/mock-data" // Updated import for multiple posts
 import { BlogCategory, BlogPost } from "@/lib/types"
 import { Calendar, Clock, User, ArrowLeft, Share2, Heart, Bookmark, Eye } from "lucide-react"
 import { useState, useEffect } from "react"
@@ -11,6 +10,7 @@ import { useShareModal } from '@/hooks/use-share'
 import ShareModal from '@/components/shareModal'
 import splitIntoParagraphs from '@/utils/formartText'
 import ImagesRenderer from '@/components/sections/render-images'
+import { useAppStore } from '@/store/useAppStore'
 
 const categoryColors: Record<BlogCategory, string> = {
   "success-story": "bg-emerald-100 text-emerald-700 border-emerald-200",
@@ -33,6 +33,8 @@ export default function EnhancedBlogPostPage({ }: EnhancedBlogPostPageProps) {
   const params = useParams()
   const postId = params?.id as string
 
+  const { blogs, loading: dataLoading } = useAppStore()
+
   const [currentPost, setCurrentPost] = useState<BlogPost | null>(null)
   const [isLiked, setIsLiked] = useState(false)
   const [isBookmarked, setIsBookmarked] = useState(false)
@@ -50,11 +52,10 @@ export default function EnhancedBlogPostPage({ }: EnhancedBlogPostPageProps) {
     })
   }
 
-  // Fetch or find the specific post based on ID
   useEffect(() => {
     if (postId) {
       // For demo purposes, find post from mock data
-      const post = mockBlogPosts.find(p => p.id === postId)
+      const post = blogs.find(p => p.id === postId)
       if (post) {
         setCurrentPost(post)
         setLikes(post.likes)
@@ -62,7 +63,7 @@ export default function EnhancedBlogPostPage({ }: EnhancedBlogPostPageProps) {
       }
       setLoading(false)
     }
-  }, [postId])
+  }, [postId, blogs])
 
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString("en-US", {
@@ -86,12 +87,15 @@ export default function EnhancedBlogPostPage({ }: EnhancedBlogPostPageProps) {
   }
 
   if (!currentPost) {
+    // return <BlogPageSkeleton />
     return (
       <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 via-white to-slate-100">
         <div className="text-lg text-slate-600">Post not found</div>
       </div>
     )
   }
+
+  console.log("Rendering post:", currentPost)
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100">

@@ -3,14 +3,15 @@
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { Calendar, Clock, MapPin, Users, ArrowLeft, Share2 } from "lucide-react"
-import { mockEvents } from "@/lib/mock-data"
+import { Calendar, Clock, MapPin, ArrowLeft, Share2, } from "lucide-react"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import ShareModal from "@/components/shareModal"
 import { useShareModal } from "@/hooks/use-share"
 import ImagesRenderer from "@/components/sections/render-images"
 import splitIntoParagraphs from "@/utils/formartText"
+import ContentPageSkeleton from "@/components/skeletons/content-skeleton"
+import { useAppStore } from "@/store/useAppStore"
 
 interface EventPageProps {
   params: {
@@ -18,13 +19,13 @@ interface EventPageProps {
   }
 }
 
-
 export default function EventPage({ params }: EventPageProps) {
-  const event = mockEvents.find((e) => e.id === params.id)
 
-  if (!event) {
-    notFound()
-  }
+  const {events, loading} = useAppStore()
+
+  const event = events.find((e) => e.id === params.id)
+
+  console.log(params)
 
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString("en-US", {
@@ -36,6 +37,14 @@ export default function EventPage({ params }: EventPageProps) {
   }
 
   const { openShareModal, closeShareModal, isShareModalOpen } = useShareModal()
+
+  if (loading) {
+    return <ContentPageSkeleton />
+  }
+
+  if (!event) {
+    return notFound()
+  }
 
   const paragraphContent = splitIntoParagraphs(event.description, 1)
 
@@ -82,9 +91,6 @@ export default function EventPage({ params }: EventPageProps) {
                 <h1 className="text-4xl lg:text-6xl font-bold text-white leading-tight drop-shadow-lg">
                   {event.title}
                 </h1>
-                {/* <p className="text-xl lg:text-2xl text-white/90 leading-relaxed max-w-4xl font-light drop-shadow-md">
-                  {event.description}
-                </p> */}
               </div>
             </div>
           </div>

@@ -5,10 +5,12 @@ import { Badge } from "@/components/ui/badge"
 import { Heart, Target, Users, Mail, Linkedin, User, UserPlus, Calendar, MapPin } from "lucide-react"
 import { useState, useEffect, useRef } from "react"
 import TimelineComponent from "@/components/Program/timeline"
-import { coreValues, mockTeamMembers } from "@/lib/mock-data"
+import { coreValues } from "@/lib/mock-data"
 import scrollToSection from "@/utils/scrollTo"
 import Link from "next/link"
 import TeamMemberCard from "@/components/sections/team-members"
+import { useAppStore } from "@/store/useAppStore"
+import { TeamMemberGridSkeleton } from "@/components/skeletons/team-member-skeleton"
 
 
 const missionStatement = [
@@ -36,6 +38,8 @@ export default function AboutPage() {
   const [isVisible, setIsVisible] = useState(false)
   const [counters, setCounters] = useState({ boys: 0, mentors: 0, communities: 0 })
   const [visibleSections, setVisibleSections] = useState(new Set())
+
+  const { team: teamMembers } = useAppStore()
 
   const missionRef = useRef(null)
   const storyRef = useRef(null)
@@ -486,12 +490,15 @@ export default function AboutPage() {
                 Dedicated professionals committed to empowering the next generation of leaders
               </p>
             </div>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {mockTeamMembers.map((member, index) => (
-              <TeamMemberCard member={member} key={index} />
-              ))}
-            </div>
+            {teamMembers.length && teamMembers?
+              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                {teamMembers.map((member, index) => (
+                  <TeamMemberCard member={member} key={index} />
+                ))}
+              </div>
+              :
+              <TeamMemberGridSkeleton />
+            }
           </div>
         </section>
 

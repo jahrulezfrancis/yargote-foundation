@@ -3,21 +3,23 @@
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
 import { EventCard } from "@/components/event-card"
-import { mockEvents } from "@/lib/mock-data"
-import { Calendar, Users, Clock, MapPin, Sparkles, TrendingUp, Award, PartyPopper, Megaphone } from "lucide-react"
+import { Calendar, Users, MapPin, Sparkles, TrendingUp, Award, PartyPopper, Megaphone } from "lucide-react"
 import scrollToSection from "@/utils/scrollTo"
 import { useState, useEffect, useRef } from "react"
 import Link from "next/link"
+import { useAppStore } from "@/store/useAppStore"
 
 export default function EventsPage() {
   const [isVisible, setIsVisible] = useState(false)
   const [visibleSections, setVisibleSections] = useState(new Set())
 
+  const { events } = useAppStore()
+
   const upcomingRef = useRef(null)
   const pastRef = useRef(null)
 
-  const upcomingEvents = mockEvents.filter((event) => event.status === "upcoming")
-  const pastEvents = mockEvents.filter((event) => event.status === "past")
+  const upcomingEvents = events.filter((event) => event.status === "upcoming")
+  const pastEvents = events.filter((event) => event.status === "past")
 
   useEffect(() => {
     setIsVisible(true)

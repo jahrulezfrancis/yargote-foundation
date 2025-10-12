@@ -3,12 +3,12 @@
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { Users, CheckCircle, Clock, ArrowRight, BookOpen, Heart, Shield, MessageCircle, DollarSign, TreePine, Megaphone, Star, Target, Award, TrendingUp, Lightbulb } from "lucide-react"
+import { Users, CheckCircle, Clock, ArrowRight, BookOpen, Heart, Shield, MessageCircle, DollarSign, TreePine, Megaphone, Target, Award, TrendingUp, Lightbulb } from "lucide-react"
 import { useState, useEffect, useRef } from "react"
-import { programs } from "@/lib/mock-data"
 import Link from "next/link"
 import CountUp from "@/utils/countUp"
 import EmpowerTheBoyChildProjecComponent from "@/components/sections/empower-the-boy-child"
+import { useAppStore } from "@/store/useAppStore"
 
 const programComponents = [
   {
@@ -38,10 +38,22 @@ const programComponents = [
   },
 ]
 
+const outcomes = [
+  "Improved academic performance through personalized guidance",
+  "Enhanced career awareness and goal setting",
+  "Strengthened personal development and confidence",
+  "Positive male role model relationships established",
+  "Participants grow into peer mentors, building leadership."
+]
+
 
 export default function ProgramsPage() {
   const [isVisible, setIsVisible] = useState(false)
   const [visibleSections, setVisibleSections] = useState(new Set())
+
+  const { programs } = useAppStore()
+
+  console.log("Programs data:", programs)
 
   const coreRef = useRef(null)
   const featuredRef = useRef(null)
@@ -72,9 +84,11 @@ export default function ProgramsPage() {
     })
 
     return () => observer.disconnect()
-  }, [])
+  }, [programs])
 
   const isSectionVisible = (sectionId: string) => visibleSections.has(sectionId)
+
+
 
   return (
     <div className="min-h-screen bg-white overflow-hidden">
@@ -215,24 +229,30 @@ export default function ProgramsPage() {
                 </Card>
 
                 {/* Quick Facts Card */}
-                <Card className={`border-2 transition-all duration-1000 ease-out hover:shadow-xl opacity-100 translate-y-0`} style={{ transitionDelay: '1000ms' }}>
+                <Card
+                  className={`border-2 transition-all duration-1000 ease-out hover:shadow-xl opacity-100 translate-y-0`}
+                  style={{ transitionDelay: "1000ms" }}
+                >
                   <CardContent className="p-6 md:p-8">
                     <div className="flex items-center gap-2 mb-6">
                       <Award className="w-5 h-5 text-amber-500" />
                       <h3 className="text-lg font-bold text-gray-900">Results & Outcomes</h3>
                     </div>
                     <div className="">
-                      <div className={`transition-all space-y-4 duration-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-                        }`}>
-                        {programs[0].outcomes.map((outcome, index) => (
+                      <div
+                        className={`transition-all space-y-4 duration-500 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+                          }`}
+                      >
+                        {outcomes.map((outcome, index) => (
                           <div
                             key={index}
-                            className={`flex items-center gap-4 group hover:bg-white p- rounded-xl transition-all duration-500 hover:-translate-y-1 transform  opacity-100 translate-x-0
-                              }`}
+                            className={`flex items-center gap-4 group hover:bg-white rounded-xl transition-all duration-500 hover:-translate-y-1 transform opacity-100 translate-x-0`}
                             style={{ transitionDelay: `${index * 200 + 1200}ms` }}
                           >
                             <CheckCircle className="w-6 h-6 text-emerald-600 flex-shrink-0 group-hover:scale-110 transition-transform duration-300" />
-                            <span className="text-gray-600 text-sm md:text-md group-hover:text-gray-800 transition-colors duration-300">{outcome}</span>
+                            <span className="text-gray-600 text-sm md:text-md group-hover:text-gray-800 transition-colors duration-300">
+                              {outcome}
+                            </span>
                           </div>
                         ))}
                       </div>
@@ -329,29 +349,6 @@ export default function ProgramsPage() {
                 <div className="absolute -bottom-4 -left-4 w-4 h-4 bg-gray-600 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500 delay-400 animate-pulse"></div>
               </div>
             </div>
-
-            {/* Program Components with staggered animation */}
-            <div className={`grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12 md:mb-16 transition-all duration-1000 ease-out px-4 ${isSectionVisible('featured-section') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-              }`} style={{ transitionDelay: '600ms' }}>
-              {programs[0].components?.map((component, index) => (
-                <Card
-                  key={index}
-                  className={`text-center p-6 md:p-8 border-gray-100 hover:shadow-xl transition-all duration-700 hover:-translate-y-2 group bg-white hover:bg-gradient-to-br hover:from-white hover:to-gray-50 ${isSectionVisible('featured-section') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-                    }`}
-                  style={{ transitionDelay: `${index * 150 + 800}ms` }}
-                >
-                  <CardContent className="space-y-4 md:space-y-6">
-                    <div className="w-14 h-14 md:w-16 md:h-16 bg-gray-50 group-hover:bg-emerald-600 rounded-2xl flex items-center justify-center mx-auto transition-all duration-500 group-hover:rotate-12 transform">
-                      <component.icon className="w-7 h-7 md:w-8 md:h-8 text-gray-900 group-hover:text-white transition-colors duration-300" />
-                    </div>
-                    <h3 className="text-base md:text-lg font-bold text-gray-900 group-hover:text-gray-800">{component.title}</h3>
-                    <p className="text-gray-600 text-sm text-pretty leading-relaxed group-hover:text-gray-700 transition-colors duration-300">{component.description}</p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-
-
           </div>
         </section>
 
@@ -400,7 +397,7 @@ export default function ProgramsPage() {
             </div>
 
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
-              {programs.slice(1).map((program, index) => (
+              {programs.slice(0).map((program, index) => (
                 <Card key={index} className={`overflow-hidden border-gray-100 hover:shadow-2xl transition-all duration-1000 hover:-translate-y-3 group bg-white hover:bg-gradient-to-br hover:from-white hover:to-gray-50 ${isSectionVisible('all-programs-section') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
                   }`}
                   style={{ transitionDelay: `${index * 150 + 300}ms` }}>

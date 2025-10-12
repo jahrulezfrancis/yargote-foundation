@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect, useRef } from 'react';
 import { ChevronLeft, ChevronRight, Play, Pause, X, Maximize2, Download, Heart, Share2, ZoomIn, Camera } from 'lucide-react';
-import { galleryImages } from '@/lib/mock-data';
+import { useAppStore } from '@/store/useAppStore';
 
 
 const BoyChildGallery = () => {
@@ -9,9 +9,11 @@ const BoyChildGallery = () => {
     const [isFullscreen, setIsFullscreen] = useState(false);
     const [isPlaying, setIsPlaying] = useState(false);
     const [fullscreenIndex, setFullscreenIndex] = useState(0);
-    const [loadingImages, setLoadingImages] = useState(new Set());
-    const [likedImages, setLikedImages] = useState(new Set());
+    const [loadingImages, setLoadingImages] = useState<Set<number | string>>(new Set<number | string>());
+    const [likedImages, setLikedImages] = useState<Set<number | string>>(new Set<number | string>());
     const intervalRef = useRef<NodeJS.Timeout | null>(null);
+
+    const {galleryImages} = useAppStore()
 
     const featuredImages = galleryImages.filter(img => img.featured);
     const allImages = galleryImages;
@@ -77,7 +79,8 @@ const BoyChildGallery = () => {
         setFullscreenIndex((prev) => (prev - 1 + allImages.length) % allImages.length);
     };
 
-    const toggleLike = (imageId: number) => {
+    const toggleLike = (imageId?: number | string) => {
+        if (imageId == null) return;
         setLikedImages(prev => {
             const newSet = new Set(prev);
             if (newSet.has(imageId)) {
@@ -89,7 +92,8 @@ const BoyChildGallery = () => {
         });
     };
 
-    const handleImageLoad = (imageId: number) => {
+    const handleImageLoad = (imageId?: number | string) => {
+        if (imageId == null) return;
         setLoadingImages(prev => {
             const newSet = new Set(prev);
             newSet.delete(imageId);
@@ -97,8 +101,13 @@ const BoyChildGallery = () => {
         });
     };
 
-    const handleImageLoadStart = (imageId: number) => {
-        setLoadingImages(prev => new Set(prev).add(imageId));
+    const handleImageLoadStart = (imageId?: number | string) => {
+        if (imageId == null) return;
+        setLoadingImages(prev => {
+            const newSet = new Set(prev);
+            newSet.add(imageId);
+            return newSet;
+        });
     };
 
     // Keyboard navigation
