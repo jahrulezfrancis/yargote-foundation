@@ -4,6 +4,7 @@ import { Suspense } from "react"
 import "./globals.css"
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
+import { AppInitializer } from "@/components/app-initializer"
 
 export const metadata: Metadata = {
   title: "Yargote Foundation - Empowering Boys to Transform Communities",
@@ -12,16 +13,15 @@ export const metadata: Metadata = {
   generator: "v0.app",
 }
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
+export default function RootLayout({ children, }: Readonly<{ children: React.ReactNode }>) {
+
+
   return (
     <html lang="en">
       <body className="font-sans antialiased">
         <Suspense fallback={null}>
           <Navigation />
+          <AppInitializer />
           {children}
           <Footer />
         </Suspense>
