@@ -98,7 +98,7 @@ export function EventCard({ event }: EventCardProps) {
                     <Users className="w-4 h-4 text-primary" />
                   </div>
                   <span className="font-medium">
-                    {event.attendees} {event.maxAttendees && `/ ${event.maxAttendees}`} attendees
+                    {event.attendees}+ attendees
                   </span>
                 </div>
               )}
