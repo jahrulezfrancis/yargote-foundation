@@ -57,3 +57,25 @@ export interface TeamMember {
   email: string
   linkedin: string
 }
+
+export interface GalleryImage {
+  id: string
+  src: string
+  thumbnail?: string
+  alt: string
+  caption?: string
+  category?: string
+  featured?: boolean
+  date: string
+  tags: string[]
+}
+
+export interface programType {
+id: string
+title: string
+description: string
+image: string
+status: "active" | "completed" | "upcoming"
+duration: string
+outcomes: string[]
+}
