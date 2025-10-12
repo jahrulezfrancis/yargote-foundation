@@ -6,31 +6,9 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { ChevronLeft, ChevronRight, Calendar, Users, Play, Pause, ArrowUpRight, Clock, Heart } from "lucide-react"
 import Link from "next/link"
-import { mockBlogPosts, mockEvents } from "@/lib/mock-data"
+import { useAppStore } from "@/store/useAppStore"
 
 
-const featuredItems = [
-  ...mockEvents.slice(0, 1).map((event) => ({
-    id: event.id,
-    type: "event" as const,
-    title: event.title,
-    description: event.description,
-    image: event.image,
-    date: event.date,
-    attendees: event.attendees,
-    href: `/events/${event.id}`,
-  })),
-  ...mockBlogPosts.slice(0, 2).map((post) => ({
-    id: post.id,
-    type: "story" as const,
-    title: post.title,
-    description: post.excerpt,
-    image: post.image,
-    date: post.date,
-    author: post.author,
-    href: `/blog/${post.id}`,
-  })),
-]
 
 export function FeaturedCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -38,6 +16,32 @@ export function FeaturedCarousel() {
   const [isTransitioning, setIsTransitioning] = useState(false)
   const [isHovered, setIsHovered] = useState(false)
   const [animationPhase, setAnimationPhase] = useState<'idle' | 'exit' | 'enter'>('idle')
+
+  const { events: eventData = [], blogs: blogPosts = [] } = useAppStore()
+
+  const featuredItems = [
+    ...eventData.slice(0, 1).map((event) => ({
+      id: event.id,
+      type: "event" as const,
+      title: event.title,
+      description: event.description,
+      image: event.image,
+      date: event.date,
+      attendees: event.attendees,
+      href: `/events/${event.id}`,
+    })),
+    ...blogPosts.slice(0, 2).map((post) => ({
+      id: post.id,
+      type: "story" as const,
+      title: post.title,
+      description: post.excerpt,
+      image: post.image,
+      date: post.date,
+      author: post.author,
+      href: `/blog/${post.id}`,
+    })),
+  ]
+
 
   useEffect(() => {
     if (!isAutoPlaying || isHovered) return
@@ -83,6 +87,14 @@ export function FeaturedCarousel() {
     if (isTransitioning || index === currentIndex) return
     setIsAutoPlaying(false)
     performTransition(index)
+  }
+
+  if (featuredItems.length === 0) {
+    return (
+      <div className="p-8 text-center text-gray-500">
+        Loading featured items...
+      </div>
+    )
   }
 
   const currentItem = featuredItems[currentIndex]
@@ -146,6 +158,14 @@ export function FeaturedCarousel() {
     }
   }
 
+  if (!currentItem) {
+    return (
+      <div className="p-8 text-center text-gray-500">
+        Loading featured content...
+      </div>
+    )
+  }
+
   return (
     <div className="relative group">
       {/* Main Carousel Card */}
@@ -159,7 +179,7 @@ export function FeaturedCarousel() {
           {/* Mobile Image Section */}
           <div className="relative h-[280px] sm:h-[320px] overflow-hidden">
             <img
-              src={currentItem.image || "/placeholder.svg"}
+              src={currentItem.image ?? "/placeholder.svg"}
               alt={currentItem.title}
               className={`w-full h-full object-cover ${getImageAnimationClasses()}`}
             />
@@ -441,13 +461,6 @@ export function FeaturedCarousel() {
               ? "bg-gradient-to-r from-primary to-gray-600 shadow-lg"
               : "bg-gray-300 group-hover:bg-gray-400"
               }`} />
-
-            {/* Preview tooltip on hover - Hidden on mobile */}
-            <div className="hidden md:block absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-              <div className="bg-black/80 text-white text-xs rounded-lg px-3 py-2 whitespace-nowrap backdrop-blur-sm">
-                {item.title.length > 30 ? `${item.title.slice(0, 30)}...` : item.title}
-              </div>
-            </div>
           </button>
         ))}
       </div>
