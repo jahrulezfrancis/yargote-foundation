@@ -3,13 +3,15 @@
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Progress } from "@/components/ui/progress"
-import { mockProjects } from "@/lib/mock-data"
 import { Heart } from "lucide-react"
 import Link from "next/link"
+import { useAppStore } from "@/store/useAppStore"
 
 export function FeaturedProjectSection() {
-  // Get the first active project accepting donations
-  const featuredProject = mockProjects
+
+  const {projects, loading} = useAppStore()
+
+  const featuredProject = projects
     .find((project) => project.status === "active" && project.acceptingDonations)
 
   if (!featuredProject) {

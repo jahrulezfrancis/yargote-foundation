@@ -3,17 +3,10 @@
 import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { X, ChevronLeft, ChevronRight, Heart, Download, Share2 } from "lucide-react";
-import { galleryImages as recentImages } from "@/lib/mock-data";
+import { useAppStore } from "@/store/useAppStore";
+import { GalleryImage } from "@/lib/types";
 
-// Simple Lightbox Component
-type GalleryImage = {
-  id: string | number;
-  src: string;
-  alt: string;
-  caption: string;
-  category: string;
-  date: string;
-};
+
 
 type SimpleLightboxProps = {
   images: GalleryImage[];
@@ -139,7 +132,9 @@ export function RecentImagesGallery() {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
   const [loadingImages, setLoadingImages] = useState(new Set());
 
-  const handleImageLoad = (imageId: number) => {
+  const { galleryImages: recentImages } = useAppStore();
+
+  const handleImageLoad = (imageId: string) => {
     setLoadingImages(prev => {
       const newSet = new Set(prev);
       newSet.delete(imageId);
@@ -147,7 +142,7 @@ export function RecentImagesGallery() {
     });
   };
 
-  const handleImageLoadStart = (imageId: number) => {
+  const handleImageLoadStart = (imageId: string) => {
     setLoadingImages(prev => new Set(prev).add(imageId));
   };
 
