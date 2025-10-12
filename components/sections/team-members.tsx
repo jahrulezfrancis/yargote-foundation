@@ -7,7 +7,6 @@ interface TeamMemberProps {
     member: TeamMember;
 }
 
-// Modal Component
 const TeamMemberModal = ({ member, isOpen, onClose }: { member: TeamMember; isOpen: boolean; onClose: () => void }) => {
     if (!isOpen) return null;
 
@@ -69,7 +68,6 @@ const TeamMemberModal = ({ member, isOpen, onClose }: { member: TeamMember; isOp
 
                     <div className="space-y-4">
                         <h4 className="text-lg font-semibold">About</h4>
-
                         {aboutContent.map((paragraph, index) => (
                             <p
                                 key={index}
@@ -89,7 +87,11 @@ const TeamMemberModal = ({ member, isOpen, onClose }: { member: TeamMember; isOp
 export default function TeamMemberCard({ member }: TeamMemberProps) {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
-    // Truncate bio to approximately 80 characters
+
+    if (member.bio.length === 0) {
+        member.bio = "Bio not available.";
+    }
+    // Truncating bio to approximately 80 characters
     const truncatedBio = member.bio.length > 80
         ? member.bio.substring(0, 100) + "..."
         : member.bio;
@@ -105,7 +107,7 @@ export default function TeamMemberCard({ member }: TeamMemberProps) {
                     />
                     <div className="p-6 space-y-4">
                         <div>
-                            <h3 style={{textTransform: "capitalize"}} className="text-xl font-semibold">{member.name}</h3>
+                            <h3 style={{ textTransform: "capitalize" }} className="text-xl font-semibold">{member.name}</h3>
                             <p className="text-accent font-medium">{member.role}</p>
                         </div>
 
