@@ -47,7 +47,7 @@ export function AboutSection() {
                                 </div>
                                 <h3 className="text-2xl font-semibold text-gray-900">Our Vision</h3>
                                 <p className="text-gray-600 leading-relaxed">
-                                    To create a world where every child, youth and woman has the opportunity to live with dignity, fulfil their potential and contribute meaningfully to national development.
+                                    We envision a world where every child, youth and woman has the opportunity to live with dignity, fulfil their potential and contribute meaningfully to national development.
                                 </p>
                                 <div className="pt-4 space-y-2">
                                     <div className="flex items-start gap-2">
