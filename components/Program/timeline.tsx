@@ -9,12 +9,12 @@ import Link from 'next/link';
 
 const milestones = [
   {
-    year: "2015",
+    year: "2017",
     title: "Foundation Established",
     description: "Yargote Foundation officially launched with focus on empowering the boy child, marking the beginning of our mission to create positive change in communities."
   },
   {
-    year: "2017",
+    year: "2018",
     title: "First Mentorship Circles",
     description: "Launched our flagship Mentorship Circles program with community leaders, establishing the foundation for meaningful mentor-mentee relationships."
   },
