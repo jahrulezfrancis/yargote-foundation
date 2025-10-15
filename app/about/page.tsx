@@ -223,7 +223,7 @@ export default function AboutPage() {
                         </div>
                         <div>
                           <div className="text-sm text-gray-600 mb-1">Established</div>
-                          <div className="font-semibold text-gray-900">2015</div>
+                          <div className="font-semibold text-gray-900">2017</div>
                         </div>
                       </div>
 
