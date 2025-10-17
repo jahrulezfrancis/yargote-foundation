@@ -79,60 +79,6 @@ export default function DonatePage() {
           </div>
         </section>
 
-        {/* Impact Overview */}
-        <section className="py-20 bg-white">
-          <div className="container mx-auto px-4">
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
-              <div className="space-y-8">
-                <div>
-                  <Badge className="mb-4 bg-emerald-100 text-emerald-700 border-emerald-200">
-                    Your Impact
-                  </Badge>
-                  <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
-                    Why Your Support Matters
-                  </h2>
-                </div>
-
-                <p className="text-lg text-gray-600 leading-relaxed">
-                  Boys in underserved communities face unique challenges. Your support provides
-                  the mentorship and education they need to overcome obstacles and build successful futures.
-                </p>
-
-                <div className="space-y-4">
-                  {keyBenefits.map((benefit, index) => (
-                    <div key={index} className="flex items-center gap-3">
-                      <CheckCircle className="w-5 h-5 text-emerald-600 flex-shrink-0" />
-                      <span className="text-gray-700">{benefit}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div className="bg-gradient-to-br from-emerald-50 to-emerald-100 p-8 rounded-2xl">
-                <div className="text-center space-y-6">
-                  <div className="w-16 h-16 bg-emerald-600 rounded-full flex items-center justify-center mx-auto">
-                    <Heart className="w-8 h-8 text-white" />
-                  </div>
-                  <div>
-                    <div className="text-4xl font-bold text-emerald-600 mb-2">2,500+</div>
-                    <div className="text-gray-700 font-medium">Young Men Supported</div>
-                  </div>
-                  <div className="grid grid-cols-2 gap-6 pt-4">
-                    <div>
-                      <div className="text-2xl font-bold text-gray-900">95%</div>
-                      <div className="text-sm text-gray-600">Success Rate</div>
-                    </div>
-                    <div>
-                      <div className="text-2xl font-bold text-gray-900">150+</div>
-                      <div className="text-sm text-gray-600">Active Mentors</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* Impact Levels */}
         <section className="py-20 bg-gray-50">
           <div className="container mx-auto px-4">
