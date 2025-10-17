@@ -3,7 +3,7 @@
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
 import { EventCard } from "@/components/event-card"
-import { Calendar, Users, MapPin, Sparkles, TrendingUp, Award, PartyPopper, Megaphone } from "lucide-react"
+import { Calendar, Users, MapPin, Sparkles, TrendingUp, Award, PartyPopper, Megaphone, Footprints } from "lucide-react"
 import scrollToSection from "@/utils/scrollTo"
 import { useState, useEffect, useRef } from "react"
 import Link from "next/link"
@@ -83,10 +83,10 @@ export default function EventsPage() {
               {/* Event Types Quick Cards */}
               <div className="grid md:grid-cols-4 gap-4 mb-12">
                 {[
-                  { icon: Megaphone, name: "Workshops", color: "emerald", count: "5" },
+                  { icon: Megaphone, name: "Workshops & Seminar", color: "purple", count: "5" },
                   { icon: PartyPopper, name: "Fundraisers", color: "blue", count: "3" },
-                  { icon: Users, name: "Community Advocacy", color: "purple", count: "8" },
-                  { icon: Award, name: "Celebrations", color: "amber", count: "4" }
+                  { icon: Users, name: "Community Gatherings", color: "purple", count: "8" },
+                  { icon: Award, name: "Empower The Boy Child Summit", color: "blue", count: "4" }
                 ].map((type, index) => (
                   <Card key={index} className={`group hover:shadow-lg transition-all duration-500 border-2 hover:border-${type.color}-200 cursor-pointer ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
                     }`}
@@ -154,8 +154,8 @@ export default function EventsPage() {
 
                       <div className="pt-4 border-t border-gray-100">
                         <div className="flex items-center justify-between">
-                          <span className="text-sm font-medium text-gray-600">This Month</span>
-                          <span className="text-lg font-bold text-gray-900">78% Active</span>
+                          <span className="text-sm font-medium text-gray-600">Lives Impacted</span>
+                          <span className="text-lg font-bold text-primary-yellow`">500+</span>
                         </div>
                       </div>
                     </div>
@@ -239,10 +239,11 @@ export default function EventsPage() {
                     </div>
                     <div className="space-y-4">
                       {[
-                        { icon: Megaphone, label: "Workshops & Training", color: "emerald" },
-                        { icon: PartyPopper, label: "Fundraising Events", color: "blue" },
-                        { icon: Users, label: "Community Gatherings", color: "purple" },
-                        { icon: Award, label: "Award Ceremonies", color: "amber" }
+                        { icon: Megaphone, label: "Workshops & Seminars", color: "purple" },
+                        { icon: PartyPopper, label: "Fundraising Events & Activities", color: "blue" },
+                        { icon: Users, label: "Community Gatherings (Stakeholders Engagement)", color: "purple" },
+                        { icon: Award, label: "Empower The Boy Child Summit", color: "blue" },
+                        { icon: Footprints, label: "International Day of The Boy Child Road Walk", color: "purple" }
                       ].map((item, index) => (
                         <div key={index} className={`flex items-center gap-3 group hover:bg-gray-50 hover:px-3 hover:py-2 hover:rounded-lg transition-all duration-300 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'
                           }`} style={{ transitionDelay: `${index * 100 + 1000}ms` }}>
@@ -254,7 +255,7 @@ export default function EventsPage() {
                       ))}
                     </div>
 
-                    <div className={`pt-6 border-t border-gray-100 mt-6 transition-all duration-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+                    {/* <div className={`pt-6 border-t border-gray-100 mt-6 transition-all duration-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
                       }`} style={{ transitionDelay: '1400ms' }}>
                       <div className="flex flex-wrap gap-2">
                         <span className="px-3 py-1 bg-emerald-50 text-xs font-medium text-emerald-700 rounded-full border border-emerald-200">
@@ -267,7 +268,7 @@ export default function EventsPage() {
                           Open to All
                         </span>
                       </div>
-                    </div>
+                    </div> */}
                   </CardContent>
                 </Card>
               </div>
