@@ -5,6 +5,7 @@ import "./globals.css"
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 import { AppInitializer } from "@/components/app-initializer"
+import { Toaster } from "sonner"
 
 export const metadata: Metadata = {
   title: "Yargote Foundation - Empowering Boys to Transform Communities",
@@ -23,6 +24,7 @@ export default function RootLayout({ children, }: Readonly<{ children: React.Rea
           <Navigation />
           <AppInitializer />
           {children}
+          <Toaster />
           <Footer />
         </Suspense>
       </body>
