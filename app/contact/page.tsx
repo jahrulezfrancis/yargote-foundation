@@ -1,7 +1,7 @@
 "use client"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Mail, Phone, MapPin, Clock, Facebook, Twitter, Instagram, Linkedin, Heart, BookOpen, MessageCircle, Youtube } from "lucide-react"
+import { Mail, Phone, MapPin, Clock, Facebook, Twitter, Instagram, Linkedin, Heart, BookOpen, Youtube } from "lucide-react"
 import { ContactForm } from "@/components/contact-form"
 import { WhatsappIcon } from "next-share"
 import Link from "next/link"
@@ -217,27 +217,24 @@ export default function ContactPage() {
                         </div>
                       ))}
 
-                      <div className="">
-                        <div className="p-4 bg-gray-50 rounded-lg flex items-center gap-2 hover:bg-emerald-50 transition-colors cursor-pointer border border-gray-100 hover:border-emerald-200">
-                          <div className="w-14 h-14 bg-emerald-50 rounded-full flex items-center justify-center shadow-sm border border-emerald-100">
-                            <WhatsappIcon className="w-8 h-8 text-emerald-600" />
-                          </div>
-
-                          <div>
-                            <p className="text-gray-500 text-sm mt-1">Chat with us on WhatsApp for quick responses</p>
-                            <Button
-                              asChild
-                              size="sm"
-                              className="bg-emerald-600 hover:bg-emerald-700 text-white mt-2 h-7"
-                            >
-                              <a href={waMessageLink} target={'_blank'} rel={'noopener noreferrer'}>
-                                Message Now
-                              </a>
-                            </Button>
-                          </div>
-
+                      <div className="flex items-center gap-3 p-4 bg-gray-50 rounded-lg border border-gray-100 hover:bg-emerald-50 hover:border-emerald-200 transition-colors cursor-pointer">
+                        <div className="flex-shrink-0 w-13 h-13 bg-emerald-50 rounded-full flex items-center justify-center shadow-sm border border-emerald-100">
+                          <WhatsappIcon className="w-7 h-7 rounded-2xl text-emerald-600" />
+                        </div>
+                        <div>
+                          <p className="text-gray-500 text-sm mt-1">Chat with us on WhatsApp for quick responses</p>
+                          <Button
+                            asChild
+                            size="sm"
+                            className="bg-emerald-600 hover:bg-emerald-700 text-white mt-2 h-7"
+                          >
+                            <a href={waMessageLink} target="_blank" rel="noopener noreferrer">
+                              Message Now
+                            </a>
+                          </Button>
                         </div>
                       </div>
+
                     </div>
                   </CardContent>
                 </Card>
