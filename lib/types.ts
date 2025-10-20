@@ -58,6 +58,17 @@ export interface TeamMember {
   linkedin: string
 }
 
+export interface PartnerType {
+  id: string
+  name: string
+  logo: string
+  website?: string
+  description?: string
+  category?: "corporate" | "ngo" | "government" | "individual"
+  partnershipDate?: string
+  active?: boolean
+}
+
 export interface GalleryImage {
   id: string
   src: string
@@ -71,11 +82,20 @@ export interface GalleryImage {
 }
 
 export interface programType {
-id: string
-title: string
-description: string
-image: string
-status: "active" | "completed" | "upcoming"
-duration: string
-outcomes: string[]
+  id: string
+  title: string
+  description: string
+  image: string
+  status: "active" | "completed" | "upcoming"
+  duration: string
+  outcomes: string[]
+}
+
+export interface FormDataType {
+  name: string
+  email: string
+  phone: string
+  subject: string
+  message: string
+  inquiryType: string
 }
