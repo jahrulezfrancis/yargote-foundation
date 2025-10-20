@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Heart, Users, Handshake, ArrowRight } from "lucide-react"
+import Link from "next/link"
 
 
 export function GetInvolvedSection() {
@@ -25,10 +26,13 @@ export function GetInvolvedSection() {
                                 <p className="text-gray-600 leading-relaxed">
                                     Your financial support helps us expand our programs and reach more boys in need.
                                 </p>
-                                <Button className="bg-emerald-600 hover:bg-emerald-700 text-white w-full group-hover:scale-105 transition-all duration-300">
-                                    Give Today
-                                    <ArrowRight className="w-4 h-4 ml-2" />
-                                </Button>
+
+                                <Link href="/donate">
+                                    <Button className="bg-emerald-600 hover:bg-emerald-700 text-white w-full group-hover:scale-105 transition-all duration-300">
+                                        Give Today
+                                        <ArrowRight className="w-4 h-4 ml-2" />
+                                    </Button>
+                                </Link>
                             </CardContent>
                         </Card>
 
@@ -41,10 +45,12 @@ export function GetInvolvedSection() {
                                 <p className="text-gray-600 leading-relaxed">
                                     Become a mentor and directly impact the life of a young man through guidance and support.
                                 </p>
-                                <Button className="bg-emerald-600 hover:bg-emerald-700 text-white w-full group-hover:scale-105 transition-all duration-300">
-                                    Get Started
-                                    <ArrowRight className="w-4 h-4 ml-2" />
-                                </Button>
+                                <Link href="/contact#form">
+                                    <Button className="bg-emerald-600 hover:bg-emerald-700 text-white w-full group-hover:scale-105 transition-all duration-300">
+                                        Get Started
+                                        <ArrowRight className="w-4 h-4 ml-2" />
+                                    </Button>
+                                </Link>
                             </CardContent>
                         </Card>
 
@@ -57,10 +63,12 @@ export function GetInvolvedSection() {
                                 <p className="text-gray-600 leading-relaxed">
                                     Collaborate with us to create sustainable programs and amplify our community impact.
                                 </p>
-                                <Button className="bg-emerald-600 hover:bg-emerald-700 text-white w-full group-hover:scale-105 transition-all duration-300">
-                                    Learn More
-                                    <ArrowRight className="w-4 h-4 ml-2" />
-                                </Button>
+                                <Link href={"/contact#form"}>
+                                    <Button className="bg-emerald-600 hover:bg-emerald-700 text-white w-full group-hover:scale-105 transition-all duration-300">
+                                        Learn More
+                                        <ArrowRight className="w-4 h-4 ml-2" />
+                                    </Button>
+                                </Link>
                             </CardContent>
                         </Card>
                     </div>
