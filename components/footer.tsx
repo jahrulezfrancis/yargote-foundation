@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Heart, Mail, Phone, MapPin, Facebook, Twitter, Instagram, Linkedin, Youtube } from "lucide-react"
+import { Heart, Mail, Phone, MapPin, Twitter, Instagram, Youtube } from "lucide-react"
 import Image from "next/image"
 
 export function Footer() {
@@ -66,7 +66,6 @@ export function Footer() {
             <h3 className="font-semibold text-lg">Follow Us</h3>
             <div className="flex gap-4">
               {[
-                // { icon: Facebook, href: "#" },
                 { icon: Twitter, href: "https://x.com/yargote_f88015" },
                 { icon: Instagram, href: "https://www.instagram.com/theyargote_foundation/" },
                 { icon: Youtube, href: "https://www.youtube.com/@YargoteTV" },
