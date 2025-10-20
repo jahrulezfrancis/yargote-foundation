@@ -1,5 +1,5 @@
 "use client"
-
+import emailjs from "@emailjs/browser";
 import React, { useState } from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
@@ -8,25 +8,18 @@ import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Send, Mail, CheckCircle, AlertCircle, Loader2 } from "lucide-react"
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import { db } from "@/lib/firebase";
+import { toast } from "sonner";
+import { FormDataType } from "@/lib/types";
 
-// Define form state type
-interface FormData {
-  name: string
-  email: string
-  phone: string
-  subject: string
-  message: string
-  inquiryType: string
-}
 
-// Define errors type (keys of FormData mapped to string errors)
-type FormErrors = Partial<Record<keyof FormData, string>>
+type FormErrors = Partial<Record<keyof FormDataType, string>>
 
-// Submission status type
 type SubmitStatus = "success" | "error" | null
 
 export function ContactForm() {
-  const [formData, setFormData] = useState<FormData>({
+  const [formData, setFormData] = useState<FormDataType>({
     name: "",
     email: "",
     phone: "",
@@ -68,7 +61,7 @@ export function ContactForm() {
   }
 
   // Handle input changes
-  const handleInputChange = (field: keyof FormData, value: string) => {
+  const handleInputChange = (field: keyof FormDataType, value: string) => {
     setFormData(prev => ({
       ...prev,
       [field]: value,
@@ -82,20 +75,42 @@ export function ContactForm() {
     }
   }
 
+  const userFormData = {
+    name: formData.name,
+    email: formData.email,
+    phone: formData.phone || "N/A",
+    subject: formData.subject,
+    message: formData.message,
+    inquiryType: formData.inquiryType || "Not specified",
+    time: new Date().toLocaleString(),
+  }
+
   // Form submission handler
   const handleSubmit = async (e: React.FormEvent<HTMLButtonElement>) => {
     e.preventDefault()
-
     if (!validateForm()) return
 
     setIsSubmitting(true)
     setSubmitStatus(null)
 
     try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 2000))
+      //Save form data to Firestore
+      await addDoc(collection(db, "contactMessages"), {
+        ...userFormData,
+        createdAt: serverTimestamp(),
+      })
 
+      //Send email using EmailJS
+      const result = await emailjs.send(
+        "service_yargote",
+        "template_contact",
+        userFormData,
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY as string
+      )
+
+      console.log("Email sent:", result.text)
       setSubmitStatus("success")
+
       setFormData({
         name: "",
         email: "",
@@ -105,11 +120,11 @@ export function ContactForm() {
         inquiryType: "",
       })
 
-      setTimeout(() => setSubmitStatus(null), 5000)
+      toast.success("Message sent successfully!")
     } catch (error) {
-      console.error("Form submission error:", error)
+      console.error("Error submitting form:", error)
       setSubmitStatus("error")
-      setTimeout(() => setSubmitStatus(null), 5000)
+      toast.error("Failed to send message. Please try again.")
     } finally {
       setIsSubmitting(false)
     }
@@ -163,11 +178,10 @@ export function ContactForm() {
                 id="name"
                 value={formData.name}
                 onChange={(e) => handleInputChange("name", e.target.value)}
-                className={`h-12 border-2 ${
-                  errors.name
-                    ? "border-red-300 focus:border-red-500 focus:ring-red-200"
-                    : "border-gray-200 focus:border-emerald-500 focus:ring-emerald-200"
-                } focus:ring-2`}
+                className={`h-12 border-2 ${errors.name
+                  ? "border-red-300 focus:border-red-500 focus:ring-red-200"
+                  : "border-gray-200 focus:border-emerald-500 focus:ring-emerald-200"
+                  } focus:ring-2`}
                 placeholder="Enter your full name"
                 disabled={isSubmitting}
               />
@@ -182,11 +196,10 @@ export function ContactForm() {
                 type="email"
                 value={formData.email}
                 onChange={(e) => handleInputChange("email", e.target.value)}
-                className={`h-12 border-2 ${
-                  errors.email
-                    ? "border-red-300 focus:border-red-500 focus:ring-red-200"
-                    : "border-gray-200 focus:border-emerald-500 focus:ring-emerald-200"
-                } focus:ring-2`}
+                className={`h-12 border-2 ${errors.email
+                  ? "border-red-300 focus:border-red-500 focus:ring-red-200"
+                  : "border-gray-200 focus:border-emerald-500 focus:ring-emerald-200"
+                  } focus:ring-2`}
                 placeholder="Enter your email address"
                 disabled={isSubmitting}
               />
@@ -241,11 +254,10 @@ export function ContactForm() {
               id="subject"
               value={formData.subject}
               onChange={(e) => handleInputChange("subject", e.target.value)}
-              className={`h-12 border-2 ${
-                errors.subject
-                  ? "border-red-300 focus:border-red-500 focus:ring-red-200"
-                  : "border-gray-200 focus:border-emerald-500 focus:ring-emerald-200"
-              } focus:ring-2`}
+              className={`h-12 border-2 ${errors.subject
+                ? "border-red-300 focus:border-red-500 focus:ring-red-200"
+                : "border-gray-200 focus:border-emerald-500 focus:ring-emerald-200"
+                } focus:ring-2`}
               placeholder="Enter the subject of your message"
               disabled={isSubmitting}
             />
@@ -260,11 +272,10 @@ export function ContactForm() {
               rows={6}
               value={formData.message}
               onChange={(e) => handleInputChange("message", e.target.value)}
-              className={`border-2 resize-none ${
-                errors.message
-                  ? "border-red-300 focus:border-red-500 focus:ring-red-200"
-                  : "border-gray-200 focus:border-emerald-500 focus:ring-emerald-200"
-              } focus:ring-2`}
+              className={`border-2 resize-none ${errors.message
+                ? "border-red-300 focus:border-red-500 focus:ring-red-200"
+                : "border-gray-200 focus:border-emerald-500 focus:ring-emerald-200"
+                } focus:ring-2`}
               placeholder="Tell us how we can help you..."
               disabled={isSubmitting}
             />
