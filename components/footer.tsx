@@ -1,5 +1,6 @@
 import Link from "next/link"
-import { Heart, Mail, Phone, MapPin, Facebook, Twitter, Instagram, Linkedin } from "lucide-react"
+import { Heart, Mail, Phone, MapPin, Facebook, Twitter, Instagram, Linkedin, Youtube } from "lucide-react"
+import Image from "next/image"
 
 export function Footer() {
   return (
@@ -65,10 +66,10 @@ export function Footer() {
             <h3 className="font-semibold text-lg">Follow Us</h3>
             <div className="flex gap-4">
               {[
-                { icon: Facebook, href: "#" },
+                // { icon: Facebook, href: "#" },
                 { icon: Twitter, href: "https://x.com/yargote_f88015" },
-                { icon: Instagram, href: "#" },
-                { icon: Linkedin, href: "#" },
+                { icon: Instagram, href: "https://www.instagram.com/theyargote_foundation/" },
+                { icon: Youtube, href: "https://www.youtube.com/@YargoteTV" },
               ].map((social, index) => (
                 <Link
                   key={index}
@@ -79,6 +80,11 @@ export function Footer() {
                   <social.icon className="w-5 h-5" />
                 </Link>
               ))}
+              <div className="flex justify-center items-center w-10 h-10 bg-primary-foreground/10 rounded-full">
+                <Link target="_blank" href={"https://www.tiktok.com/@the.yargote_foundation"}>
+                  <Image height={20} width={20} alt="tiktok" src={"https://cdn.pixabay.com/photo/2021/06/15/12/28/tiktok-6338432_1280.png"} />
+                </Link>
+              </div>
             </div>
           </div>
         </div>

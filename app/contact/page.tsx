@@ -1,10 +1,11 @@
 "use client"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Mail, Phone, MapPin, Clock, Facebook, Twitter, Instagram, Linkedin, Heart, BookOpen, MessageCircle } from "lucide-react"
+import { Mail, Phone, MapPin, Clock, Facebook, Twitter, Instagram, Linkedin, Heart, BookOpen, MessageCircle, Youtube } from "lucide-react"
 import { ContactForm } from "@/components/contact-form"
 import { WhatsappIcon } from "next-share"
 import Link from "next/link"
+import Image from "next/image"
 
 const contactInfo = [
   {
@@ -41,7 +42,11 @@ const socialLinks = [
   { icon: Twitter, href: "https://x.com/yargote_f88015", label: "Twitter" },
   { icon: Instagram, href: "#", label: "Instagram" },
   { icon: Linkedin, href: "#", label: "LinkedIn" },
+  { icon: Youtube, href: "https://www.youtube.com/@YargoteTV", label: "Youtube" },
 ]
+
+
+
 
 const quickContacts = [
   {
@@ -187,7 +192,7 @@ export default function ContactPage() {
         <section className="py-20 bg-gray-50">
           <div className="container mx-auto px-6">
             <div className="grid lg:grid-cols-5 gap-12">
-              <div className="lg:col-span-3">
+              <div id="form" className="lg:col-span-3">
                 <ContactFormWrapper />
               </div>
 
@@ -235,8 +240,6 @@ export default function ContactPage() {
                       </div>
                     </div>
                   </CardContent>
-
-
                 </Card>
 
                 {/* Emergency Contact */}
@@ -263,9 +266,6 @@ export default function ContactPage() {
         <Card className="shadow-lg border-0 my-16">
           <CardContent className="p-0">
             <div className="h-100 bg-gradient-to-br from-emerald-50 to-emerald-100 rounded-t-lg flex items-center justify-center relative overflow-hidden">
-              {/* <div className="absolute inset-0 opacity-20">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-emerald-400 via-transparent to-transparent"></div>
-              </div> */}
               <div className="text-center w-full h-full space-y-3 z-10">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3940.949863713974!2d7.497096074144363!3d8.976760968089247!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x104e0db594ca0017%3A0x9ae4c3d302e204c9!2sAPO%20RESETTLEMENT%20AREA!5e0!3m2!1sen!2sng!4v1759860099206!5m2!1sen!2sng" width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
               </div>
@@ -299,12 +299,17 @@ export default function ContactPage() {
                     key={index}
                     href={social.href}
                     target="_blank"
-                    className="w-14 h-14 bg-emerald-50 text-emerald-600 rounded-full flex items-center justify-center hover:bg-emerald-600 hover:text-white transition-all duration-300 hover:shadow-lg hover:-translate-y-1 border border-emerald-200"
+                    className="w-14 h-14 bg-emerald-50 hover:bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center transition-all duration-300 hover:shadow-lg hover:-translate-y-1 border border-emerald-200"
                     aria-label={social.label}
                   >
                     <social.icon className="w-6 h-6" />
                   </a>
                 ))}
+                <div className="flex justify-center items-center w-14 h-14 bg-emerald-50 rounded-full hover:bg-emerald-100 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                  <Link className="" target="_blank" href={"https://www.tiktok.com/@the.yargote_foundation"}>
+                    <Image className="" height={20} width={20} alt="tiktok" src={"https://cdn.pixabay.com/photo/2021/06/15/12/28/tiktok-6338432_1280.png"} />
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
