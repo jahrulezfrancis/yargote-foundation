@@ -48,8 +48,8 @@ export function Navigation() {
   return (
     <nav
       className={`sticky top-0 z-50 w-full transition-all duration-300 ${isScrolled
-          ? "glass-effect shadow-lg"
-          : "bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
+        ? "glass-effect shadow-lg"
+        : "bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
         } border-b border-border/50`}
     >
       <div className="container mx-auto px-3 sm:px-4 lg:px-6">
@@ -75,14 +75,14 @@ export function Navigation() {
             <>
               <div className="flex items-center space-x-1 lg:space-x-2">
                 {navItems.map((item) => {
-                  const isActive = pathname === item.href
+                  const isActive = item.href === "/" ? pathname === "/" : pathname.startsWith(item.href)
                   return (
                     <Link
                       key={item.href}
                       href={item.href}
                       className={`px-3 lg:px-4 py-2 rounded-lg font-medium text-sm lg:text-base transition-all duration-200 relative group ${isActive
-                          ? "text-white bg-gradient-to-br from-emerald-600 to-gray-900 shadow-md font-semibold scale-105"
-                          : "text-foreground hover:text-primary hover:bg-primary/8 hover:scale-105"
+                        ? "text-white bg-gradient-to-br from-emerald-600 to-gray-900 shadow-md font-semibold scale-105"
+                        : "text-foreground hover:text-primary hover:bg-primary/8 hover:scale-105"
                         }`}
                     >
                       {item.label}
@@ -137,8 +137,8 @@ export function Navigation() {
                     key={item.href}
                     href={item.href}
                     className={`block px-4 py-2.5 rounded-lg font-medium text-sm transition-all duration-200 relative ${isActive
-                        ? "text-white bg-gradient-to-r from-emerald-600 to-emerald-800 shadow-md font-semibold"
-                        : "text-foreground hover:text-primary hover:bg-primary/8"
+                      ? "text-white bg-gradient-to-r from-emerald-600 to-emerald-800 shadow-md font-semibold"
+                      : "text-foreground hover:text-primary hover:bg-primary/8"
                       }`}
                     onClick={() => setIsOpen(false)}
                   >
