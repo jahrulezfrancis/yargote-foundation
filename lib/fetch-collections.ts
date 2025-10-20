@@ -1,6 +1,6 @@
 import { collection, getDocs } from "firebase/firestore"
 import { db } from "./firebase"
-import type { BlogPost, EventType, GalleryImage, programType, ProjectType, TeamMember } from "@/lib/types"
+import type { BlogPost, EventType, GalleryImage, PartnerType, programType, ProjectType, TeamMember } from "@/lib/types"
 
 export async function fetchBlogs(): Promise<BlogPost[]> {
   const snapshot = await getDocs(collection(db, "blogPosts"))
@@ -30,4 +30,10 @@ export async function fetchGallery(): Promise<GalleryImage[]> {
 export async function fetchPrograms(): Promise<programType[]> {
   const snapshot = await getDocs(collection(db, "programs"))
   return snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })) as programType[]
+}
+
+
+export async function fetchPartners(): Promise<PartnerType[]> {
+  const snapshot = await getDocs(collection(db, "partners"))
+  return snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })) as PartnerType[]
 }

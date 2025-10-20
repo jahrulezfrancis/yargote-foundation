@@ -1,6 +1,6 @@
 "use client"
 
-import { BlogPost, EventType, GalleryImage, programType, ProjectType, TeamMember } from "@/lib/types"
+import { BlogPost, EventType, GalleryImage, PartnerType, programType, ProjectType, TeamMember } from "@/lib/types"
 import { create } from "zustand"
 import { persist } from "zustand/middleware"
 
@@ -12,6 +12,7 @@ interface AppState {
     projects: ProjectType[]
     team: TeamMember[]
     programs: programType[]
+    partners: PartnerType[]
     galleryImages: GalleryImage[]
 
     // --- Loading & Error States ---
@@ -25,12 +26,14 @@ interface AppState {
     setProjects: (projects: ProjectType[]) => void
     setTeam: (team: TeamMember[]) => void
     setPrograms: (programs: programType[]) => void
+    setPartners: (partners: PartnerType[]) => void
     addGalleryImage: (image: GalleryImage) => void
     addBlog: (blog: BlogPost) => void
     addEvent: (event: EventType) => void
     addProject: (project: ProjectType) => void
     addTeamMember: (member: TeamMember) => void
     addProgram: (program: programType) => void
+    addPartner: (partner: PartnerType) => void
 
     setLoading: (loading: boolean) => void
     setError: (error: string | null) => void
@@ -50,6 +53,7 @@ export const useAppStore = create<AppState>()(
             galleryImages: [],
             programs: [],
             loading: false,
+            partners: [],
             error: null,
 
             setBlogs: (blogs) => set({ blogs }),
@@ -63,6 +67,8 @@ export const useAppStore = create<AppState>()(
             setTeam: (team) => set({ team }),
 
             setPrograms: (programs) => set({ programs }),
+
+            setPartners: (partners) => set({ partners }),
 
             addBlog: (blog) =>
                 set((state) => ({ blogs: [blog, ...state.blogs] })),
@@ -82,6 +88,10 @@ export const useAppStore = create<AppState>()(
             addProgram: (program) =>
                 set((state) => ({ programs: [program, ...state.programs] })),
 
+            addPartner: (partner) =>
+                set((state) => ({ partners: [partner, ...state.partners] })),
+
+
             setLoading: (loading) => set({ loading }),
             setError: (error) => set({ error }),
 
@@ -93,6 +103,7 @@ export const useAppStore = create<AppState>()(
                     team: [],
                     galleryImages: [],
                     programs: [],
+                    partners: [],
                     loading: false,
                     error: null,
                 }),
