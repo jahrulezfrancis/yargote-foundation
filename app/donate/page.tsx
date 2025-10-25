@@ -27,12 +27,6 @@ const impactLevels = [
   },
 ]
 
-const keyBenefits = [
-  "100% of donations go directly to programs",
-  "Tax-deductible receipt provided",
-  "Regular impact updates",
-]
-
 export default function DonatePage() {
   const [hoveredCard, setHoveredCard] = useState<number | null>(null)
 
