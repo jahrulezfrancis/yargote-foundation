@@ -15,10 +15,16 @@ import { db } from "@/lib/firebase"
 import { toast } from "sonner"
 import { CustomModal, ThankYouModal } from "./modal"
 import { mockProjects } from "@/lib/mock-data"
-import { PaystackButton } from "react-paystack"
 import { formatCurrency, sendEmails } from "@/utils/helpers/payment"
+import dynamic from "next/dynamic"
 
 const donationAmounts = [10000, 25000, 50000, 100000, 250000, 500000]
+
+const PaystackButton = dynamic(
+  () => import("react-paystack").then((mod) => mod.PaystackButton),
+  { ssr: false }
+);
+
 
 
 export default function DonationForm() {
@@ -93,7 +99,9 @@ export default function DonationForm() {
       const whatsappNumber = "2348065361349"
 
       setTimeout(() => {
-        window.open(`https://wa.me/${whatsappNumber}?text=${message}`, "_blank")
+        if (typeof window !== "undefined") {
+          window.open(`https://wa.me/${whatsappNumber}?text=${message}`, "_blank")
+        }
       }, 5000);
 
       setCustomAmount("")
@@ -242,6 +250,16 @@ export default function DonationForm() {
 
   return (
     <div className="min-h-screen bg-gray-50 py-1 md:py-8 px-1 md:px-4">
+      {selectedProject &&
+        <ThankYouModal
+          project={selectedProject}
+          isOpen={isThankYouModal}
+          onClose={handleModalClose}
+          amount={amount}
+          donorName={formData.firstName + " " + formData.lastName}
+          email={formData.email} paymentMethod={paymentMethod}
+        />
+      }
       <div className="max-w-3xl mx-auto">
         <Card className="shadow-lg border-0 bg-white">
           <CardHeader className="text-center border-b border-gray-100 py-8">
@@ -647,15 +665,6 @@ export default function DonationForm() {
           </CardContent>
         </Card>
       </div>
-      <ThankYouModal
-        project={selectedProject}
-        isOpen={isThankYouModal}
-        onClose={handleModalClose}
-        amount={amount}
-        donorName={formData.firstName + " " + formData.lastName}
-        email={formData.email} paymentMethod={paymentMethod}
-      />
-
     </div>
   )
 }
