@@ -33,7 +33,7 @@ export default function DonationForm() {
   const [customAmount, setCustomAmount] = useState("")
   const [isCustom, setIsCustom] = useState(false)
   const [selectedProject, setSelectedProject] = useState("general")
-  const [paymentMethod, setPaymentMethod] = useState("bank-transfer")
+  const [paymentMethod, setPaymentMethod] = useState<"bank-transfer" | "paystack" | "other">("bank-transfer")
   const [isProcessing, setIsProcessing] = useState(false)
   const [isThankYouModal, setIsThankYouModal] = useState(false)
   const [formData, setFormData] = useState({
@@ -102,7 +102,7 @@ export default function DonationForm() {
         if (typeof window !== "undefined") {
           window.open(`https://wa.me/${whatsappNumber}?text=${message}`, "_blank")
         }
-      }, 5000);
+      }, 7000);
 
       setCustomAmount("")
       setIsCustom(false)
@@ -392,7 +392,7 @@ export default function DonationForm() {
                 </Label>
                 <RadioGroup
                   value={paymentMethod}
-                  onValueChange={setPaymentMethod}
+                  onValueChange={(value: string) => setPaymentMethod(value as "bank-transfer" | "paystack" | "other")}
                   className="grid grid-cols-1 md:grid-cols-2 gap-4"
                 >
                   <div className={`flex items-center space-x-3 border-2 rounded-lg p-4 cursor-pointer transition-all ${paymentMethod === "paystack" ? "border-emerald-600 bg-emerald-50" : "border-gray-300 hover:border-emerald-400"}`}>
