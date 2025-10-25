@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
 import { useShareModal } from "@/hooks/use-share"
 import scrollToSection from "@/utils/scrollTo"
-import { Heart, Users, GraduationCap, CheckCircle, ArrowRight } from "lucide-react"
+import { Heart, Users, GraduationCap, ArrowRight } from "lucide-react"
 import { useState } from "react"
 
 const impactLevels = [
@@ -121,19 +121,8 @@ export default function DonatePage() {
         </section>
 
         {/* Donation Form */}
-        <section className="py-20 bg-white donation-section">
+        <section className="py-0 bg-white donation-section">
           <div className="container mx-auto px-4">
-            <div className="text-center space-y-4 mb-16">
-              <Badge className="bg-emerald-600 text-white">
-                Give with Confidence
-              </Badge>
-              <h2 className="text-3xl lg:text-4xl font-bold text-gray-900">
-                Start Changing Lives Today
-              </h2>
-              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                Your generosity fuels mentorship, education, and brighter futures for young men in need. Every contribution counts.
-              </p>
-            </div>
 
             <ShareModal
               isOpen={isShareModalOpen}
