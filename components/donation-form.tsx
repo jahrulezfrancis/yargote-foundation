@@ -34,6 +34,7 @@ export default function DonationForm() {
   const [isCustom, setIsCustom] = useState(false)
   const [selectedProject, setSelectedProject] = useState("general")
   const [paymentMethod, setPaymentMethod] = useState<"bank-transfer" | "paystack" | "other">("bank-transfer")
+  const [showRedirectButton, setShowRedirectButton] = useState(false)
   const [isProcessing, setIsProcessing] = useState(false)
   const [isThankYouModal, setIsThankYouModal] = useState(false)
   const [formData, setFormData] = useState({
@@ -64,11 +65,22 @@ export default function DonationForm() {
     })
   }
 
+  // Build WhatsApp message   
+  const finalAmount = isCustom ? Number.parseFloat(customAmount) || 0 : amount;
+  const project = mockProjects.find((p) => p.id === selectedProject)
+  const donationTarget = selectedProject === "general" ? "general support" : project?.title || "selected project"
+  const message = encodeURIComponent(
+    `🌟 Donation Confirmation 🌟\n\n` +
+    `Name: ${formData.anonymous ? "Anonymous Donor" : `${formData.firstName} ${formData.lastName}`}\n` +
+    `Email: ${formData.email}\n` +
+    (formData.phone ? `Phone: ${formData.phone}\n` : "") +
+    `Donation Type: ${donationType}\n` +
+    `Amount: ₦${finalAmount.toLocaleString()}\n` +
+    `Project: ${donationTarget}\n\n` +
+    `Please confirm receipt.`
+  )
+
   const handleBankTransferSubmit = async () => {
-    const finalAmount = isCustom ? Number.parseFloat(customAmount) || 0 : amount
-    const project = mockProjects.find((p) => p.id === selectedProject)
-    const donationTarget =
-      selectedProject === "general" ? "general support" : project?.title || "selected project"
 
     if (!formData.firstName || !formData.lastName || !formData.email) {
       alert("Please fill in all required fields (First Name, Last Name, and Email)")
@@ -84,25 +96,16 @@ export default function DonationForm() {
 
       setIsThankYouModal(true)
 
-      // Build WhatsApp message
-      const message = encodeURIComponent(
-        `🌟 Donation Confirmation 🌟\n\n` +
-        `Name: ${formData.anonymous ? "Anonymous Donor" : `${formData.firstName} ${formData.lastName}`}\n` +
-        `Email: ${formData.email}\n` +
-        (formData.phone ? `Phone: ${formData.phone}\n` : "") +
-        `Donation Type: ${donationType}\n` +
-        `Amount: ₦${finalAmount.toLocaleString()}\n` +
-        `Project: ${donationTarget}\n\n` +
-        `Please confirm receipt.`
-      )
-
       const whatsappNumber = "2348065361349"
 
       setTimeout(() => {
         if (typeof window !== "undefined") {
           window.open(`https://wa.me/${whatsappNumber}?text=${message}`, "_blank")
         }
-      }, 7000);
+        setTimeout(() => {
+          setShowRedirectButton(true)
+        }, 2000);
+      }, 5000);
 
       setCustomAmount("")
       setIsCustom(false)
@@ -114,7 +117,6 @@ export default function DonationForm() {
     }
   }
 
-  const finalAmount = isCustom ? Number.parseFloat(customAmount) || 0 : amount
   const selectedProjectData = mockProjects.find((p) => p.id === selectedProject)
   const activeProjects = mockProjects.filter((p) => p.status === "active" && p.acceptingDonations)
 
@@ -127,6 +129,7 @@ export default function DonationForm() {
       phone: "",
       anonymous: false,
     })
+    setShowRedirectButton(false)
     setIsThankYouModal(false)
   }
 
@@ -252,7 +255,8 @@ export default function DonationForm() {
     <div className="min-h-screen bg-gray-50 py-1 md:py-8 px-1 md:px-4">
       {selectedProject &&
         <ThankYouModal
-          project={selectedProject}
+          showRedirectButton={showRedirectButton}
+          text={message} project={selectedProject}
           isOpen={isThankYouModal}
           onClose={handleModalClose}
           amount={amount}

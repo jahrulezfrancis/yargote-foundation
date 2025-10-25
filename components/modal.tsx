@@ -63,6 +63,8 @@ interface ThankYouModalProps {
     email: string;
     paymentReference?: string;
     paymentMethod: "bank-transfer" | "paystack" | "other";
+    showRedirectButton: boolean
+    text: string
 }
 
 export function ThankYouModal({
@@ -72,9 +74,11 @@ export function ThankYouModal({
     amount,
     project,
     email,
-    paymentReference,
+    showRedirectButton,
+    text,
     paymentMethod
 }: ThankYouModalProps) {
+
 
     const shareOnTwitter = () => {
         const text = encodeURIComponent(
@@ -126,7 +130,7 @@ export function ThankYouModal({
                             <WhatsappIcon className="w-5 h-5 flex-shrink-0 rounded-full text-blue-600 mt-0.5" />
                             <div className="min-w-0">
                                 <p className="text-xs sm:text-sm text-blue-700 mt-1">
-                                    You will be redirected to WhatsApp to share your receipt shortly...
+                                    {showRedirectButton ? "Click the button below to share receipt if you were not redirected automatically" : "You will be redirected to WhatsApp to share your receipt shortly..."}
                                 </p>
                             </div>
                         </div>
@@ -142,8 +146,22 @@ export function ThankYouModal({
                         </div>
                     )}
 
+                    {/* WhatsApp Share */}
+                    {showRedirectButton && paymentMethod === "bank-transfer" && (
+                        <div className="px-4">
+                            <Button
+                                onClick={() => {
+                                    window.open(`https://wa.me/2348065361349?text=${text}`, "_blank");
+                                }}
+                                className="w-full bg-emerald-600 hover:bg-emerald-700 text-white"
+                            >
+                                Share Receipt on WhatsApp
+                            </Button>
+                        </div>
+                    )}
+
                     {/* Social Share */}
-                    <div className="space-y-3 px-4">
+                    <div className="space-y-3 px-4 mt-10">
                         <h4 className="font-semibold text-center text-gray-900 flex items-center justify-center gap-2 text-sm sm:text-base">
                             <Share2 className="w-4 h-4 sm:w-5 sm:h-5 text-emerald-600" />
                             Inspire Others to Give
