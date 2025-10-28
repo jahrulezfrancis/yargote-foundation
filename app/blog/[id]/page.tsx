@@ -26,10 +26,10 @@ const categoryLabels: Record<BlogCategory, string> = {
   "impact-report": "Impact Report",
 }
 
-interface EnhancedBlogPostPageProps {
+interface BlogPostPageProps {
 }
 
-export default function EnhancedBlogPostPage({ }: EnhancedBlogPostPageProps) {
+export default function BlogPostPage({ }: BlogPostPageProps) {
   const params = useParams()
   const postId = params?.id as string
 
